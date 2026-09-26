@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Espaço Arquitetura & Parcerias — Célia Decor Santo André</title>
+  <meta name="description" content="Canal exclusivo para arquitetos e designers de interiores. Apoio técnico, amostras, compatibilização de cortineiros e alfaiataria têxtil no ABC e SP.">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 28px;
+      margin: 60px 0;
+    }
+    .step-card {
+      background: var(--color-surface);
+      border-radius: var(--radius-md);
+      padding: 32px 24px;
+      border: 1px solid rgba(0,0,0,0.05);
+      box-shadow: var(--shadow-subtle);
+      position: relative;
+    }
+    .step-number {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      color: var(--color-gold);
+      font-weight: 500;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .partner-form-section {
+      padding: 90px 0;
+      background: var(--color-bg-alt);
+    }
+    .form-wrapper {
+      max-width: 760px;
+      margin: 0 auto;
+      background: var(--color-surface);
+      border-radius: var(--radius-lg);
+      padding: 44px;
+      box-shadow: var(--shadow-medium);
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.86rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--color-text-main);
+    }
+    .form-control {
+      width: 100%;
+      padding: 13px 18px;
+      border: 1px solid rgba(0,0,0,0.12);
+      border-radius: var(--radius-sm);
+      font-size: 0.95rem;
+      background: var(--color-bg);
+      outline: none;
+      transition: var(--transition-fast);
+    }
+    .form-control:focus {
+      border-color: var(--color-gold);
+      background: #FFFFFF;
+      box-shadow: 0 0 0 3px rgba(197, 168, 128, 0.2);
+    }
+    .form-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    @media (max-width: 900px) {
+      .steps-grid { grid-template-columns: repeat(2, 1fr); }
+      .form-grid-2 { grid-template-columns: 1fr; }
+      .form-wrapper { padding: 24px; }
+    }
+    @media (max-width: 600px) {
+      .steps-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Barra Superior Clean -->
+  <div class="top-announcement">
+    <div class="container">
+      <div>
+        <span>📍 Rua Edu Chaves, 15 – Jardim Bela Vista, Santo André • SP</span>
+      </div>
+      <div class="top-contact-links">
+        <a href="tel:1149785551">📞 (11) 4978-5551</a>
+        <a href="https://www.instagram.com/celiadecoroficial/" target="_blank" rel="noopener">📸 @celiadecoroficial</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Principal -->
+  <header class="main-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo" aria-label="Célia Decor Home">
+        <img src="assets/images/logo-celia-decor.png" alt="Célia Decor">
+        <span class="brand-tagline">Santo André • Desde 1995</span>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="sobre.html" class="nav-link">Sobre Nós & O Legado</a></li>
+          <li><a href="produtos.html" class="nav-link">Coleções</a></li>
+          <li><a href="automacao.html" class="nav-link">Automação</a></li>
+          <li><a href="arquitetos.html" class="nav-link active">Espaço Arquitetos</a></li>
+          <li><a href="contato.html" class="nav-link">Showroom & Contato</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="contato.html" class="btn btn-primary">Agendar Consultoria</a>
+        <button class="mobile-toggle" aria-label="Abrir Menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Cabeçalho da Página -->
+  <div class="page-hero">
+    <div class="container">
+      <span class="subtitle-tag">Parceria Técnica & Criativa</span>
+      <h1>O Parceiro Estratégico do Seu Escritório</h1>
+      <p>Do projeto executivo à instalação final na casa do cliente: segurança, precisão de medidas e alfaiataria fina para arquitetos e designers de interiores.</p>
+    </div>
+  </div>
+
+  <!-- Como Funciona a Parceria -->
+  <section style="padding: 90px 0; background: var(--color-bg);">
+    <div class="container">
+      <div class="section-header-center">
+        <span class="subtitle-tag">Fluxo Executivo</span>
+        <h2>Como Apoiamos Seu Escritório</h2>
+        <p>Eliminamos retrabalhos e garantimos que a especificação saia exatamente como você desenhou.</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">01</div>
+          <h4>Mala de Amostras VIP</h4>
+          <p>Levamos mostruários completos de tecidos, trilhos, texturas de papéis de parede e persianas diretamente ao seu escritório ou obra.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">02</div>
+          <h4>Medição Técnica In Loco</h4>
+          <p>Nossos técnicos especializados conferem esquadro, cortineiros, pontos elétricos e desníveis antes de cortar o tecido.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">03</div>
+          <h4>Confecção Artesanal Fina</h4>
+          <p>Produzido em nosso próprio atelier em Santo André, com controle de lote, barras duplas e bainhas com caimento milimétrico.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">04</div>
+          <h4>Instalação com Luva Branca</h4>
+          <p>Equipe interna uniformizada, aspirador de pó acoplado às ferramentas e vaporização das cortinas no local para entrega impecável.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Depoimentos dos Arquitetos Parceiros -->
+  <section class="architects-section" style="background: var(--color-surface);">
+    <div class="container">
+      <div class="section-header-center">
+        <span class="subtitle-tag">Depoimentos Reais</span>
+        <h2>Quem Especifica, Confia</h2>
+      </div>
+
+      <div class="architects-grid">
+        <div class="architect-card">
+          <div class="architect-avatar">
+            <img src="assets/images/arquiteto-camila.webp" alt="Camila Gogoni Arquitetura">
+          </div>
+          <h4>Camila Gogoni</h4>
+          <span>Arquiteta & Urbanista</span>
+          <p>“A sinergia com a Célia Decor me dá a certeza de que meu cliente receberá o melhor acabamento do mercado, sem dores de cabeça.”</p>
+        </div>
+
+        <div class="architect-card">
+          <div class="architect-avatar">
+            <img src="assets/images/arquiteto-cristiane.webp" alt="Cristiane Sucio Arquitetura">
+          </div>
+          <h4>Cristiane Sucio</h4>
+          <span>Arquiteta</span>
+          <p>“A pontualidade é sagrada. Especificar Célia Decor é sinônimo de obra entregue no prazo e com aplausos dos clientes.”</p>
+        </div>
+
+        <div class="architect-card">
+          <div class="architect-avatar">
+            <img src="assets/images/arquiteto-henrique.webp" alt="Henrique Lima Arquitetura">
+          </div>
+          <h4>Henrique Lima</h4>
+          <span>Designer de Interiores</span>
+          <p>“A Célia Decor entende o olhar do profissional. O cuidado na escolha dos forros e tecidos faz toda a diferença nos meus projetos.”</p>
+        </div>
+
+        <div class="architect-card">
+          <div class="architect-avatar">
+            <img src="assets/images/arquiteto-thiago.webp" alt="Kairós Arquitetura Thiago">
+          </div>
+          <h4>Kairós Arquitetura</h4>
+          <span>Escritório de Arquitetura</span>
+          <p>“Grande variedade de produtos e suporte técnico nota 10 para automação residencial. É um privilégio ter essa parceria no ABC.”</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Formulário de Parceria & Envio de Projetos -->
+  <section class="partner-form-section">
+    <div class="container">
+      <div class="form-wrapper">
+        <div style="text-align: center; margin-bottom: 32px;">
+          <span class="subtitle-tag">Cadastre seu Escritório</span>
+          <h3>Envie Seu Projeto ou Solicite Atendimento Técnico</h3>
+          <p style="font-size: 0.95rem;">Preencha os dados abaixo e nossa equipe entrará em contato para agendar uma reunião ou enviar as especificações solicitadas.</p>
+        </div>
+
+        <form action="https://api.whatsapp.com/send" method="GET" target="_blank" onsubmit="handlePartnerSubmit(event)">
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="arqNome">Nome do Arquiteto / Designer *</label>
+              <input type="text" id="arqNome" class="form-control" placeholder="Seu nome completo" required>
+            </div>
+            <div class="form-group">
+              <label for="arqEscritorio">Nome do Escritório *</label>
+              <input type="text" id="arqEscritorio" class="form-control" placeholder="Nome do seu escritório" required>
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="arqTelefone">WhatsApp / Telefone *</label>
+              <input type="tel" id="arqTelefone" class="form-control" placeholder="(11) 99999-9999" required>
+            </div>
+            <div class="form-group">
+              <label for="arqEmail">E-mail Corporativo *</label>
+              <input type="email" id="arqEmail" class="form-control" placeholder="contato@escritorio.com.br" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="arqInteresse">Tipo de Projeto / Interesse Principal</label>
+            <select id="arqInteresse" class="form-control">
+              <option value="Cortinas sob Medida e Tecidos">Cortinas sob Medida & Tecidos Nobres</option>
+              <option value="Persianas Motorizadas e Automação">Persianas Motorizadas & Automação</option>
+              <option value="Papéis de Parede e Revestimentos">Papéis de Parede & Revestimentos</option>
+              <option value="Projeto Completo Residencial / Corporativo">Projeto Completo (Residencial / Corporativo)</option>
+              <option value="Visita com Catálogos no Escritório">Solicitar Visita com Catálogos no Escritório</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="arqMensagem">Detalhes do Projeto / Cidade da Obra</label>
+            <textarea id="arqMensagem" class="form-control" rows="3" placeholder="Ex: Apartamento de 220m² em Santo André, pé direito duplo no living..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-gold" style="width: 100%; margin-top: 10px;">Enviar via WhatsApp VIP dos Arquitetos</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-col">
+          <h5>Célia Decor</h5>
+          <p>Há 30 anos transformando ambientes com excelência, alfaiataria fina de tecidos, persianas motorizadas e decoração sob medida para lares e escritórios exclusivos.</p>
+        </div>
+
+        <div class="footer-col">
+          <h5>Navegação</h5>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="sobre.html">Sobre Nós & Legado</a></li>
+            <li><a href="produtos.html">Coleções & Produtos</a></li>
+            <li><a href="automacao.html">Automação Residencial</a></li>
+            <li><a href="arquitetos.html">Espaço Arquitetos</a></li>
+            <li><a href="contato.html">Showroom & Contato</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Canal Arquitetura</h5>
+          <p>Atendimento exclusivo com equipe técnica especializada no Grande ABC e São Paulo.<br>
+          WhatsApp Arquitetos: (11) 96318-8104<br>
+          contato@celiadecor.com.br</p>
+        </div>
+
+        <div class="footer-col">
+          <h5>Showroom</h5>
+          <p>Rua Edu Chaves, 15 – Jardim Bela Vista, Santo André – SP<br>
+          Segunda a Sexta: 08:30 às 17:30<br>
+          Sábados: 09:00 às 13:00</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          <span>© 2026 CÉLIA DECOR BOUTIQUE LTDA — CNPJ: 04.990.930/0001-90.</span>
+        </div>
+        <div>
+          <a href="contato.html">Parcerias de Arquitetura no ABC</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Smart WhatsApp -->
+  <div class="smart-whatsapp-container"></div>
+
+  <script src="js/main.js"></script>
+  <script>
+    function handlePartnerSubmit(e) {
+      e.preventDefault();
+      const nome = document.getElementById('arqNome').value;
+      const escritorio = document.getElementById('arqEscritorio').value;
+      const tel = document.getElementById('arqTelefone').value;
+      const interesse = document.getElementById('arqInteresse').value;
+      const msg = document.getElementById('arqMensagem').value;
+
+      const texto = `Olá! Sou ${nome} do escritório ${escritorio} (${tel}). Gostaria de atendimento exclusivo para arquitetos sobre: ${interesse}. Detalhes: ${msg}`;
+      const url = `https://wa.me/5511963188104?text=${encodeURIComponent(texto)}`;
+      window.open(url, '_blank');
+    }
+  </script>
+</body>
+</html>

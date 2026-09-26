@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Automação Residencial & Cortinas Inteligentes — Célia Decor Santo André</title>
+  <meta name="description" content="Motorização silenciosa de cortinas e persianas, integração com Alexa, Apple HomeKit e Google Home. Conforto térmico e sofisticação no ABC Paulista.">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Simulador de Automação Visual */
+    .auto-interactive-showcase {
+      padding: 90px 0;
+      background: #141618;
+      color: #FFFFFF;
+    }
+    .auto-box {
+      max-width: 1020px;
+      margin: 0 auto;
+      background: #1D1F23;
+      border-radius: var(--radius-lg);
+      padding: 44px;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow-elevated);
+    }
+    .window-stage {
+      position: relative;
+      height: 480px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: url('assets/images/hero-luxury-living.jpg') center/cover no-repeat;
+      display: flex;
+    }
+    .curtain-panel {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 50%;
+      background: linear-gradient(90deg, #D5CEBE 0%, #B8B0A0 25%, #E8E2D5 50%, #C9C2B3 75%, #B8B0A0 100%);
+      background-size: 40px 100%;
+      box-shadow: inset 0 0 40px rgba(0,0,0,0.3);
+      transition: transform 0.15s ease-out;
+      z-index: 2;
+    }
+    .curtain-panel.left {
+      left: 0;
+      transform-origin: left center;
+    }
+    .curtain-panel.right {
+      right: 0;
+      transform-origin: right center;
+    }
+    .light-overlay-stage {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(255, 245, 220, 0.4) 0%, rgba(255, 230, 180, 0.1) 60%, transparent 100%);
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.2;
+      transition: opacity 0.2s ease;
+    }
+    .auto-controls-bar {
+      margin-top: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .slider-header-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .slider-header-info h4 {
+      color: #FFFFFF;
+      font-size: 1.15rem;
+    }
+    .slider-header-info span {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      color: var(--color-gold);
+    }
+    .auto-range-input {
+      width: 100%;
+      height: 8px;
+      border-radius: 4px;
+      background: #33363D;
+      outline: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+    }
+    .auto-range-input::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--color-gold);
+      border: 3px solid #FFFFFF;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      cursor: pointer;
+    }
+    .assistant-badges {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .assistant-tag {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 8px 18px;
+      border-radius: var(--radius-full);
+      font-size: 0.82rem;
+      color: #DDD;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    /* Vantagens da Automação */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin: 70px 0;
+    }
+    .benefit-card {
+      background: var(--color-surface);
+      border-radius: var(--radius-md);
+      padding: 36px 28px;
+      border: 1px solid rgba(0,0,0,0.05);
+      box-shadow: var(--shadow-subtle);
+    }
+    .benefit-card h4 {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      margin: 14px 0 10px 0;
+    }
+    .benefit-icon {
+      font-size: 2rem;
+    }
+    @media (max-width: 900px) {
+      .benefits-grid { grid-template-columns: 1fr; }
+      .window-stage { height: 320px; }
+      .auto-box { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Barra Superior Clean -->
+  <div class="top-announcement">
+    <div class="container">
+      <div>
+        <span>📍 Rua Edu Chaves, 15 – Jardim Bela Vista, Santo André • SP</span>
+      </div>
+      <div class="top-contact-links">
+        <a href="tel:1149785551">📞 (11) 4978-5551</a>
+        <a href="https://www.instagram.com/celiadecoroficial/" target="_blank" rel="noopener">📸 @celiadecoroficial</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Principal -->
+  <header class="main-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo" aria-label="Célia Decor Home">
+        <img src="assets/images/logo-celia-decor.png" alt="Célia Decor">
+        <span class="brand-tagline">Santo André • Desde 1995</span>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="sobre.html" class="nav-link">Sobre Nós & O Legado</a></li>
+          <li><a href="produtos.html" class="nav-link">Coleções</a></li>
+          <li><a href="automacao.html" class="nav-link active">Automação</a></li>
+          <li><a href="arquitetos.html" class="nav-link">Espaço Arquitetos</a></li>
+          <li><a href="contato.html" class="nav-link">Showroom & Contato</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="contato.html" class="btn btn-primary">Agendar Consultoria</a>
+        <button class="mobile-toggle" aria-label="Abrir Menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Cabeçalho da Página -->
+  <div class="page-hero">
+    <div class="container">
+      <span class="subtitle-tag">Tecnologia Silenciosa</span>
+      <h1>Automação Residencial & Cortinas Inteligentes</h1>
+      <p>O encontro perfeito entre a alta costura têxtil e a vanguarda tecnológica. Controle luminosidade, privacidade e conforto com um simples toque ou comando de voz.</p>
+    </div>
+  </div>
+
+  <!-- Simulador de Automação Visual Interativo -->
+  <section class="auto-interactive-showcase">
+    <div class="container">
+      <div class="section-header-center">
+        <span class="subtitle-tag" style="color: var(--color-gold-light);">Interatividade ao Vivo</span>
+        <h2 style="color: #FFFFFF;">Simulador de Acionamento Motorizado</h2>
+        <p style="color: #A6A9B2;">Arraste o controle abaixo para simular o movimento das cortinas motorizadas e a entrada da luz natural.</p>
+      </div>
+
+      <div class="auto-box">
+        <div class="window-stage">
+          <div class="curtain-panel left" id="autoCurtainLeft"></div>
+          <div class="curtain-panel right" id="autoCurtainRight"></div>
+          <div class="light-overlay-stage" id="autoLightOverlay"></div>
+        </div>
+
+        <div class="auto-controls-bar">
+          <div class="slider-header-info">
+            <h4>Posição da Cortina Motorizada</h4>
+            <span id="autoPercent">0% (Fechada)</span>
+          </div>
+
+          <input type="range" min="0" max="100" value="0" class="auto-range-input" id="autoSlider" aria-label="Controle de Abertura da Cortina">
+
+          <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: #888;">
+            <span>0% — Total Privacidade / Blackout</span>
+            <span>50% — Meia Luz Acolhedora</span>
+            <span>100% — Vista Panorâmica & Luz Plena</span>
+          </div>
+
+          <div class="assistant-badges">
+            <span class="assistant-tag">🗣️ “Alexa, abrir cortina da sala”</span>
+            <span class="assistant-tag">🍎 “E aí Siri, preparar modo cinema”</span>
+            <span class="assistant-tag">🌐 “Ok Google, bom dia”</span>
+            <span class="assistant-tag">📱 App no Celular ou Interruptor Touch</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vantagens da Motorização Célia Decor -->
+  <section style="padding: 100px 0; background: var(--color-bg);">
+    <div class="container">
+      <div class="section-header-center">
+        <span class="subtitle-tag">Benefícios Exclusivos</span>
+        <h2>Por que Motorizar com a Célia Decor?</h2>
+        <p>Mais do que comodidade: eficiência energética, valorização do imóvel e preservação do mobiliário.</p>
+      </div>
+
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <span class="benefit-icon">🔇</span>
+          <h4>Silêncio Ultra (<35dB)</h4>
+          <p>Motores de padrão internacional com rolamentos suíços que operam em silêncio quase absoluto, imperceptível aos ouvidos.</p>
+        </div>
+
+        <div class="benefit-card">
+          <span class="benefit-icon">☀️</span>
+          <h4>Proteção Solar & UV</h4>
+          <p>Cenários automáticos que fecham as cortinas nos horários de maior insolação, preservando pisos de madeira, sofás e obras de arte.</p>
+        </div>
+
+        <div class="benefit-card">
+          <span class="benefit-icon">🌡️</span>
+          <h4>Conforto Térmico</h4>
+          <p>Redução de até 4°C no aquecimento interno das salas envidraçadas, diminuindo consideravelmente o consumo de ar-condicionado.</p>
+        </div>
+      </div>
+
+      <!-- CTA Orçamento -->
+      <div style="background: var(--color-surface); border-radius: var(--radius-md); padding: 48px; text-align: center; border: 1px solid rgba(0,0,0,0.06); box-shadow: var(--shadow-medium);">
+        <h3 style="margin-bottom: 12px;">Quer planejar a automação da sua casa ou projeto?</h3>
+        <p style="max-width: 600px; margin: 0 auto 28px auto;">Nossa equipe técnica vai até o local no Grande ABC ou São Paulo para avaliar pontos de energia, cortineiros e indicar o motor perfeito.</p>
+        <a href="https://wa.me/5511963188104?text=Ol%C3%A1!%20Gostaria%20de%20uma%20avalia%C3%A7%C3%A3o%20t%C3%A9cnica%20de%20automa%C3%A7%C3%A3o%20residencial." target="_blank" class="btn btn-gold">Falar com Consultor de Automação</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-col">
+          <h5>Célia Decor</h5>
+          <p>Há 30 anos transformando ambientes com excelência, alfaiataria fina de tecidos, persianas motorizadas e decoração sob medida para lares e escritórios exclusivos.</p>
+        </div>
+
+        <div class="footer-col">
+          <h5>Navegação</h5>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="sobre.html">Sobre Nós & Legado</a></li>
+            <li><a href="produtos.html">Coleções & Produtos</a></li>
+            <li><a href="automacao.html">Automação Residencial</a></li>
+            <li><a href="arquitetos.html">Espaço Arquitetos</a></li>
+            <li><a href="contato.html">Showroom & Contato</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Showroom Oficial</h5>
+          <p>Rua Edu Chaves, 15 – Jardim Bela Vista, Santo André – SP<br>
+          Tel: (11) 4978-5551<br>
+          WhatsApp: (11) 96318-8104<br>
+          contato@celiadecor.com.br</p>
+        </div>
+
+        <div class="footer-col">
+          <h5>Horários</h5>
+          <p>Segunda a Sexta: 08:30 às 17:30<br>
+          Sábados: 09:00 às 13:00</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          <span>© 2026 CÉLIA DECOR BOUTIQUE LTDA — CNPJ: 04.990.930/0001-90.</span>
+        </div>
+        <div>
+          <a href="contato.html">Automação Residencial em Santo André</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Smart WhatsApp -->
+  <div class="smart-whatsapp-container"></div>
+
+  <script src="js/main.js"></script>
+  <script src="js/interactive.js"></script>
+</body>
+</html>

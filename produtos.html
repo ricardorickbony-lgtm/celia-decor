@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coleções & Catálogo Sensorial — Célia Decor Santo André</title>
+  <meta name="description" content="Cortinas sob medida, persianas motorizadas, papéis de parede europeus, tapetes e alta decoração no ABC Paulista. Conheça as coleções exclusivas Célia Decor.">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .filter-bar {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 40px 0 50px 0;
+    }
+    .filter-btn {
+      background: var(--color-surface);
+      border: 1px solid rgba(0,0,0,0.08);
+      padding: 10px 22px;
+      border-radius: var(--radius-full);
+      font-size: 0.86rem;
+      font-weight: 500;
+      color: var(--color-text-main);
+      cursor: pointer;
+      transition: var(--transition-fast);
+    }
+    .filter-btn:hover {
+      border-color: var(--color-gold);
+      color: var(--color-gold-dark);
+    }
+    .filter-btn.active {
+      background: var(--color-dark);
+      color: #FFFFFF;
+      border-color: var(--color-dark);
+    }
+    .product-detail-modal {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Barra Superior Clean -->
+  <div class="top-announcement">
+    <div class="container">
+      <div>
+        <span>📍 Rua Edu Chaves, 15 – Jardim Bela Vista, Santo André • SP</span>
+      </div>
+      <div class="top-contact-links">
+        <a href="tel:1149785551">📞 (11) 4978-5551</a>
+        <a href="https://www.instagram.com/celiadecoroficial/" target="_blank" rel="noopener">📸 @celiadecoroficial</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Principal -->
+  <header class="main-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo" aria-label="Célia Decor Home">
+        <img src="assets/images/logo-celia-decor.png" alt="Célia Decor">
+        <span class="brand-tagline">Santo André • Desde 1995</span>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="sobre.html" class="nav-link">Sobre Nós & O Legado</a></li>
+          <li><a href="produtos.html" class="nav-link active">Coleções</a></li>
+          <li><a href="automacao.html" class="nav-link">Automação</a></li>
+          <li><a href="arquitetos.html" class="nav-link">Espaço Arquitetos</a></li>
+          <li><a href="contato.html" class="nav-link">Showroom & Contato</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="contato.html" class="btn btn-primary">Agendar Consultoria</a>
+        <button class="mobile-toggle" aria-label="Abrir Menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Cabeçalho da Página -->
+  <div class="page-hero">
+    <div class="container">
+      <span class="subtitle-tag">Curadoria Sensorial</span>
+      <h1>Coleções de Alta Decoração</h1>
+      <p>Materiais nobres, acabamento de alta costura e tecnologia de precisão para compor espaços atemporais.</p>
+
+      <!-- Filtros Rápidos -->
+      <div class="filter-bar">
+        <button class="filter-btn active" data-category="todos">Todos os Produtos</button>
+        <button class="filter-btn" data-category="cortinas">Cortinas sob Medida</button>
+        <button class="filter-btn" data-category="persianas">Persianas Motorizadas</button>
+        <button class="filter-btn" data-category="papeis">Papéis de Parede</button>
+        <button class="filter-btn" data-category="tapetes">Tapetes & Cabeceiras</button>
+        <button class="filter-btn" data-category="corporativo">Espaços Corporativos</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Catálogo de Produtos -->
+  <section style="padding: 70px 0 110px 0;">
+    <div class="container">
+      <div class="collections-grid" id="productsCatalog">
+        
+        <!-- Produto 1: Cortina Wave -->
+        <article class="collection-card" data-category="cortinas">
+          <div class="card-image-wrap">
+            <img src="assets/images/cortina-capa.webp" alt="Cortina Wave Célia Decor">
+            <span class="card-category-tag">Cortinas</span>
+          </div>
+          <div class="card-body">
+            <h3>Cortina Wave em Linho Rústico</h3>
+            <p>Ondulações contínuas e simétricas com trilho suíço oculto. Proporciona controle térmico e estética contemporânea impecável para livings e suítes.</p>
+            <a href="https://wa.me/5511963188104?text=Ol%C3%A1!%20Gostaria%20de%20consultar%20valores%20para%20Cortina%20Wave." target="_blank" class="card-link">Consultar no WhatsApp →</a>
+          </div>
+        </article>
+
+        <!-- Produto 2: Persianas Motorizadas -->
+        <article class="collection-card" data-category="persianas">
+          <div class="card-image-wrap">
+            <img src="assets/images/persianas-capa.webp" alt="Persianas Motorizadas">
+            <span class="card-category-tag">Persianas</span>
+          </div>
+          <div class="card-body">
+            <h3>Persianas Rolô & Romana Motorizadas</h3>
+            <p>Acionamento ultra-silencioso por controle remoto, smartphone ou comando de voz. Tecidos translúcidos e blackout com proteção UV 99%.</p>
+            <a href="automacao.html" class="card-link">Ver Simulador de Automação →</a>
+          </div>
+        </article>
+
+        <!-- Produto 3: Papel de Parede -->
+        <article class="collection-card" data-category="papeis">
+          <div class="card-image-wrap">
+            <img src="assets/images/papel-parede-capa.webp" alt="Papel de Parede Europeu">
+            <span class="card-category-tag">Revestimentos</span>
+          </div>
+          <div class="card-body">
+            <h3>Papéis de Parede Europeus</h3>
+            <p>Coleções exclusivas alemãs, italianas e francesas. Texturas com toque de linho, palha natural, folhas de ouro e padrões geométricos sofisticados.</p>
+            <a href="https://wa.me/5511963188104?text=Ol%C3%A1!%20Gostaria%20de%20conhecer%20os%20cat%C3%A1logos%20de%20papel%20de%20parede." target="_blank" class="card-link">Ver Amostras no Showroom →</a>
+          </div>
+        </article>
+
+        <!-- Produto 4: Tapetes -->
+        <article class="collection-card" data-category="tapetes">
+          <div class="card-image-wrap">
+            <img src="assets/images/tapete-capa.webp" alt="Tapetes sob Medida">
+            <span class="card-category-tag">Tapetes</span>
+          </div>
+          <div class="card-body">
+            <h3>Tapetes sob Medida & Formatos Orgânicos</h3>
+            <p>Confeccionados sob encomenda para harmonizar milimetricamente com a disposição do mobiliário. Toque extra macio e acabamento a laser.</p>
+            <a href="https://wa.me/5511963188104?text=Ol%C3%A1!%20Gostaria%20de%20um%20projeto%20de%20tapete%20sob%20medida." target="_blank" class="card-link">Personalizar Medidas →</a>
+          </div>
+        </article>
+
+        <!-- Produto 5: Cabeceiras -->
+        <article class="collection-card" data-category="tapetes">
+          <div class="card-image-wrap">
+            <img src="assets/images/cabeceira-capa.webp" alt="Cabeceira Estofada Sob Medida">
+            <span class="card-category-tag">Estofados</span>
+          </div>
+          <div class="card-body">
+            <h3>Cabeceiras Estofadas Personalizadas</h3>
+            <p>Módulos de parede a parede, tecidos bouclé, veludos e linhos com tratamento impermeabilizante. O ápice do aconchego para dormitórios de luxo.</p>
+            <a href="https://wa.me/5511963188104?text=Ol%C3%A1!%20Gostaria%20de%20or%C3%A7amento%20para%20cabeceira%20estofada." target="_blank" class="card-link">Solicitar Projeto →</a>
+          </div>
+        </article>
+
+        <!-- Produto 6: Almofadas & Enxoval -->
+        <article class="collection-card" data-category="cortinas">
+          <div class="card-image-wrap">
+            <img src="assets/images/almofada-capa.webp" alt="Almofadas de Luxo">
+            <span class="card-category-tag">Decoração</span>
+          </div>
+          <div class="card-body">
+            <h3>Almofadas de Alfaiataria & Enxovais</h3>
+            <p>Composições sob medida com vivos, passamanarias nobres e enchimento 100% fibra siliconada antialérgica de alta resiliência.</p>
+            <a href="https://wa.me/5511963188104?text=Ol%C3%A1!%20Quero%20montar%20um%20kit%20de%20almofadas%20personalizadas." target="_blank" class="card-link">Compor Kit VIP →</a>
+          </div>
+        </article>
+
+        <!-- Produto 7: Espaços Corporativos -->
+        <article class="collection-card" data-category="corporativo">
+          <div class="card-image-wrap">
+            <img src="assets/images/corporativo-capa.webp" alt="Espaços Corporativos e Comerciais">
+            <span class="card-category-tag">Corporativo</span>
+          </div>
+          <div class="card-body">
+            <h3>Projetos Corporativos & Comerciais</h3>
+            <p>Telas solares anti-chamas, isolamento acústico e persianas de alta durabilidade para escritórios de advocacia, consultórios e salas de diretoria.</p>
+            <a href="https://wa.me/5511963188104?text=Ol%C3%A1!%20Gostaria%20de%20atendimento%20para%20projeto%20corporativo." target="_blank" class="card-link">Orçamento Corporativo →</a>
+          </div>
+        </article>
+
+        <!-- Produto 8: Vasos & Essências -->
+        <article class="collection-card" data-category="todos">
+          <div class="card-image-wrap">
+            <img src="assets/images/decor-capa.webp" alt="Artigos de Decoração & Essências">
+            <span class="card-category-tag">Boutique</span>
+          </div>
+          <div class="card-body">
+            <h3>Vasos Murano & Aromatização de Ambientes</h3>
+            <p>Objetos de arte, vidros lapidados e linhas exclusivas de home spray e difusores para transformar a atmosfera olfativa do seu lar.</p>
+            <a href="contato.html" class="card-link">Visitar Showroom →</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-col">
+          <h5>Célia Decor</h5>
+          <p>Há 30 anos transformando ambientes com excelência, alfaiataria fina de tecidos, persianas motorizadas e decoração sob medida para lares e escritórios exclusivos.</p>
+        </div>
+
+        <div class="footer-col">
+          <h5>Navegação</h5>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="sobre.html">Sobre Nós & Legado</a></li>
+            <li><a href="produtos.html">Coleções & Produtos</a></li>
+            <li><a href="automacao.html">Automação Residencial</a></li>
+            <li><a href="arquitetos.html">Espaço Arquitetos</a></li>
+            <li><a href="contato.html">Showroom & Contato</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Contato Direto</h5>
+          <p>Rua Edu Chaves, 15 – Jardim Bela Vista, Santo André – SP<br>
+          Tel: (11) 4978-5551<br>
+          WhatsApp: (11) 96318-8104<br>
+          contato@celiadecor.com.br</p>
+        </div>
+
+        <div class="footer-col">
+          <h5>Horários</h5>
+          <p>Segunda a Sexta: 08:30 às 17:30<br>
+          Sábados: 09:00 às 13:00<br>
+          Estacionamento privativo para clientes</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          <span>© 2026 CÉLIA DECOR BOUTIQUE LTDA — CNPJ: 04.990.930/0001-90.</span>
+        </div>
+        <div>
+          <a href="contato.html">Santo André • SP</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Smart WhatsApp -->
+  <div class="smart-whatsapp-container"></div>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Filtro interativo de coleções
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+        
+        const cat = e.target.dataset.category;
+        const cards = document.querySelectorAll('#productsCatalog article');
+
+        cards.forEach(card => {
+          if (cat === 'todos' || card.dataset.category === cat) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Showroom & Contato VIP — Célia Decor Santo André</title>
+  <meta name="description" content="Visite nosso showroom na Rua Edu Chaves, 15, Jardim Bela Vista em Santo André. Agende sua consultoria exclusiva de cortinas e alta decoração.">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .contact-layout {
+      padding: 90px 0 110px 0;
+      background: var(--color-bg);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 60px;
+      align-items: flex-start;
+    }
+    .contact-cards-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .info-card {
+      background: var(--color-surface);
+      border-radius: var(--radius-md);
+      padding: 32px 28px;
+      border: 1px solid rgba(0,0,0,0.05);
+      box-shadow: var(--shadow-subtle);
+    }
+    .info-card h4 {
+      font-size: 1.15rem;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .live-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-top: 14px;
+    }
+    .live-status-pill.open {
+      background: rgba(37, 211, 102, 0.12);
+      color: #178a40;
+    }
+    .live-status-pill.closed {
+      background: rgba(224, 169, 109, 0.15);
+      color: #9c6828;
+    }
+    .contact-form-card {
+      background: var(--color-surface);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      border: 1px solid rgba(0,0,0,0.06);
+      box-shadow: var(--shadow-medium);
+    }
+    .contact-form-card h3 {
+      margin-bottom: 8px;
+    }
+    .contact-form-card p {
+      font-size: 0.95rem;
+      margin-bottom: 28px;
+    }
+    .map-full-wrapper {
+      margin-top: 70px;
+      height: 480px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-medium);
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+    .map-full-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    @media (max-width: 900px) {
+      .contact-grid { grid-template-columns: 1fr; }
+      .contact-form-card { padding: 24px; }
+      .map-full-wrapper { height: 350px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Barra Superior Clean -->
+  <div class="top-announcement">
+    <div class="container">
+      <div>
+        <span>📍 Rua Edu Chaves, 15 – Jardim Bela Vista, Santo André • SP</span>
+      </div>
+      <div class="top-contact-links">
+        <a href="tel:1149785551">📞 (11) 4978-5551</a>
+        <a href="https://www.instagram.com/celiadecoroficial/" target="_blank" rel="noopener">📸 @celiadecoroficial</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Principal -->
+  <header class="main-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo" aria-label="Célia Decor Home">
+        <img src="assets/images/logo-celia-decor.png" alt="Célia Decor">
+        <span class="brand-tagline">Santo André • Desde 1995</span>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="sobre.html" class="nav-link">Sobre Nós & O Legado</a></li>
+          <li><a href="produtos.html" class="nav-link">Coleções</a></li>
+          <li><a href="automacao.html" class="nav-link">Automação</a></li>
+          <li><a href="arquitetos.html" class="nav-link">Espaço Arquitetos</a></li>
+          <li><a href="contato.html" class="nav-link active">Showroom & Contato</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="contato.html" class="btn btn-primary">Agendar Consultoria</a>
+        <button class="mobile-toggle" aria-label="Abrir Menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Cabeçalho da Página -->
+  <div class="page-hero">
+    <div class="container">
+      <span class="subtitle-tag">Atendimento Exclusivo</span>
+      <h1>Showroom & Agendamento VIP</h1>
+      <p>Esperamos por você para um café em nosso showroom no Jardim Bela Vista ou agendamos uma visita com medição técnica diretamente na sua residência.</p>
+    </div>
+  </div>
+
+  <!-- Layout de Contato & Formulário -->
+  <section class="contact-layout">
+    <div class="container">
+      <div class="contact-grid">
+        
+        <!-- Cartões de Informações -->
+        <div class="contact-cards-stack">
+          <div class="info-card">
+            <h4>📍 Localização Privilegiada</h4>
+            <p><strong>Casa Célia Decor</strong><br>
+            Rua Edu Chaves, 15 – Jardim Bela Vista<br>
+            Santo André – SP | CEP: 09041-100</p>
+            <p style="margin-top: 8px; font-size: 0.88rem; color: var(--color-gold-dark);">✓ Estacionamento próprio e fácil acesso no bairro.</p>
+            
+            <div style="margin-top: 18px; display: flex; gap: 12px;">
+              <a href="https://maps.google.com/?q=Rua+Edu+Chaves,+15,+Jardim+Bela+Vista,+Santo+Andr%C3%A9" target="_blank" rel="noopener" class="btn btn-outline" style="padding: 8px 16px; font-size: 0.8rem;">Abrir no Google Maps</a>
+              <a href="https://waze.com/ul?q=Rua+Edu+Chaves,+15,+Santo+Andr%C3%A9" target="_blank" rel="noopener" class="btn btn-outline" style="padding: 8px 16px; font-size: 0.8rem;">Abrir no Waze</a>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <h4>⏰ Horário de Funcionamento</h4>
+            <p><strong>Segunda a Sexta-feira:</strong> 08:30 às 17:30<br>
+            <strong>Sábado:</strong> 09:00 às 13:00<br>
+            <strong>Domingos e Feriados:</strong> Fechado</p>
+            
+            <div id="livePill" class="live-status-pill open">
+              <span class="status-dot pulse"></span>
+              <span id="livePillText">Consultando expediente...</span>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <h4>📞 Telefones & WhatsApp Direto</h4>
+            <p><strong>Fixo Showroom:</strong> <a href="tel:1149785551" style="color: var(--color-text-main); font-weight: 500;">(11) 4978-5551</a><br>
+            <strong>WhatsApp Atendimento:</strong> <a href="https://wa.me/5511963188104" target="_blank" style="color: #25D366; font-weight: 600;">(11) 96318-8104</a><br>
+            <strong>E-mail Institucional:</strong> contato@celiadecor.com.br</p>
+          </div>
+        </div>
+
+        <!-- Formulário de Agendamento VIP -->
+        <div class="contact-form-card">
+          <span class="subtitle-tag">Consultoria Personalizada</span>
+          <h3>Solicite Contato ou Medição Técnica</h3>
+          <p>Preencha os dados e nosso especialista entrará em contato em minutos durante o horário comercial.</p>
+
+          <form onsubmit="handleContactSubmit(event)">
+            <div style="margin-bottom: 18px;">
+              <label style="display: block; font-size: 0.86rem; font-weight: 600; margin-bottom: 6px;">Seu Nome Completo *</label>
+              <input type="text" id="cliNome" class="form-control" placeholder="Como podemos te chamar?" required>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 18px;">
+              <div>
+                <label style="display: block; font-size: 0.86rem; font-weight: 600; margin-bottom: 6px;">WhatsApp *</label>
+                <input type="tel" id="cliTelefone" class="form-control" placeholder="(11) 99999-9999" required>
+              </div>
+              <div>
+                <label style="display: block; font-size: 0.86rem; font-weight: 600; margin-bottom: 6px;">Bairro / Cidade *</label>
+                <input type="text" id="cliCidade" class="form-control" placeholder="Ex: Bela Vista, Santo André" required>
+              </div>
+            </div>
+
+            <div style="margin-bottom: 18px;">
+              <label style="display: block; font-size: 0.86rem; font-weight: 600; margin-bottom: 6px;">Interesse Principal</label>
+              <select id="cliInteresse" class="form-control">
+                <option value="Cortinas sob Medida">Cortinas sob Medida</option>
+                <option value="Persianas Motorizadas">Persianas Motorizadas / Automação</option>
+                <option value="Papéis de Parede">Papéis de Parede Importados</option>
+                <option value="Tapetes e Cabeceiras">Tapetes sob Medida / Cabeceiras</option>
+                <option value="Projeto de Decoração Completo">Projeto de Decoração Completo</option>
+              </select>
+            </div>
+
+            <div style="margin-bottom: 24px;">
+              <label style="display: block; font-size: 0.86rem; font-weight: 600; margin-bottom: 6px;">Mensagem ou Preferência de Data/Horário</label>
+              <textarea id="cliMensagem" class="form-control" rows="3" placeholder="Gostaria de agendar para sábado às 10h / apartamento novo..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-gold" style="width: 100%;">Enviar Mensagem para Consultoria VIP</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Mapa Amplo Google Maps -->
+      <div class="map-full-wrapper">
+        <iframe 
+          src="https://maps.google.com/maps?q=Rua%20Edu%20Chaves,%2015,%20Jardim%20Bela%20Vista,%20Santo%20Andr%C3%A9%20SP&t=m&z=16&output=embed&iwloc=near" 
+          title="Mapa Completo Showroom Célia Decor Santo André"
+          loading="lazy">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-col">
+          <h5>Célia Decor</h5>
+          <p>Há 30 anos transformando ambientes com excelência, alfaiataria fina de tecidos, persianas motorizadas e decoração sob medida para lares e escritórios exclusivos.</p>
+        </div>
+
+        <div class="footer-col">
+          <h5>Navegação</h5>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="sobre.html">Sobre Nós & Legado</a></li>
+            <li><a href="produtos.html">Coleções & Produtos</a></li>
+            <li><a href="automacao.html">Automação Residencial</a></li>
+            <li><a href="arquitetos.html">Espaço Arquitetos</a></li>
+            <li><a href="contato.html">Showroom & Contato</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Contato Direto</h5>
+          <p>Rua Edu Chaves, 15 – Jardim Bela Vista, Santo André – SP<br>
+          Tel: (11) 4978-5551<br>
+          WhatsApp: (11) 96318-8104<br>
+          contato@celiadecor.com.br</p>
+        </div>
+
+        <div class="footer-col">
+          <h5>Horários</h5>
+          <p>Segunda a Sexta: 08:30 às 17:30<br>
+          Sábados: 09:00 às 13:00</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          <span>© 2026 CÉLIA DECOR BOUTIQUE LTDA — CNPJ: 04.990.930/0001-90.</span>
+        </div>
+        <div>
+          <a href="#">Privacidade & Termos</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Smart WhatsApp -->
+  <div class="smart-whatsapp-container"></div>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Atualiza status do pill de horário na página de contato
+    document.addEventListener('DOMContentLoaded', () => {
+      const pill = document.getElementById('livePill');
+      const text = document.getElementById('livePillText');
+      if (!pill || !text) return;
+
+      const now = new Date();
+      const day = now.getDay();
+      const current = now.getHours() + (now.getMinutes() / 60);
+
+      let open = false;
+      if (day >= 1 && day <= 5 && current >= 8.5 && current < 17.5) {
+        open = true;
+      } else if (day === 6 && current >= 9.0 && current < 13.0) {
+        open = true;
+      }
+
+      if (open) {
+        pill.className = 'live-status-pill open';
+        text.textContent = 'Aberto agora • Atendimento presencial no showroom';
+      } else {
+        pill.className = 'live-status-pill closed';
+        text.textContent = 'Fechado no momento • Responderemos no início do próximo expediente';
+      }
+    });
+
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      const nome = document.getElementById('cliNome').value;
+      const tel = document.getElementById('cliTelefone').value;
+      const cidade = document.getElementById('cliCidade').value;
+      const interesse = document.getElementById('cliInteresse').value;
+      const msg = document.getElementById('cliMensagem').value;
+
+      const texto = `Olá! Meu nome é ${nome} (${tel}), moro em ${cidade}. Gostaria de informações ou agendamento para: ${interesse}. Mensagem: ${msg}`;
+      const url = `https://wa.me/5511963188104?text=${encodeURIComponent(texto)}`;
+      window.open(url, '_blank');
+    }
+  </script>
+</body>
+</html>
