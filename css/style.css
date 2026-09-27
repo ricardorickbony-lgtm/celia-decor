@@ -143,7 +143,7 @@ p {
 
 /* ==========================================================================
    Header Flutuante de Luxo (Espaçoso, Minimalista & Clean)
-   Sem barras abarrotadas em cima. Logo perfeitamente nítida.
+   Amplo aproveitamento das laterais, logo destacada e respiro generoso
    ========================================================================== */
 .luxury-header {
   position: fixed;
@@ -151,13 +151,13 @@ p {
   left: 0;
   width: 100%;
   z-index: 999;
-  padding: 24px 0;
+  padding: 28px 0;
   transition: padding 0.4s var(--ease-cinematic), background-color 0.4s var(--ease-cinematic), box-shadow 0.4s var(--ease-cinematic);
 }
 
 .luxury-header.scrolled {
-  padding: 14px 0;
-  background: rgba(250, 249, 246, 0.94);
+  padding: 16px 0;
+  background: rgba(250, 249, 246, 0.96);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
@@ -166,29 +166,42 @@ p {
 
 /* Header em páginas com fundo claro */
 .luxury-header.theme-light {
-  background: rgba(250, 249, 246, 0.94);
+  background: rgba(250, 249, 246, 0.96);
   backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Container Ampliado para o Header - Aproveitamento Nobre de Toda a Largura */
+.header-container {
+  width: 100%;
+  max-width: 1780px;
+  padding: 0 clamp(24px, 4.5vw, 70px);
+  margin: 0 auto;
 }
 
 .nav-shell {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
 }
 
 .brand-wrapper {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 32px;
 }
 
-/* Container do Logo com garantia de visibilidade */
+/* Container do Logo com garantia de visibilidade e presença */
 .brand-logo-img {
-  height: 52px;
+  height: 62px;
   width: auto;
   object-fit: contain;
-  transition: transform 0.3s ease;
+  transition: height 0.3s ease, transform 0.3s ease;
+}
+
+.luxury-header.scrolled .brand-logo-img {
+  height: 50px;
 }
 
 /* Quando o header está sobre o hero escuro ou claro, garante o logo perfeito */
@@ -217,36 +230,37 @@ p {
 }
 
 .brand-tag {
-  font-size: 0.72rem;
-  letter-spacing: 0.22em;
+  font-size: 0.76rem;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--c-gold-dark);
   font-weight: 500;
-  border-left: 1px solid rgba(0, 0, 0, 0.12);
-  padding-left: 14px;
+  border-left: 1px solid rgba(0, 0, 0, 0.15);
+  padding-left: 28px;
+  line-height: 1.4;
 }
 
 .luxury-header.hero-transparent:not(.scrolled) .brand-tag {
   color: var(--c-gold-light);
-  border-left-color: rgba(255, 255, 255, 0.2);
+  border-left-color: rgba(255, 255, 255, 0.25);
 }
 
-/* Links de Navegação Espaçados e Refinados */
+/* Links de Navegação Mais Espaçados e Refinados */
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 52px;
   list-style: none;
 }
 
 .nav-item a {
-  font-size: 0.88rem;
+  font-size: 0.86rem;
   font-weight: 500;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--c-text-main);
   position: relative;
-  padding: 8px 0;
+  padding: 10px 4px;
   transition: color var(--transition-fast);
 }
 
@@ -281,21 +295,22 @@ p {
   color: var(--c-gold-light);
 }
 
-/* Botão de Agendamento do Topo */
+/* Botão de Agendamento do Topo - Mais Espaçoso */
 .nav-cta-btn {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 12px 24px;
+  padding: 14px 28px;
   border-radius: var(--radius-full);
-  font-size: 0.82rem;
+  font-size: 0.84rem;
   font-weight: 600;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   background-color: var(--c-dark);
   color: #FFFFFF;
   border: 1px solid transparent;
   transition: var(--transition-fast);
+  white-space: nowrap;
 }
 
 .luxury-header.hero-transparent:not(.scrolled) .nav-cta-btn {
