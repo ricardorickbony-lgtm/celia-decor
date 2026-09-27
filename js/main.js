@@ -4,15 +4,31 @@
  * Severino & Ricardo Standard
  */
 
-document.addEventListener('DOMContentLoaded', () => {
-  initLuxuryHeader();
-  initCurtainScrollReveal();
-  initTransformationScroll();
-  initFabricStudio();
-  initBusinessHoursStatus();
-  initMobileMenu();
-  initCookieConsent();
-});
+// Inicialização segura com isolamento de falhas por módulo
+function safeModuleInit(name, fn) {
+  try {
+    fn();
+  } catch (err) {
+    console.error(`[Célia Decor Engine] Erro no módulo '${name}':`, err);
+  }
+}
+
+function initAllAppModules() {
+  // 1. O status de atendimento ao cliente executa em prioridade máxima
+  safeModuleInit('businessHours', initBusinessHoursStatus);
+  safeModuleInit('luxuryHeader', initLuxuryHeader);
+  safeModuleInit('curtainScroll', initCurtainScrollReveal);
+  safeModuleInit('virtualSuiteTour', initTransformationScroll);
+  safeModuleInit('fabricStudio', initFabricStudio);
+  safeModuleInit('mobileMenu', initMobileMenu);
+  safeModuleInit('cookieConsent', initCookieConsent);
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initAllAppModules);
+} else {
+  initAllAppModules();
+}
 
 /* ==========================================================================
    1. HEADER FLUTUANTE DE LUXO
@@ -265,9 +281,48 @@ function initTransformationScroll() {
 
   let currentActive = -1;
 
-  // =========================================================================
-  // GESTÃO DE ESTADO DO TOUR VIRTUAL & NAVEGAÇÃO ENTRE ÂNGULOS
-  // =========================================================================
+  // 1. Elementos do DOM capturados previamente
+  const spotDrawer = document.getElementById('tourSpotDrawer');
+  const spotClose = document.getElementById('tourSpotClose');
+  const spotBadge = document.getElementById('spotCardBadge');
+  const spotTitle = document.getElementById('spotCardTitle');
+  const spotDesc = document.getElementById('spotCardDesc');
+  const spotFeatures = document.getElementById('spotCardFeatures');
+  const spotWaBtn = document.getElementById('spotCardWaBtn');
+
+  // 2. Funções de controle de Hotspots declaradas no topo do escopo
+  function closeSpotDrawer() {
+    if (!spotDrawer) return;
+    spotDrawer.classList.remove('is-open');
+    spotDrawer.setAttribute('aria-hidden', 'true');
+    section.querySelectorAll('.tour-hotspot').forEach(b => b.classList.remove('active'));
+  }
+
+  function openSpotDrawer(spotKey, btnElement) {
+    const data = hotspotData[spotKey];
+    if (!data || !spotDrawer) return;
+
+    section.querySelectorAll('.tour-hotspot').forEach(b => b.classList.remove('active'));
+    if (btnElement) btnElement.classList.add('active');
+
+    if (spotBadge) spotBadge.textContent = data.badge;
+    if (spotTitle) spotTitle.textContent = data.title;
+    if (spotDesc) spotDesc.textContent = data.desc;
+
+    if (spotFeatures) {
+      spotFeatures.innerHTML = data.features.map(f => `<span class="spot-feat-item">${f}</span>`).join('');
+    }
+
+    if (spotWaBtn) {
+      const phone = "5511963188104";
+      spotWaBtn.href = `https://wa.me/${phone}?text=${encodeURIComponent(data.waMsg)}`;
+    }
+
+    spotDrawer.classList.add('is-open');
+    spotDrawer.setAttribute('aria-hidden', 'false');
+  }
+
+  // 3. Gestão de Navegação e Transição entre os 5 Ângulos
   function scrollToSlide(idx) {
     idx = Math.max(0, Math.min(totalSlides - 1, idx));
     const sectionTop = section.offsetTop;
@@ -281,7 +336,6 @@ function initTransformationScroll() {
     if (targetIndex === currentActive) return;
     currentActive = targetIndex;
 
-    // Fecha o drawer de hotspot ao mudar de ângulo
     closeSpotDrawer();
 
     slides.forEach((slide, idx) => {
@@ -336,10 +390,27 @@ function initTransformationScroll() {
     setActiveSlide(stepIndex);
   }
 
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll, { passive: true });
-  onScroll();
+  // 4. Listeners dos Hotspots
+  if (spotClose) {
+    spotClose.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeSpotDrawer();
+    });
+  }
 
+  section.querySelectorAll('.tour-hotspot').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const spotKey = btn.dataset.spot;
+      if (btn.classList.contains('active')) {
+        closeSpotDrawer();
+      } else {
+        openSpotDrawer(spotKey, btn);
+      }
+    });
+  });
+
+  // 5. Listeners de Pílulas e Setas
   pills.forEach((pill, idx) => {
     pill.addEventListener('click', (e) => {
       e.preventDefault();
@@ -363,69 +434,6 @@ function initTransformationScroll() {
       scrollToSlide(currentActive + 1);
     });
   }
-
-  // =========================================================================
-  // INTERATIVIDADE DOS HOTSPOTS (DRAWER DE INSPEÇÃO TÁTIL)
-  // =========================================================================
-  const spotDrawer = document.getElementById('tourSpotDrawer');
-  const spotClose = document.getElementById('tourSpotClose');
-  const spotBadge = document.getElementById('spotCardBadge');
-  const spotTitle = document.getElementById('spotCardTitle');
-  const spotDesc = document.getElementById('spotCardDesc');
-  const spotFeatures = document.getElementById('spotCardFeatures');
-  const spotWaBtn = document.getElementById('spotCardWaBtn');
-
-  function openSpotDrawer(spotKey, btnElement) {
-    const data = hotspotData[spotKey];
-    if (!data || !spotDrawer) return;
-
-    // Desmarca outros pins
-    section.querySelectorAll('.tour-hotspot').forEach(b => b.classList.remove('active'));
-    if (btnElement) btnElement.classList.add('active');
-
-    if (spotBadge) spotBadge.textContent = data.badge;
-    if (spotTitle) spotTitle.textContent = data.title;
-    if (spotDesc) spotDesc.textContent = data.desc;
-
-    if (spotFeatures) {
-      spotFeatures.innerHTML = data.features.map(f => `<span class="spot-feat-item">${f}</span>`).join('');
-    }
-
-    if (spotWaBtn) {
-      const phone = "5511963188104";
-      spotWaBtn.href = `https://wa.me/${phone}?text=${encodeURIComponent(data.waMsg)}`;
-    }
-
-    spotDrawer.classList.add('is-open');
-    spotDrawer.setAttribute('aria-hidden', 'false');
-  }
-
-  function closeSpotDrawer() {
-    if (!spotDrawer) return;
-    spotDrawer.classList.remove('is-open');
-    spotDrawer.setAttribute('aria-hidden', 'true');
-    section.querySelectorAll('.tour-hotspot').forEach(b => b.classList.remove('active'));
-  }
-
-  if (spotClose) {
-    spotClose.addEventListener('click', (e) => {
-      e.stopPropagation();
-      closeSpotDrawer();
-    });
-  }
-
-  // Event delegation nos hotspots
-  section.querySelectorAll('.tour-hotspot').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const spotKey = btn.dataset.spot;
-      if (btn.classList.contains('active')) {
-        closeSpotDrawer();
-      } else {
-        openSpotDrawer(spotKey, btn);
-      }
-    });
-  });
 
   // =========================================================================
   // SIMULADOR DE INCIDÊNCIA DE LUZ SOLAR & AMBIÊNCIA CÊNICA
@@ -628,6 +636,11 @@ function initTransformationScroll() {
       }
     });
   }
+
+  // Registra eventos de scroll e sincronização inicial
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  onScroll();
 }
 
 /* ==========================================================================
@@ -830,7 +843,7 @@ function initBusinessHoursStatus() {
       waContainer.innerHTML = `
         <a href="${link}" target="_blank" rel="noopener noreferrer" class="wa-pill-link ${status.isOnline ? 'online' : 'offline'}" aria-label="WhatsApp Célia Decor">
           <svg class="wa-icon-svg" viewBox="0 0 24 24">
-            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.066-2.124-.528-1.503-.623-2.485-2.148-2.56-2.247-.074-.099-.607-.808-.607-1.543s.385-1.101.521-1.251c.137-.15.299-.187.399-.187.1 0 .2.001.288.006.096.004.225-.036.35.267.136.326.467 1.139.508 1.222.041.083.069.18.014.288-.056.108-.084.175-.167.272-.083.097-.175.217-.25.291-.083.082-.17.172-.073.339.097.167.433.714.928 1.155.637.568 1.175.743 1.342.826.167.083.264.069.362-.042.097-.111.417-.485.528-.652.111-.166.222-.139.375-.083.153.055.972.458 1.139.541.167.084.278.125.319.195.042.069.042.405-.102.81zM12 2C6.477 2 2 6.477 2 12c0 1.891.524 3.66 1.436 5.176L2 22l4.954-1.399C8.423 21.536 10.156 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/>
+            <path d="M17.472 14.382c-.301-.15-1.78-.878-2.056-.978-.276-.101-.477-.15-.678.15-.201.3-.778.978-.954 1.179-.176.2-.352.226-.653.075-.3-.15-1.267-.467-2.414-1.489-.893-.796-1.496-1.779-1.672-2.08-.176-.301-.019-.464.132-.614.136-.135.301-.352.452-.528.151-.176.201-.301.302-.502.1-.2.05-.376-.025-.527-.075-.15-.678-1.633-.929-2.235-.245-.586-.494-.506-.678-.515-.176-.009-.377-.01-.578-.01s-.528.075-.804.376c-.276.301-1.055 1.03-1.055 2.511 0 1.481 1.08 2.912 1.231 3.113.151.2 2.126 3.246 5.151 4.553.72.311 1.282.497 1.721.636.724.23 1.383.198 1.904.12.581-.088 1.78-.727 2.031-1.43.251-.703.251-1.305.176-1.43-.075-.125-.276-.201-.577-.351zM12 2C6.477 2 2 6.477 2 12c0 1.891.524 3.66 1.436 5.176L2 22l4.954-1.399C8.423 21.536 10.156 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/>
           </svg>
           <div class="wa-text-group">
             <span class="wa-brand-name">Célia Decor</span>
