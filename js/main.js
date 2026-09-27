@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFabricStudio();
   initBusinessHoursStatus();
   initMobileMenu();
+  initCookieConsent();
 });
 
 /* ==========================================================================
@@ -401,3 +402,124 @@ function initMobileMenu() {
     link.addEventListener('click', closeDrawer);
   });
 }
+
+/* ==========================================================================
+   7. GESTÃO DE COOKIES, REMARKETING & CONFORMIDADE LGPD (GOOGLE ADS & META)
+   Armazena o consentimento do visitante, gerencia tags de remarketing
+   e permite ao usuário revisar preferências a qualquer instante
+   ========================================================================== */
+function initCookieConsent() {
+  const CONSENT_KEY = 'celia_decor_cookie_consent';
+  const TIMESTAMP_KEY = 'celia_decor_cookie_timestamp';
+
+  // Injeta o HTML do banner se ainda não existir na página
+  let banner = document.getElementById('celiaCookieBanner');
+  let backdrop = document.getElementById('celiaCookieBackdrop');
+
+  if (!banner) {
+    backdrop = document.createElement('div');
+    backdrop.id = 'celiaCookieBackdrop';
+    backdrop.className = 'celia-cookie-backdrop';
+    document.body.appendChild(backdrop);
+
+    banner = document.createElement('div');
+    banner.id = 'celiaCookieBanner';
+    banner.className = 'celia-cookie-banner';
+    banner.setAttribute('role', 'dialog');
+    banner.setAttribute('aria-live', 'polite');
+    banner.setAttribute('aria-label', 'Consentimento de Cookies e Tecnologias de Remarketing');
+
+    banner.innerHTML = `
+      <div class="celia-cookie-inner">
+        <div class="celia-cookie-info">
+          <div class="celia-cookie-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+          </div>
+          <div class="celia-cookie-text">
+            <h4 class="celia-cookie-title">Privacidade, Cookies &amp; Experiência Exclusiva</h4>
+            <p class="celia-cookie-desc">
+              Utilizamos cookies e tecnologias de rastreamento (incluindo Google Analytics, Google Ads Remarketing e Meta Pixel) para otimizar sua navegação, analisar métricas e veicular anúncios personalizados em cortinas finas e automação. Você pode escolher quais dados compartilhar conosco. Conheça nossa <a href="politica-de-privacidade.html">Política de Privacidade</a>.
+            </p>
+          </div>
+        </div>
+        <div class="celia-cookie-actions">
+          <button type="button" class="btn-cookie-accept" id="btnCookieAccept">Aceitar Todos</button>
+          <button type="button" class="btn-cookie-reject" id="btnCookieReject">Apenas Essenciais</button>
+          <a href="politica-de-privacidade.html#cookies-gestao" class="btn-cookie-pref">Preferências</a>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(banner);
+  }
+
+  function showBanner() {
+    if (banner) banner.classList.add('is-visible');
+    if (backdrop) backdrop.classList.add('is-visible');
+  }
+
+  function hideBanner() {
+    if (banner) banner.classList.remove('is-visible');
+    if (backdrop) backdrop.classList.remove('is-visible');
+  }
+
+  function applyConsent(type) {
+    localStorage.setItem(CONSENT_KEY, type);
+    localStorage.setItem(TIMESTAMP_KEY, new Date().toISOString());
+
+    // Google Consent Mode v2 & Remarketing DataLayer Push
+    window.dataLayer = window.dataLayer || [];
+    if (type === 'all') {
+      window.dataLayer.push({
+        event: 'consent_update',
+        ad_storage: 'granted',
+        analytics_storage: 'granted',
+        ad_user_data: 'granted',
+        ad_personalization: 'granted',
+        remarketing_active: true
+      });
+    } else {
+      window.dataLayer.push({
+        event: 'consent_update',
+        ad_storage: 'denied',
+        analytics_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        remarketing_active: false
+      });
+    }
+
+    hideBanner();
+  }
+
+  // Verifica se o consentimento já foi registrado anteriormente
+  const currentConsent = localStorage.getItem(CONSENT_KEY);
+  if (!currentConsent) {
+    // Exibe suavemente após 1 segundo da abertura da página
+    setTimeout(showBanner, 1000);
+  }
+
+  // Listeners dos Botões do Banner
+  const acceptBtn = document.getElementById('btnCookieAccept');
+  const rejectBtn = document.getElementById('btnCookieReject');
+
+  if (acceptBtn) {
+    acceptBtn.addEventListener('click', () => applyConsent('all'));
+  }
+  if (rejectBtn) {
+    rejectBtn.addEventListener('click', () => applyConsent('essential'));
+  }
+
+  // Listeners para Reabrir Configurações a Qualquer Momento (Rodapé ou Links da Política)
+  document.querySelectorAll('.cookie-settings-trigger, #openCookieSettings').forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      showBanner();
+    });
+  });
+
+  if (backdrop) {
+    backdrop.addEventListener('click', hideBanner);
+  }
+}
+
