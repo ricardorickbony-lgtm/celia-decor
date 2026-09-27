@@ -188,102 +188,276 @@
   </section>
 
   <!-- ========================================================================
-       SCROLL REVEAL: A TRANSFORMAÇÃO DO SEU ESPAÇO (5 AMBIENTES IMERSIVOS)
-       Imersão multi-cenas acionada conforme roda o scroll do mouse ou descendo o palm do celular
+       TOUR VIRTUAL IMERSIVO: POR DENTRO DA SUÍTE MASTER (EXPERIÊNCIA 360° & HOTSPOTS)
+       Permite ao visitante interagir e "conhecer por dentro" cada detalhe com
+       alta resolução 8K, giros espaciais, pontos de inspeção (hotspots) e controle de luz solar
        ======================================================================== -->
-  <section class="transformation-journey-section" id="transformacao-espaco">
+  <section class="transformation-journey-section virtual-suite-tour" id="transformacao-espaco">
     <div class="transformation-sticky-stage">
       
-      <!-- Cabeçalho Flutuante da Experiência -->
+      <!-- Cabeçalho da Experiência Imersiva -->
       <div class="transform-stage-header">
-        <span class="tag-label">Imersão de Projeto • Suíte & Dormitórios</span>
-        <h2 class="transform-title">A Transformação do Seu Espaço</h2>
-        <p class="transform-desc">Role a página para vivenciar a transformação completa: cabeceiras sob medida, enxovais, painéis de madeira e persianas rolô.</p>
+        <div class="tour-header-badge">
+          <span class="pulse-beacon"></span>
+          <span>Experiência Imersiva • Conheça por Dentro</span>
+        </div>
+        <h2 class="transform-title">Tour Virtual Interativo: A Suíte Master</h2>
+        <p class="transform-desc">Explore o ambiente em altíssima definição: toque nos pontos interativos (pins) para inspecionar tecidos, marcenaria, iluminação e a porta oculta da suíte.</p>
         
-        <!-- Pílulas de Navegação / Etapas -->
-        <div class="transform-nav-pills" role="tablist">
-          <button type="button" class="transform-pill-btn active" data-step="0" aria-label="Cena 1: Cabeceiras">
+        <!-- Pílulas de Navegação por Ângulo / Ponto de Vista -->
+        <div class="transform-nav-pills" role="tablist" aria-label="Selecione o ângulo da suíte">
+          <button type="button" class="transform-pill-btn active" data-step="0" aria-selected="true">
             <span class="pill-num">01</span>
-            <span class="pill-name">Cabeceiras</span>
+            <span class="pill-name">Visão Panorâmica</span>
           </button>
-          <button type="button" class="transform-pill-btn" data-step="1" aria-label="Cena 2: Enxoval">
+          <button type="button" class="transform-pill-btn" data-step="1" aria-selected="false">
             <span class="pill-num">02</span>
-            <span class="pill-name">Enxoval</span>
+            <span class="pill-name">Cabeceira &amp; Ripado</span>
           </button>
-          <button type="button" class="transform-pill-btn" data-step="2" aria-label="Cena 3: Painel Ripado">
+          <button type="button" class="transform-pill-btn" data-step="2" aria-selected="false">
             <span class="pill-num">03</span>
-            <span class="pill-name">Painel Ripado</span>
+            <span class="pill-name">Porta Oculta da Suíte</span>
           </button>
-          <button type="button" class="transform-pill-btn" data-step="3" aria-label="Cena 4: Almofadas">
+          <button type="button" class="transform-pill-btn" data-step="3" aria-selected="false">
             <span class="pill-num">04</span>
-            <span class="pill-name">Almofadas</span>
+            <span class="pill-name">Macro Textura &amp; Linho</span>
           </button>
-          <button type="button" class="transform-pill-btn" data-step="4" aria-label="Cena 5: Persiana Rolô">
+          <button type="button" class="transform-pill-btn" data-step="4" aria-selected="false">
             <span class="pill-num">05</span>
-            <span class="pill-name">Persiana Rolô</span>
+            <span class="pill-name">Persiana Rolô &amp; Luz</span>
           </button>
         </div>
 
-        <!-- Barra de Progresso de Scroll -->
+        <!-- Seletor Rápido de Iluminação do Quarto (Simulador Cênico) -->
+        <div class="tour-lighting-bar">
+          <span class="lighting-bar-label">Simular Incidência de Luz:</span>
+          <div class="lighting-buttons" role="group" aria-label="Controle de iluminação">
+            <button type="button" class="btn-light-mode active" data-light="day" title="Luz Natural Plena">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+              <span>Sol Pleno</span>
+            </button>
+            <button type="button" class="btn-light-mode" data-light="filter" title="Persiana com Tela Solar 3%">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+              <span>Luz Filtrada</span>
+            </button>
+            <button type="button" class="btn-light-mode" data-light="warm" title="Aconchego Noturno com LED 2700K">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+              <span>Aconchego 2700K</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Barra de Progresso de Rolagem -->
         <div class="transform-progress-track">
           <div class="transform-progress-fill" id="transformProgressFill"></div>
         </div>
       </div>
 
-      <!-- O Palco Central de Exibição das Imagens Imersivas -->
-      <div class="transform-viewport-showcase">
+      <!-- O Palco Central: Visualizador Espacial 3D com Hotspots Interativos -->
+      <div class="tour-spatial-viewport" id="tourSpatialViewport">
         
         <!-- Botão Navegação Anterior -->
-        <button type="button" class="transform-arrow-btn prev" id="transformPrevBtn" aria-label="Mídia anterior">
+        <button type="button" class="transform-arrow-btn prev" id="transformPrevBtn" aria-label="Ângulo anterior">
           <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
         </button>
 
-        <div class="transform-slides-stack" id="transformSlidesStack">
+        <!-- Container do Canvas 3D Panorâmico -->
+        <div class="tour-spatial-stage" id="tourSpatialStage">
           
-          <!-- Mídia 1: Cabeceiras -->
-          <div class="transform-slide-item active" data-index="0">
-            <img src="assets/images/transformacao-01-cabeceiras.png" alt="Mídia 1: Cabeceiras que acolhem com elegância - Célia Decor" class="transform-slide-img" loading="eager">
+          <!-- Filtro de Atmosfera de Luz (Dia / Tela Solar / Noite 2700K) -->
+          <div class="tour-ambient-light-overlay" id="tourLightOverlay"></div>
+
+          <!-- Stack de Mídias em 8K de Altíssima Resolução -->
+          <div class="transform-slides-stack" id="transformSlidesStack">
+            
+            <!-- Cena 1: Visão Panorâmica Ampla -->
+            <div class="transform-slide-item active" data-index="0" data-view="ampla">
+              <img src="assets/images/tour-suite-01-ampla.jpg" alt="Visão Ampla da Suíte Master em Altíssima Definição - Célia Decor" class="transform-slide-img" loading="eager">
+              
+              <!-- Hotspots da Cena 1 -->
+              <button type="button" class="tour-hotspot" style="top: 24%; left: 52%;" data-spot="rolo-ampla" aria-label="Ver detalhes da Persiana Rolô">
+                <span class="hotspot-pulse"></span>
+                <span class="hotspot-core"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                <span class="hotspot-tooltip">Persiana Rolô Solar 3%</span>
+              </button>
+
+              <button type="button" class="tour-hotspot" style="top: 55%; left: 24%;" data-spot="cabeceiras-ampla" aria-label="Ver detalhes das Cabeceiras sob Medida">
+                <span class="hotspot-pulse"></span>
+                <span class="hotspot-core"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                <span class="hotspot-tooltip">Cabeceiras em Linho Cru</span>
+              </button>
+
+              <button type="button" class="tour-hotspot" style="top: 36%; left: 38%;" data-spot="ripado-ampla" aria-label="Ver detalhes do Painel Ripado">
+                <span class="hotspot-pulse"></span>
+                <span class="hotspot-core"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                <span class="hotspot-tooltip">Painel Ripado em Madeira</span>
+              </button>
+
+              <button type="button" class="tour-hotspot" style="top: 72%; left: 35%;" data-spot="enxoval-ampla" aria-label="Ver detalhes do Enxoval">
+                <span class="hotspot-pulse"></span>
+                <span class="hotspot-core"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                <span class="hotspot-tooltip">Enxoval &amp; Peseira Canelada</span>
+              </button>
+            </div>
+
+            <!-- Cena 2: Cabeceira & Painel Ripado -->
+            <div class="transform-slide-item" data-index="1" data-view="cabeceira">
+              <img src="assets/images/tour-suite-02-cabeceira.jpg" alt="Cabeceira sob Medida com Painel Ripado e Iluminação Oculta - Célia Decor" class="transform-slide-img" loading="lazy">
+              
+              <!-- Hotspots da Cena 2 -->
+              <button type="button" class="tour-hotspot" style="top: 48%; left: 28%;" data-spot="estofado-cabeceira" aria-label="Ver detalhes do Estofamento">
+                <span class="hotspot-pulse"></span>
+                <span class="hotspot-core"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                <span class="hotspot-tooltip">Estofamento Alfaiataria D33</span>
+              </button>
+
+              <button type="button" class="tour-hotspot" style="top: 14%; left: 50%;" data-spot="led-sanca" aria-label="Ver detalhes da Iluminação Cênica">
+                <span class="hotspot-pulse"></span>
+                <span class="hotspot-core"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                <span class="hotspot-tooltip">Sanca com LED Oculto 2700K</span>
+              </button>
+
+              <button type="button" class="tour-hotspot" style="top: 64%; left: 51%;" data-spot="criado-mudo" aria-label="Ver detalhes da Mesa Suspensa">
+                <span class="hotspot-pulse"></span>
+                <span class="hotspot-core"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                <span class="hotspot-tooltip">Mesa Suspensa Flutuante</span>
+              </button>
+
+              <button type="button" class="tour-hotspot" style="top: 52%; left: 72%;" data-spot="almofadas-cabeceira" aria-label="Ver detalhes das Almofadas">
+                <span class="hotspot-pulse"></span>
+                <span class="hotspot-core"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                <span class="hotspot-tooltip">Almofadas Bordadas em Relevo</span>
+              </button>
+            </div>
+
+            <!-- Cena 3: Porta Oculta da Suíte -->
+            <div class="transform-slide-item" data-index="2" data-view="porta-oculta">
+              <img src="assets/images/tour-suite-03-porta-oculta.jpg" alt="Porta Mimetizada Oculta Integrada ao Painel Ripado - Célia Decor" class="transform-slide-img" loading="lazy">
+              
+              <!-- Hotspots da Cena 3 -->
+              <button type="button" class="tour-hotspot" style="top: 36%; left: 24%;" data-spot="porta-mimetizada" aria-label="Ver detalhes da Porta Oculta">
+                <span class="hotspot-pulse"></span>
+                <span class="hotspot-core"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                <span class="hotspot-tooltip">Porta Mimetizada Oculta</span>
+              </button>
+
+              <button type="button" class="tour-hotspot" style="top: 48%; left: 34%;" data-spot="banheiro-suite" aria-label="Ver detalhes da Integração com o Banheiro">
+                <span class="hotspot-pulse"></span>
+                <span class="hotspot-core"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                <span class="hotspot-tooltip">Banheiro Master Integrado</span>
+              </button>
+
+              <button type="button" class="tour-hotspot" style="top: 60%; left: 74%;" data-spot="cama-tailored" aria-label="Ver detalhes do Enxoval Tailored">
+                <span class="hotspot-pulse"></span>
+                <span class="hotspot-core"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                <span class="hotspot-tooltip">Cama Tailored sob Medida</span>
+              </button>
+            </div>
+
+            <!-- Cena 4: Macro Texturas & Linho -->
+            <div class="transform-slide-item" data-index="3" data-view="macro-textura">
+              <img src="assets/images/tour-suite-04-macro-textura.jpg" alt="Macro Close-up dos Tecidos e Bordados Artesanais - Célia Decor" class="transform-slide-img" loading="lazy">
+              
+              <!-- Hotspots da Cena 4 -->
+              <button type="button" class="tour-hotspot" style="top: 48%; left: 22%;" data-spot="bordado-folhagem" aria-label="Ver detalhes do Bordado Botânico">
+                <span class="hotspot-pulse"></span>
+                <span class="hotspot-core"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                <span class="hotspot-tooltip">Bordado Botânico em Relevo</span>
+              </button>
+
+              <button type="button" class="tour-hotspot" style="top: 44%; left: 82%;" data-spot="almofada-barreta" aria-label="Ver detalhes da Almofada de Linho com Barretas">
+                <span class="hotspot-pulse"></span>
+                <span class="hotspot-core"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                <span class="hotspot-tooltip">Linho Rústico com Barretas</span>
+              </button>
+
+              <button type="button" class="tour-hotspot" style="top: 32%; left: 45%;" data-spot="ripado-macro" aria-label="Ver detalhes da Madeira">
+                <span class="hotspot-pulse"></span>
+                <span class="hotspot-core"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                <span class="hotspot-tooltip">Madeira Natural Maciça</span>
+              </button>
+            </div>
+
+            <!-- Cena 5: Persiana Rolô Solar & Jardim -->
+            <div class="transform-slide-item" data-index="4" data-view="persiana-solar">
+              <img src="assets/images/tour-suite-05-persiana-solar.jpg" alt="Persiana Rolô em Tela Solar Motorizada com Vista para o Jardim - Célia Decor" class="transform-slide-img" loading="lazy">
+              
+              <!-- Hotspots da Cena 5 -->
+              <button type="button" class="tour-hotspot" style="top: 32%; left: 42%;" data-spot="tela-solar-screen" aria-label="Ver detalhes da Tela Solar">
+                <span class="hotspot-pulse"></span>
+                <span class="hotspot-core"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                <span class="hotspot-tooltip">Tela Solar Screen 3%</span>
+              </button>
+
+              <button type="button" class="tour-hotspot" style="top: 12%; left: 42%;" data-spot="motorizacao-persiana" aria-label="Ver detalhes da Automação">
+                <span class="hotspot-pulse"></span>
+                <span class="hotspot-core"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                <span class="hotspot-tooltip">Motor Silencioso Somfy</span>
+              </button>
+
+              <button type="button" class="tour-hotspot" style="top: 62%; left: 42%;" data-spot="jardim-biofilico" aria-label="Ver detalhes da Integração Visual">
+                <span class="hotspot-pulse"></span>
+                <span class="hotspot-core"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                <span class="hotspot-tooltip">Integração com Jardim Externo</span>
+              </button>
+            </div>
+
           </div>
 
-          <!-- Mídia 2: Enxoval -->
-          <div class="transform-slide-item" data-index="1">
-            <img src="assets/images/transformacao-02-enxoval.png" alt="Mídia 2: Enxoval minimalista com toque de aconchego - Célia Decor" class="transform-slide-img" loading="lazy">
+          <!-- Controles Flutuantes da Câmera (Zoom & Tela Cheia & Giro) -->
+          <div class="tour-camera-hud">
+            <button type="button" class="hud-btn" id="tourZoomBtn" title="Inspecionar de Perto (Zoom)">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+              <span>Zoom</span>
+            </button>
+            <button type="button" class="hud-btn" id="tourFullscreenBtn" title="Explorar em Tela Cheia">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+              <span>Tela Cheia</span>
+            </button>
+            <div class="hud-indicator">
+              <span class="hud-dot"></span>
+              <span class="hud-text">Arraste para olhar ao redor</span>
+            </div>
           </div>
 
-          <!-- Mídia 3: Painel Ripado -->
-          <div class="transform-slide-item" data-index="2">
-            <img src="assets/images/transformacao-03-painel-madeira.png" alt="Mídia 3: Cabeceira personalizada com painel ripado e porta oculta - Célia Decor" class="transform-slide-img" loading="lazy">
-          </div>
-
-          <!-- Mídia 4: Almofadas -->
-          <div class="transform-slide-item" data-index="3">
-            <img src="assets/images/transformacao-04-almofadas.png" alt="Mídia 4: Almofadas nobres com volumetria e texturas - Célia Decor" class="transform-slide-img" loading="lazy">
-          </div>
-
-          <!-- Mídia 5: Persiana Rolô -->
-          <div class="transform-slide-item" data-index="4">
-            <img src="assets/images/transformacao-05-persiana-rolo.png" alt="Mídia 5: Persiana rolô tela solar sob medida - Célia Decor" class="transform-slide-img" loading="lazy">
+          <!-- Drawer / Modal Interativo de Inspeção do Ponto de Interesse (Hotspot Popup) -->
+          <div class="tour-spot-drawer" id="tourSpotDrawer" aria-hidden="true">
+            <div class="tour-spot-card">
+              <button type="button" class="tour-spot-close" id="tourSpotClose" aria-label="Fechar detalhes">&times;</button>
+              <div class="spot-card-badge" id="spotCardBadge">Acabamento Exclusivo Célia Decor</div>
+              <h3 class="spot-card-title" id="spotCardTitle">Persiana Rolô Screen Solar 3%</h3>
+              <p class="spot-card-desc" id="spotCardDesc">Tecido screen inteligente com microporosidades que filtram até 97% dos raios UV, reduzem o aquecimento interno em até 6°C e mantêm a transparência visual para o exterior sem ofuscamento.</p>
+              <div class="spot-card-features" id="spotCardFeatures">
+                <span class="spot-feat-item">✓ Bloqueio de 97% dos raios UV</span>
+                <span class="spot-feat-item">✓ Conforto Térmico Superior</span>
+                <span class="spot-feat-item">✓ Motorização Silenciosa</span>
+              </div>
+              <a href="https://wa.me/5511963188104" target="_blank" rel="noopener noreferrer" class="spot-card-wa-btn" id="spotCardWaBtn">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.066-2.124-.528-1.503-.623-2.485-2.148-2.56-2.247-.074-.099-.607-.808-.607-1.543s.385-1.101.521-1.251c.137-.15.299-.187.399-.187.1 0 .2.001.288.006.096.004.225-.036.35.267.136.326.467 1.139.508 1.222.041.083.069.18.014.288-.056.108-.084.175-.167.272-.083.097-.175.217-.25.291-.083.082-.17.172-.073.339.097.167.433.714.928 1.155.637.568 1.175.743 1.342.826.167.083.264.069.362-.042.097-.111.417-.485.528-.652.111-.166.222-.139.375-.083.153.055.972.458 1.139.541.167.084.278.125.319.195.042.069.042.405-.102.81zM12 2C6.477 2 2 6.477 2 12c0 1.891.524 3.66 1.436 5.176L2 22l4.954-1.399C8.423 21.536 10.156 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
+                <span>Quero Este Acabamento no Meu Espaço</span>
+              </a>
+            </div>
           </div>
 
         </div>
 
         <!-- Botão Navegação Próximo -->
-        <button type="button" class="transform-arrow-btn next" id="transformNextBtn" aria-label="Próxima mídia">
+        <button type="button" class="transform-arrow-btn next" id="transformNextBtn" aria-label="Próximo ângulo">
           <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </button>
 
       </div>
 
-      <!-- Barra de Informações Dinâmica & Status das 5 Mídias -->
+      <!-- Barra de Informações Dinâmica & Status dos Ângulos -->
       <div class="transform-active-caption-card" id="transformActiveCaption">
-        <span class="active-step-tag" id="transformActiveBadge">Mídia 01 de 05 • Dormitórios &amp; Suíte</span>
-        <h4 class="active-step-title" id="transformActiveTitle">Cabeceiras que Acolhem com Elegância</h4>
-        <p class="active-step-desc" id="transformActiveDesc">Tecidos em tons neutros desenvolvidos sob medida para harmonizar com a marcenaria e acolher com máximo conforto.</p>
+        <span class="active-step-tag" id="transformActiveBadge">Ângulo 01 de 05 • Visão Panorâmica</span>
+        <h4 class="active-step-title" id="transformActiveTitle">Visão Panorâmica da Suíte Master</h4>
+        <p class="active-step-desc" id="transformActiveDesc">Harmonia absoluta entre tecidos nobres em linho, cabeceiras sob medida, painel em madeira ripada e controle térmico com persiana rolô tela solar.</p>
       </div>
 
       <!-- Indicador de Interação Flutuante no Rodapé -->
       <div class="transform-bottom-cue">
-        <span class="transform-cue-text" id="transformCueLabel">▼ Role com o mouse ou deslize o dedo para vivenciar as 5 mídias (1 de 5) ▼</span>
+        <span class="transform-cue-text" id="transformCueLabel">▼ Role ou toque nos pontos interativos para conhecer a suíte por dentro (1 de 5) ▼</span>
       </div>
 
     </div>

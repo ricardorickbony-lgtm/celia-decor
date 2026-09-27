@@ -112,34 +112,162 @@ function initTransformationScroll() {
 
   const slideMeta = [
     {
-      badge: 'Mídia 01 de 05 • Dormitórios & Suíte',
-      title: 'Cabeceiras que Acolhem com Elegância',
-      desc: 'Tecidos em tons neutros desenvolvidos sob medida para harmonizar com a marcenaria e acolher com máximo conforto.'
+      badge: 'Ângulo 01 de 05 • Visão Panorâmica da Suíte',
+      title: 'Visão Panorâmica da Suíte Master',
+      desc: 'Harmonia absoluta entre tecidos nobres em linho, cabeceiras sob medida, painel em madeira ripada e controle térmico com persiana rolô tela solar.'
     },
     {
-      badge: 'Mídia 02 de 05 • Enxoval de Luxo',
-      title: 'Minimalismo com Toque de Aconchego',
-      desc: 'Roupas de cama em tecidos nobres, toque macio e tons serenos para proporcionar um sono leve e memorável.'
+      badge: 'Ângulo 02 de 05 • Cabeceira & Ripado sob Medida',
+      title: 'Cabeceira Tailored & Marcenaria Integrada',
+      desc: 'Estrutura estofada em linho cru com alinhamento milimétrico ao painel ripado e iluminação cênica indireta em LED 2700K acolhedor.'
     },
     {
-      badge: 'Mídia 03 de 05 • Marcenaria Integrada',
-      title: 'Cabeceira Personalizada & Painel Ripado',
-      desc: 'Integração milimétrica da marcenaria em madeira ripada com porta oculta mimetizada para a suíte.'
+      badge: 'Ângulo 03 de 05 • Porta Oculta da Suíte',
+      title: 'Porta Mimetizada Oculta no Painel',
+      desc: 'Engenharia de marcenaria com fechamento pivotante imperceptível, integrando a suíte ao banheiro master em mármore sem quebra visual.'
     },
     {
-      badge: 'Mídia 04 de 05 • Texturas & Acabamentos',
-      title: 'Almofadas Nobres & Volumetria',
-      desc: 'Combinações de texturas, formas e bordados exclusivos que elevam o enxoval a outro nível de sofisticação.'
+      badge: 'Ângulo 04 de 05 • Macro Texturas & Bordados',
+      title: 'Bordados Botânicos & Linho Puro',
+      desc: 'Close-up táctil revelando a riqueza do ponto em relevo, linho rústico e peseira canelada confeccionados no atelier artesanal da Célia Decor.'
     },
     {
-      badge: 'Mídia 05 de 05 • Proteção & Luz Solar',
-      title: 'Persiana Rolô em Tela Solar',
-      desc: 'Filtragem suave dos raios solares com eficiência térmica, praticidade de manutenção e caimento leve e integrado.'
+      badge: 'Ângulo 05 de 05 • Persiana Rolô & Conexão Externa',
+      title: 'Persiana Rolô Solar & Integração Biofílica',
+      desc: 'Tecido tela solar 3% com acionamento motorizado silencioso: bloqueia o calor radiante e raios UV enquanto emoldura o jardim verde exterior.'
     }
   ];
 
+  // =========================================================================
+  // METADADOS COMPLETOS DOS HOTSPOTS ARQUITETÔNICOS (CONHEÇA POR DENTRO)
+  // =========================================================================
+  const hotspotData = {
+    'rolo-ampla': {
+      badge: 'Proteção Solar & Conforto Térmico',
+      title: 'Persiana Rolô Screen Solar 3%',
+      desc: 'Tecido inteligente com microporosidades que bloqueia 97% dos raios UV nocivos, impede o desbotamento de pisos e móveis de madeira e reduz a temperatura interna em até 6°C sem perder a vista do jardim.',
+      features: ['✓ Bloqueio de 97% dos Raios UV', '✓ Eficiência Térmica Comprovada', '✓ Acionamento por Controle ou App'],
+      waMsg: 'Olá! Gostaria de um orçamento de Persiana Rolô em Tela Solar sob medida para o meu dormitório.'
+    },
+    'cabeceiras-ampla': {
+      badge: 'Tapeçaria & Alfaiataria Fina',
+      title: 'Cabeceiras Gêmeas sob Medida',
+      desc: 'Estrutura anatômica com espuma de alta densidade D33 Soft revestida em linho cru nobre, com acabamento repelente a poeira e antiácaro. Projetadas milimetricamente para harmonizar com a marcenaria.',
+      features: ['✓ Linho Cru Importado de Alta Resistência', '✓ Espuma D33 Soft Anatômica', '✓ Costura Invisível e Acabamento Próprio'],
+      waMsg: 'Olá! Gostaria de saber mais sobre as cabeceiras estofadas sob medida da Célia Decor.'
+    },
+    'ripado-ampla': {
+      badge: 'Marcenaria & Arquitetura de Interiores',
+      title: 'Painel Ripado em Carvalho Natural',
+      desc: 'Painel acústico ripado em lâmina de madeira natural com frisos simétricos. Proporciona quebra de reverberação sonora e conforto térmico ao ambiente, além de embutir fiação e iluminação indireta.',
+      features: ['✓ Madeira Maciça Tratada e Envernizada', '✓ Isolamento Acústico Integrado', '✓ Porta Oculta Mimetizada Embutida'],
+      waMsg: 'Olá! Tenho interesse em projeto de painel ripado em madeira com cabeceira para meu dormitório.'
+    },
+    'enxoval-ampla': {
+      badge: 'Enxoval de Hotel Boutique',
+      title: 'Enxoval & Peseira Canelada',
+      desc: 'Composição de colcha matelassada dupla face em algodão nobre e peseira canelada em tricô artesanal. Aquece a composição visual com serenidade e máximo aconchego tátil.',
+      features: ['✓ Toque Acetinado e Respirável', '✓ Tricô Canelado em Fios Nobres', '✓ Composição Cromática Personalizada'],
+      waMsg: 'Olá! Adorei o enxoval e a peseira canelada da suíte e gostaria de encomendar para meu quarto.'
+    },
+    'estofado-cabeceira': {
+      badge: 'Detalhes Construtivos',
+      title: 'Costura Oculta & Estofamento D33',
+      desc: 'Cada módulo da cabeceira conta com costura invisível e alinhamento milimétrico com as ripas de madeira da parede, garantindo continuidade geométrica perfeita.',
+      features: ['✓ Alinhamento Geométrico Rigoroso', '✓ Fixação Embutida Invisível', '✓ Tecido Lavável de Alta Durabilidade'],
+      waMsg: 'Olá! Gostaria de falar com um especialista da Célia Decor sobre cabeceiras sob medida.'
+    },
+    'led-sanca': {
+      badge: 'Luminotécnica Cênica',
+      title: 'Sanca Iluminada com LED Oculto 2700K',
+      desc: 'Fita de LED de alta fidelidade cromática embutida na sanca superior. Banha o ripado suavemente de cima a baixo com temperatura quente de 2700K, criando atmosfera relaxante e acolhedora.',
+      features: ['✓ Temperatura Quente Acolhedora 2700K', '✓ Dimerização Suave', '✓ Zero Ofuscamento Visual'],
+      waMsg: 'Olá! Gostaria de integrar sancas e cortineiros iluminados com cortinas e persianas.'
+    },
+    'criado-mudo': {
+      badge: 'Marcenaria Suspensa',
+      title: 'Mesa Lateral Flutuante em Laca',
+      desc: 'Gaveteiro suspenso integrado diretamente ao ripado, com corrediças ocultas com amortecimento soft-close. Mantém o chão desobstruído para maior leveza e praticidade.',
+      features: ['✓ Corrediças Soft-Close Ocultas', '✓ Puxador Cava Minimalista', '✓ Acabamento em Laca Acetinada Fosca'],
+      waMsg: 'Olá! Gostaria de consultar projetos integrados de cabeceira com mesas suspensas.'
+    },
+    'almofadas-cabeceira': {
+      badge: 'Atelier de Costura Célia Decor',
+      title: 'Almofadas Bordadas em Ponto Relevo',
+      desc: 'Desenhos botânicos exclusivos bordados em alto-relevo sobre linho puro. O enchimento em pluma sintética siliconada hipoalergênica mantém o volume perfeito sem deformar.',
+      features: ['✓ Bordado Exclusivo em Alto-Relevo', '✓ Enchimento em Pluma Siliconada', '✓ Zíper Invisível para Lavagem'],
+      waMsg: 'Olá! Gostaria de encomendar almofadas bordadas sob medida com a equipe do Atelier Célia Decor.'
+    },
+    'porta-mimetizada': {
+      badge: 'Engenharia de Interiores',
+      title: 'Porta Mimetizada Oculta no Ripado',
+      desc: 'Porta pivotante com fechamento invisível e fechadura magnética silenciosa. Quando fechada, a folha da porta alinha-se perfeitamente com os frisos do ripado, tornando a entrada do banheiro imperceptível.',
+      features: ['✓ Fechamento Magnético Silencioso', '✓ Pivô de Aço Inox Oculto', '✓ Continuidade Total do Ripado'],
+      waMsg: 'Olá! Tenho um projeto e gostaria de incluir uma porta oculta mimetizada no painel ripado.'
+    },
+    'banheiro-suite': {
+      badge: 'Continuidade Espacial',
+      title: 'Banheiro Master Integrado',
+      desc: 'Transição fluida entre o dormitório e a sala de banho com nichos iluminados e bancada em mármore esculpido. Uma experiência visual de suíte presidencial de hotel 5 estrelas.',
+      features: ['✓ Iluminação Cênica de Nicho', '✓ Mármore Esculpido Nobre', '✓ Integração com a Suíte Master'],
+      waMsg: 'Olá! Gostaria de planejar acabamentos e cortinas para minha suíte master integrada.'
+    },
+    'cama-tailored': {
+      badge: 'Conforto & Sofisticação',
+      title: 'Cama Tailored sob Medida',
+      desc: 'Colcha sob medida ajustada aos cantos da cama com caimento impecável, sem sobras desordenadas. A peseira em tom cru traz camadas de textura que enriquecem o ambiente.',
+      features: ['✓ Caimento sob Medida Milimétrico', '✓ Tecido Antialérgico', '✓ Fácil Manutenção e Higienização'],
+      waMsg: 'Olá! Gostaria de solicitar um enxoval completo sob medida para minha cama.'
+    },
+    'bordado-folhagem': {
+      badge: 'Macro Textura • Linho Puro',
+      title: 'Bordado Botânico em Relevo Tátil',
+      desc: 'Fotografia em macro evidenciando a nobreza dos pontos de bordado em relevo táctil sobre a trama do linho rústico. Cada detalhe é inspecionado e costurado no próprio atelier da Célia Decor.',
+      features: ['✓ Linho com Textura Natural', '✓ Ponto Bordado com Alta Resolução', '✓ Toque Macio e Acolhedor'],
+      waMsg: 'Olá! Fiquei encantado com o detalhe do bordado das almofadas e quero encomendar peças exclusivas.'
+    },
+    'almofada-barreta': {
+      badge: 'Tapeçaria Clássica Contemporânea',
+      title: 'Linho Rústico com Detalhes em Barretas',
+      desc: 'Almofada lombar confeccionada em linho encorpado com acabamento artesanal de barretas nas extremidades, conferindo sofisticação e conforto de postura.',
+      features: ['✓ Barretas Artesanais Feitas à Mão', '✓ Fibras Nobres Duráveis', '✓ Tons Neutros Atemporais'],
+      waMsg: 'Olá! Gostaria de conhecer o catálogo de almofadas e tecidos em linho da Célia Decor.'
+    },
+    'ripado-macro': {
+      badge: 'Madeira Natural Maciça',
+      title: 'Madeira Natural com Textura Sedosa',
+      desc: 'Textura da madeira real com veios preservados e acabamento acetinado ecológico livre de odores, valorizando a autenticidade dos materiais naturais na arquitetura.',
+      features: ['✓ Acabamento Ecológico Acetinado', '✓ Veios Naturais Preservados', '✓ Toque Térmico Aconchegante'],
+      waMsg: 'Olá! Gostaria de saber mais sobre as opções de madeiras e acabamentos para cabeceiras e ripados.'
+    },
+    'tela-solar-screen': {
+      badge: 'Controle Solar Moderno',
+      title: 'Tecido Tela Solar Screen 3%',
+      desc: 'Permite desfrutar da luz natural do dia e contemplar o jardim exterior sem que pessoas de fora consigam enxergar o interior durante o dia. Bloqueia o calor radiante e o brilho excessivo.',
+      features: ['✓ Proteção Anti-Reflexo para Telas', '✓ Anti-Chamas e Fácil de Limpar com Pano Úmido', '✓ Garantia Estendida Célia Decor'],
+      waMsg: 'Olá! Gostaria de agendar uma visita para medição de Persiana Rolô Tela Solar para as minhas janelas.'
+    },
+    'motorizacao-persiana': {
+      badge: 'Domótica & Conforto',
+      title: 'Motor Silencioso Somfy com Automação',
+      desc: 'Motorização integrada ao tubo superior da persiana, sem fiações visíveis. Acionamento por controle remoto slim, aplicativo móvel ou comandos de voz via Alexa e Google Home.',
+      features: ['✓ Silêncio Absoluto na Movimentação', '✓ Bateria Recarregável ou 110V/220V', '✓ Integração com Casa Inteligente'],
+      waMsg: 'Olá! Gostaria de automatizar minhas persianas e cortinas com controle remoto e Alexa.'
+    },
+    'jardim-biofilico': {
+      badge: 'Biofilia & Bem-Estar',
+      title: 'Integração Biofílica com a Natureza',
+      desc: 'A perfeita combinação entre a persiana rolô tela solar e o paisagismo externo traz a sensação calmante do verde para dentro do quarto, reduzindo o estresse e elevando a qualidade do repouso.',
+      features: ['✓ Conexão Visual com a Paisagem', '✓ Difusão Suave da Luz Solar', '✓ Bem-estar Físico e Mental'],
+      waMsg: 'Olá! Gostaria de consultar os especialistas da Célia Decor para um projeto em minha residência.'
+    }
+  };
+
   let currentActive = -1;
 
+  // =========================================================================
+  // GESTÃO DE ESTADO DO TOUR VIRTUAL & NAVEGAÇÃO ENTRE ÂNGULOS
+  // =========================================================================
   function scrollToSlide(idx) {
     idx = Math.max(0, Math.min(totalSlides - 1, idx));
     const sectionTop = section.offsetTop;
@@ -152,6 +280,9 @@ function initTransformationScroll() {
     targetIndex = Math.max(0, Math.min(totalSlides - 1, targetIndex));
     if (targetIndex === currentActive) return;
     currentActive = targetIndex;
+
+    // Fecha o drawer de hotspot ao mudar de ângulo
+    closeSpotDrawer();
 
     slides.forEach((slide, idx) => {
       if (idx === targetIndex) {
@@ -184,7 +315,7 @@ function initTransformationScroll() {
     if (activeDesc && slideMeta[targetIndex]) activeDesc.textContent = slideMeta[targetIndex].desc;
 
     if (cueLabel) {
-      cueLabel.textContent = `▼ Role com o mouse ou deslize o dedo para vivenciar as 5 mídias (${targetIndex + 1} de 5: ${slideMeta[targetIndex].title}) ▼`;
+      cueLabel.textContent = `▼ Role ou toque nos pontos interativos para conhecer a suíte por dentro (${targetIndex + 1} de 5: ${slideMeta[targetIndex].title}) ▼`;
     }
   }
 
@@ -201,7 +332,6 @@ function initTransformationScroll() {
     let progress = scrolled / scrollable;
     progress = Math.max(0, Math.min(0.9999, progress));
 
-    // Determina o slide ativo proporcionalmente ao progresso de rolagem
     const stepIndex = Math.floor(progress * totalSlides);
     setActiveSlide(stepIndex);
   }
@@ -210,7 +340,6 @@ function initTransformationScroll() {
   window.addEventListener('resize', onScroll, { passive: true });
   onScroll();
 
-  // Clique direto nas pílulas para saltar com transição suave
   pills.forEach((pill, idx) => {
     pill.addEventListener('click', (e) => {
       e.preventDefault();
@@ -218,7 +347,6 @@ function initTransformationScroll() {
     });
   });
 
-  // Botões de seta anterior e próximo
   const prevBtn = document.getElementById('transformPrevBtn');
   const nextBtn = document.getElementById('transformNextBtn');
 
@@ -236,40 +364,268 @@ function initTransformationScroll() {
     });
   }
 
-  // Suporte a gesto de palm/touch swipe no celular
-  const stack = document.getElementById('transformSlidesStack');
-  if (stack) {
-    let touchStartY = 0;
-    let touchStartX = 0;
+  // =========================================================================
+  // INTERATIVIDADE DOS HOTSPOTS (DRAWER DE INSPEÇÃO TÁTIL)
+  // =========================================================================
+  const spotDrawer = document.getElementById('tourSpotDrawer');
+  const spotClose = document.getElementById('tourSpotClose');
+  const spotBadge = document.getElementById('spotCardBadge');
+  const spotTitle = document.getElementById('spotCardTitle');
+  const spotDesc = document.getElementById('spotCardDesc');
+  const spotFeatures = document.getElementById('spotCardFeatures');
+  const spotWaBtn = document.getElementById('spotCardWaBtn');
 
-    stack.addEventListener('touchstart', (e) => {
+  function openSpotDrawer(spotKey, btnElement) {
+    const data = hotspotData[spotKey];
+    if (!data || !spotDrawer) return;
+
+    // Desmarca outros pins
+    section.querySelectorAll('.tour-hotspot').forEach(b => b.classList.remove('active'));
+    if (btnElement) btnElement.classList.add('active');
+
+    if (spotBadge) spotBadge.textContent = data.badge;
+    if (spotTitle) spotTitle.textContent = data.title;
+    if (spotDesc) spotDesc.textContent = data.desc;
+
+    if (spotFeatures) {
+      spotFeatures.innerHTML = data.features.map(f => `<span class="spot-feat-item">${f}</span>`).join('');
+    }
+
+    if (spotWaBtn) {
+      const phone = "5511963188104";
+      spotWaBtn.href = `https://wa.me/${phone}?text=${encodeURIComponent(data.waMsg)}`;
+    }
+
+    spotDrawer.classList.add('is-open');
+    spotDrawer.setAttribute('aria-hidden', 'false');
+  }
+
+  function closeSpotDrawer() {
+    if (!spotDrawer) return;
+    spotDrawer.classList.remove('is-open');
+    spotDrawer.setAttribute('aria-hidden', 'true');
+    section.querySelectorAll('.tour-hotspot').forEach(b => b.classList.remove('active'));
+  }
+
+  if (spotClose) {
+    spotClose.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeSpotDrawer();
+    });
+  }
+
+  // Event delegation nos hotspots
+  section.querySelectorAll('.tour-hotspot').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const spotKey = btn.dataset.spot;
+      if (btn.classList.contains('active')) {
+        closeSpotDrawer();
+      } else {
+        openSpotDrawer(spotKey, btn);
+      }
+    });
+  });
+
+  // =========================================================================
+  // SIMULADOR DE INCIDÊNCIA DE LUZ SOLAR & AMBIÊNCIA CÊNICA
+  // =========================================================================
+  const lightOverlay = document.getElementById('tourLightOverlay');
+  const spatialStage = document.getElementById('tourSpatialStage');
+  const lightButtons = section.querySelectorAll('.btn-light-mode');
+
+  lightButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      lightButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const mode = btn.dataset.light;
+      if (lightOverlay) {
+        lightOverlay.className = `tour-ambient-light-overlay mode-${mode}`;
+      }
+      if (spatialStage) {
+        spatialStage.classList.remove('mode-day', 'mode-filter', 'mode-warm');
+        spatialStage.classList.add(`mode-${mode}`);
+      }
+    });
+  });
+
+  // =========================================================================
+  // VISUALIZADOR ESPACIAL 3D: LOOK-AROUND (MOUSE MOVE & TOUCH PAN)
+  // =========================================================================
+  const stack = document.getElementById('transformSlidesStack');
+  let isZoomed = false;
+  let targetRotX = 0;
+  let targetRotY = 0;
+  let currentRotX = 0;
+  let currentRotY = 0;
+  let targetPanX = 0;
+  let targetPanY = 0;
+  let currentPanX = 0;
+  let currentPanY = 0;
+  let animFrameId = null;
+
+  function update3DTransform() {
+    currentRotX += (targetRotX - currentRotX) * 0.12;
+    currentRotY += (targetRotY - currentRotY) * 0.12;
+    currentPanX += (targetPanX - currentPanX) * 0.12;
+    currentPanY += (targetPanY - currentPanY) * 0.12;
+
+    const scale = isZoomed ? 1.35 : 1.0;
+    if (stack) {
+      stack.style.transform = `perspective(1000px) rotateX(${currentRotX.toFixed(2)}deg) rotateY(${currentRotY.toFixed(2)}deg) translate3d(${currentPanX.toFixed(1)}px, ${currentPanY.toFixed(1)}px, 0) scale(${scale})`;
+    }
+
+    if (Math.abs(targetRotX - currentRotX) > 0.01 || Math.abs(targetRotY - currentRotY) > 0.01 || Math.abs(targetPanX - currentPanX) > 0.1 || Math.abs(targetPanY - currentPanY) > 0.1) {
+      animFrameId = requestAnimationFrame(update3DTransform);
+    } else {
+      animFrameId = null;
+    }
+  }
+
+  function request3DUpdate() {
+    if (!animFrameId) {
+      animFrameId = requestAnimationFrame(update3DTransform);
+    }
+  }
+
+  if (spatialStage) {
+    // Efeito Panorâmico no Desktop via Movimento do Mouse
+    spatialStage.addEventListener('mousemove', (e) => {
+      const rect = spatialStage.getBoundingClientRect();
+      const normX = ((e.clientX - rect.left) / rect.width) - 0.5; // -0.5 a 0.5
+      const normY = ((e.clientY - rect.top) / rect.height) - 0.5;
+
+      targetRotY = normX * 8; // -4deg a +4deg
+      targetRotX = -normY * 6; // -3deg a +3deg
+
+      if (isZoomed) {
+        targetPanX = -normX * 90;
+        targetPanY = -normY * 60;
+      } else {
+        targetPanX = 0;
+        targetPanY = 0;
+      }
+
+      request3DUpdate();
+    });
+
+    spatialStage.addEventListener('mouseleave', () => {
+      targetRotX = 0;
+      targetRotY = 0;
+      targetPanX = 0;
+      targetPanY = 0;
+      request3DUpdate();
+    });
+
+    // Suporte a Touch Drag & Swipe no Smartphone
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let isDragging = false;
+
+    spatialStage.addEventListener('touchstart', (e) => {
       if (e.touches.length === 1) {
-        touchStartY = e.touches[0].clientY;
+        isDragging = true;
         touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
       }
     }, { passive: true });
 
-    stack.addEventListener('touchend', (e) => {
-      if (e.changedTouches.length === 1) {
-        const deltaY = e.changedTouches[0].clientY - touchStartY;
-        const deltaX = e.changedTouches[0].clientX - touchStartX;
+    spatialStage.addEventListener('touchmove', (e) => {
+      if (!isDragging || e.touches.length !== 1) return;
+      const deltaX = e.touches[0].clientX - touchStartX;
+      const deltaY = e.touches[0].clientY - touchStartY;
 
-        // Se for um deslize horizontal marcante
-        if (Math.abs(deltaX) > 40 && Math.abs(deltaX) > Math.abs(deltaY)) {
+      targetRotY = Math.max(-10, Math.min(10, deltaX * 0.08));
+      targetRotX = Math.max(-8, Math.min(8, -deltaY * 0.08));
+
+      if (isZoomed) {
+        targetPanX = Math.max(-80, Math.min(80, deltaX * 0.5));
+        targetPanY = Math.max(-60, Math.min(60, deltaY * 0.5));
+      }
+
+      request3DUpdate();
+    }, { passive: true });
+
+    spatialStage.addEventListener('touchend', (e) => {
+      isDragging = false;
+      if (e.changedTouches.length === 1) {
+        const deltaX = e.changedTouches[0].clientX - touchStartX;
+        const deltaY = e.changedTouches[0].clientY - touchStartY;
+
+        // Deslize horizontal para alternar ângulo
+        if (Math.abs(deltaX) > 45 && Math.abs(deltaX) > Math.abs(deltaY) * 1.2) {
           if (deltaX < 0) {
-            // Swipe esquerda -> Avançar
             scrollToSlide(currentActive + 1);
-          } else if (deltaX > 0) {
-            // Swipe direita -> Voltar
+          } else {
             scrollToSlide(currentActive - 1);
           }
         }
       }
-    }, { passive: true });
 
-    // Clique direto na imagem avança para a próxima
-    stack.addEventListener('click', () => {
-      scrollToSlide((currentActive + 1) % totalSlides);
+      // Restaura o alinhamento
+      targetRotX = 0;
+      targetRotY = 0;
+      targetPanX = 0;
+      targetPanY = 0;
+      request3DUpdate();
+    }, { passive: true });
+  }
+
+  // =========================================================================
+  // CONTROLES HUD: ZOOM E TELA CHEIA
+  // =========================================================================
+  const zoomBtn = document.getElementById('tourZoomBtn');
+  const fullscreenBtn = document.getElementById('tourFullscreenBtn');
+
+  if (zoomBtn) {
+    zoomBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      isZoomed = !isZoomed;
+      zoomBtn.classList.toggle('active', isZoomed);
+      const span = zoomBtn.querySelector('span');
+      if (span) span.textContent = isZoomed ? '1.0x' : 'Zoom';
+      if (!isZoomed) {
+        targetPanX = 0;
+        targetPanY = 0;
+      }
+      request3DUpdate();
+    });
+  }
+
+  if (fullscreenBtn) {
+    fullscreenBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const el = spatialStage || section;
+      if (!document.fullscreenElement) {
+        if (el.requestFullscreen) {
+          el.requestFullscreen();
+        } else if (el.webkitRequestFullscreen) {
+          el.webkitRequestFullscreen();
+        }
+        fullscreenBtn.classList.add('active');
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+        fullscreenBtn.classList.remove('active');
+      }
+    });
+
+    document.addEventListener('fullscreenchange', () => {
+      if (fullscreenBtn) {
+        fullscreenBtn.classList.toggle('active', !!document.fullscreenElement);
+      }
+    });
+  }
+
+  // Clicar fora de hotspots fecha o card de detalhes
+  if (spatialStage) {
+    spatialStage.addEventListener('click', (e) => {
+      if (!e.target.closest('.tour-hotspot') && !e.target.closest('.tour-spot-drawer') && !e.target.closest('.tour-camera-hud')) {
+        closeSpotDrawer();
+      }
     });
   }
 }
