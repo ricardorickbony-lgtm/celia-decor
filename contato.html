@@ -14,225 +14,199 @@
 
   <link rel="stylesheet" href="css/style.css">
   <style>
-    .contact-layout {
-      padding: 90px 0 110px 0;
-      background: var(--color-bg);
+    .contact-page-hero {
+      padding: 170px 0 70px 0;
+      background: var(--c-bg);
+      text-align: center;
     }
-    .contact-grid {
+    .contact-main-grid {
       display: grid;
-      grid-template-columns: 1fr 1.1fr;
+      grid-template-columns: 1fr 1.15fr;
       gap: 60px;
       align-items: flex-start;
+      margin-bottom: 80px;
     }
-    .contact-cards-stack {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-    .info-card {
-      background: var(--color-surface);
+    .info-card-box {
+      background: #FFFFFF;
       border-radius: var(--radius-md);
-      padding: 32px 28px;
+      padding: 34px 28px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
       border: 1px solid rgba(0,0,0,0.05);
-      box-shadow: var(--shadow-subtle);
+      margin-bottom: 24px;
     }
-    .info-card h4 {
-      font-size: 1.15rem;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .live-status-pill {
+    .status-live-tag {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 6px 14px;
+      padding: 8px 16px;
       border-radius: var(--radius-full);
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       font-weight: 600;
-      margin-top: 14px;
+      margin-top: 16px;
     }
-    .live-status-pill.open {
+    .status-live-tag.open {
       background: rgba(37, 211, 102, 0.12);
-      color: #178a40;
+      color: #167a3a;
     }
-    .live-status-pill.closed {
-      background: rgba(224, 169, 109, 0.15);
-      color: #9c6828;
+    .status-live-tag.closed {
+      background: rgba(197, 168, 128, 0.16);
+      color: #8c6734;
     }
-    .contact-form-card {
-      background: var(--color-surface);
+    .vip-form-box {
+      background: #FFFFFF;
       border-radius: var(--radius-lg);
-      padding: 40px;
+      padding: 44px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.06);
       border: 1px solid rgba(0,0,0,0.06);
-      box-shadow: var(--shadow-medium);
     }
-    .contact-form-card h3 {
-      margin-bottom: 8px;
-    }
-    .contact-form-card p {
-      font-size: 0.95rem;
-      margin-bottom: 28px;
-    }
-    .map-full-wrapper {
-      margin-top: 70px;
+    .full-map-shell {
       height: 480px;
       border-radius: var(--radius-md);
       overflow: hidden;
-      box-shadow: var(--shadow-medium);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.08);
       border: 1px solid rgba(0,0,0,0.06);
+      margin-bottom: 120px;
     }
-    .map-full-wrapper iframe {
+    .full-map-shell iframe {
       width: 100%;
       height: 100%;
       border: 0;
     }
     @media (max-width: 900px) {
-      .contact-grid { grid-template-columns: 1fr; }
-      .contact-form-card { padding: 24px; }
-      .map-full-wrapper { height: 350px; }
+      .contact-main-grid { grid-template-columns: 1fr; }
+      .vip-form-box { padding: 24px; }
+      .full-map-shell { height: 350px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Barra Superior Clean -->
-  <div class="top-announcement">
-    <div class="container">
-      <div>
-        <span>📍 Rua Edu Chaves, 15 – Jardim Bela Vista, Santo André • SP</span>
-      </div>
-      <div class="top-contact-links">
-        <a href="tel:1149785551">📞 (11) 4978-5551</a>
-        <a href="https://www.instagram.com/celiadecoroficial/" target="_blank" rel="noopener">📸 @celiadecoroficial</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Header Principal -->
-  <header class="main-header">
-    <div class="container header-inner">
-      <a href="index.html" class="brand-logo" aria-label="Célia Decor Home">
-        <img src="assets/images/logo-celia-decor.png" alt="Célia Decor">
-        <span class="brand-tagline">Santo André • Desde 1995</span>
+  <!-- Header Flutuante de Luxo -->
+  <header class="luxury-header theme-light">
+    <div class="container nav-shell">
+      <a href="index.html" class="brand-wrapper" aria-label="Célia Decor Home">
+        <img src="assets/images/logo-celia-decor-dark.png" alt="Célia Decor" class="brand-logo-img">
+        <span class="brand-tag">Santo André • Desde 1995</span>
       </a>
 
       <nav>
-        <ul class="nav-menu">
-          <li><a href="index.html" class="nav-link">Home</a></li>
-          <li><a href="sobre.html" class="nav-link">Sobre Nós & O Legado</a></li>
-          <li><a href="produtos.html" class="nav-link">Coleções</a></li>
-          <li><a href="automacao.html" class="nav-link">Automação</a></li>
-          <li><a href="arquitetos.html" class="nav-link">Espaço Arquitetos</a></li>
-          <li><a href="contato.html" class="nav-link active">Showroom & Contato</a></li>
+        <ul class="nav-links">
+          <li class="nav-item"><a href="index.html">Home</a></li>
+          <li class="nav-item"><a href="sobre.html">O Legado & Família</a></li>
+          <li class="nav-item"><a href="produtos.html">Coleções</a></li>
+          <li class="nav-item"><a href="automacao.html">Automação</a></li>
+          <li class="nav-item"><a href="arquitetos.html">Arquitetos</a></li>
+          <li class="nav-item"><a href="contato.html" class="active">Showroom</a></li>
         </ul>
       </nav>
 
-      <div class="header-actions">
-        <a href="contato.html" class="btn btn-primary">Agendar Consultoria</a>
-        <button class="mobile-toggle" aria-label="Abrir Menu">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <a href="contato.html" class="nav-cta-btn">Agendar Consultoria VIP</a>
+        <button class="menu-burger" aria-label="Menu Mobile">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- Cabeçalho da Página -->
-  <div class="page-hero">
+  <!-- Cabeçalho -->
+  <section class="contact-page-hero">
     <div class="container">
-      <span class="subtitle-tag">Atendimento Exclusivo</span>
-      <h1>Showroom & Agendamento VIP</h1>
-      <p>Esperamos por você para um café em nosso showroom no Jardim Bela Vista ou agendamos uma visita com medição técnica diretamente na sua residência.</p>
+      <span class="tag-label">Santo André • Jardim Bela Vista</span>
+      <h1>Showroom & Atendimento VIP</h1>
+      <p style="max-width: 680px; margin: 0 auto;">Venha nos visitar para tocar nas tramas dos tecidos ou agende uma medição técnica diretamente na sua residência.</p>
     </div>
-  </div>
+  </section>
 
-  <!-- Layout de Contato & Formulário -->
-  <section class="contact-layout">
+  <!-- Conteúdo de Contato -->
+  <section style="background: var(--c-bg);">
     <div class="container">
-      <div class="contact-grid">
+      <div class="contact-main-grid">
         
         <!-- Cartões de Informações -->
-        <div class="contact-cards-stack">
-          <div class="info-card">
-            <h4>📍 Localização Privilegiada</h4>
-            <p><strong>Casa Célia Decor</strong><br>
-            Rua Edu Chaves, 15 – Jardim Bela Vista<br>
-            Santo André – SP | CEP: 09041-100</p>
-            <p style="margin-top: 8px; font-size: 0.88rem; color: var(--color-gold-dark);">✓ Estacionamento próprio e fácil acesso no bairro.</p>
+        <div>
+          <div class="info-card-box">
+            <h4 style="font-size: 1.25rem; margin-bottom: 12px;">📍 Casa Célia Decor</h4>
+            <p><strong>Rua Edu Chaves, 15 – Jardim Bela Vista</strong><br>Santo André – SP • CEP: 09041-100</p>
+            <p style="margin-top: 10px; font-size: 0.88rem; color: var(--c-gold-dark);">✓ Estacionamento privativo para clientes no local.</p>
             
-            <div style="margin-top: 18px; display: flex; gap: 12px;">
-              <a href="https://maps.google.com/?q=Rua+Edu+Chaves,+15,+Jardim+Bela+Vista,+Santo+Andr%C3%A9" target="_blank" rel="noopener" class="btn btn-outline" style="padding: 8px 16px; font-size: 0.8rem;">Abrir no Google Maps</a>
-              <a href="https://waze.com/ul?q=Rua+Edu+Chaves,+15,+Santo+Andr%C3%A9" target="_blank" rel="noopener" class="btn btn-outline" style="padding: 8px 16px; font-size: 0.8rem;">Abrir no Waze</a>
+            <div style="margin-top: 20px; display: flex; gap: 12px; flex-wrap: wrap;">
+              <a href="https://maps.google.com/?q=Rua+Edu+Chaves,+15,+Jardim+Bela+Vista,+Santo+Andr%C3%A9" target="_blank" rel="noopener" class="nav-cta-btn" style="background: var(--c-dark); color: #FFF; font-size: 0.78rem; padding: 10px 18px;">Google Maps</a>
+              <a href="https://waze.com/ul?q=Rua+Edu+Chaves,+15,+Santo+Andr%C3%A9" target="_blank" rel="noopener" class="nav-cta-btn" style="background: transparent; color: var(--c-dark); border-color: var(--c-dark); font-size: 0.78rem; padding: 10px 18px;">Abrir Waze</a>
             </div>
           </div>
 
-          <div class="info-card">
-            <h4>⏰ Horário de Funcionamento</h4>
+          <div class="info-card-box">
+            <h4 style="font-size: 1.25rem; margin-bottom: 12px;">⏰ Horários de Atendimento</h4>
             <p><strong>Segunda a Sexta-feira:</strong> 08:30 às 17:30<br>
-            <strong>Sábado:</strong> 09:00 às 13:00<br>
+            <strong>Sábados:</strong> 09:00 às 13:00<br>
             <strong>Domingos e Feriados:</strong> Fechado</p>
-            
-            <div id="livePill" class="live-status-pill open">
-              <span class="status-dot pulse"></span>
-              <span id="livePillText">Consultando expediente...</span>
+
+            <div id="contactStatusTag" class="status-live-tag open">
+              <span class="wa-pulse-dot" style="background: currentColor;"></span>
+              <span id="contactStatusLabel">Consultando horário...</span>
             </div>
           </div>
 
-          <div class="info-card">
-            <h4>📞 Telefones & WhatsApp Direto</h4>
-            <p><strong>Fixo Showroom:</strong> <a href="tel:1149785551" style="color: var(--color-text-main); font-weight: 500;">(11) 4978-5551</a><br>
-            <strong>WhatsApp Atendimento:</strong> <a href="https://wa.me/5511963188104" target="_blank" style="color: #25D366; font-weight: 600;">(11) 96318-8104</a><br>
+          <div class="info-card-box">
+            <h4 style="font-size: 1.25rem; margin-bottom: 12px;">📞 Linhas Diretas</h4>
+            <p><strong>Telefone Fixo:</strong> <a href="tel:1149785551" style="color: var(--c-text-main); font-weight: 600;">(11) 4978-5551</a><br>
+            <strong>WhatsApp VIP:</strong> <a href="https://wa.me/5511963188104" target="_blank" style="color: #25D366; font-weight: 700;">(11) 96318-8104</a><br>
             <strong>E-mail Institucional:</strong> contato@celiadecor.com.br</p>
           </div>
         </div>
 
-        <!-- Formulário de Agendamento VIP -->
-        <div class="contact-form-card">
-          <span class="subtitle-tag">Consultoria Personalizada</span>
-          <h3>Solicite Contato ou Medição Técnica</h3>
-          <p>Preencha os dados e nosso especialista entrará em contato em minutos durante o horário comercial.</p>
+        <!-- Formulário VIP -->
+        <div class="vip-form-box">
+          <span class="tag-label">Agendamento de Visita</span>
+          <h2 style="font-size: 1.9rem; margin-bottom: 10px;">Solicite uma Consultoria</h2>
+          <p style="font-size: 0.95rem; margin-bottom: 28px;">Preencha os dados abaixo para receber atendimento prioritário da nossa equipe.</p>
 
-          <form onsubmit="handleContactSubmit(event)">
+          <form onsubmit="handleClientForm(event)">
             <div style="margin-bottom: 18px;">
-              <label style="display: block; font-size: 0.86rem; font-weight: 600; margin-bottom: 6px;">Seu Nome Completo *</label>
-              <input type="text" id="cliNome" class="form-control" placeholder="Como podemos te chamar?" required>
+              <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px;">Seu Nome Completo *</label>
+              <input type="text" id="cliName" class="form-input-clean" placeholder="Como podemos te chamar?" required>
             </div>
 
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 18px;">
               <div>
-                <label style="display: block; font-size: 0.86rem; font-weight: 600; margin-bottom: 6px;">WhatsApp *</label>
-                <input type="tel" id="cliTelefone" class="form-control" placeholder="(11) 99999-9999" required>
+                <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px;">WhatsApp *</label>
+                <input type="tel" id="cliPhone" class="form-input-clean" placeholder="(11) 99999-9999" required>
               </div>
               <div>
-                <label style="display: block; font-size: 0.86rem; font-weight: 600; margin-bottom: 6px;">Bairro / Cidade *</label>
-                <input type="text" id="cliCidade" class="form-control" placeholder="Ex: Bela Vista, Santo André" required>
+                <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px;">Bairro / Cidade *</label>
+                <input type="text" id="cliCity" class="form-input-clean" placeholder="Ex: Bela Vista, Santo André" required>
               </div>
             </div>
 
             <div style="margin-bottom: 18px;">
-              <label style="display: block; font-size: 0.86rem; font-weight: 600; margin-bottom: 6px;">Interesse Principal</label>
-              <select id="cliInteresse" class="form-control">
-                <option value="Cortinas sob Medida">Cortinas sob Medida</option>
+              <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px;">Interesse Principal</label>
+              <select id="cliType" class="form-input-clean">
+                <option value="Cortinas sob Medida">Cortinas sob Medida & Linhos</option>
                 <option value="Persianas Motorizadas">Persianas Motorizadas / Automação</option>
                 <option value="Papéis de Parede">Papéis de Parede Importados</option>
-                <option value="Tapetes e Cabeceiras">Tapetes sob Medida / Cabeceiras</option>
-                <option value="Projeto de Decoração Completo">Projeto de Decoração Completo</option>
+                <option value="Tapetes e Estofados">Tapetes sob Medida / Cabeceiras</option>
+                <option value="Projeto de Decoração Completo">Projeto Completo de Decoração</option>
               </select>
             </div>
 
             <div style="margin-bottom: 24px;">
-              <label style="display: block; font-size: 0.86rem; font-weight: 600; margin-bottom: 6px;">Mensagem ou Preferência de Data/Horário</label>
-              <textarea id="cliMensagem" class="form-control" rows="3" placeholder="Gostaria de agendar para sábado às 10h / apartamento novo..."></textarea>
+              <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px;">Mensagem ou Preferência de Horário</label>
+              <textarea id="cliNotes" class="form-input-clean" rows="3" placeholder="Gostaria de agendar medição no meu apartamento..."></textarea>
             </div>
 
-            <button type="submit" class="btn btn-gold" style="width: 100%;">Enviar Mensagem para Consultoria VIP</button>
+            <button type="submit" class="nav-cta-btn" style="background: var(--c-gold); color: #121316; width: 100%; justify-content: center; padding: 16px;">Enviar pelo WhatsApp VIP</button>
           </form>
         </div>
+
       </div>
 
-      <!-- Mapa Amplo Google Maps -->
-      <div class="map-full-wrapper">
+      <!-- Mapa Amplo -->
+      <div class="full-map-shell">
         <iframe 
           src="https://maps.google.com/maps?q=Rua%20Edu%20Chaves,%2015,%20Jardim%20Bela%20Vista,%20Santo%20Andr%C3%A9%20SP&t=m&z=16&output=embed&iwloc=near" 
           title="Mapa Completo Showroom Célia Decor Santo André"
@@ -242,94 +216,86 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="site-footer">
+  <!-- Rodapé Master -->
+  <footer class="site-master-footer">
     <div class="container">
-      <div class="footer-top">
-        <div class="footer-col">
+      <div class="footer-columns-grid">
+        <div class="footer-col-block">
           <h5>Célia Decor</h5>
-          <p>Há 30 anos transformando ambientes com excelência, alfaiataria fina de tecidos, persianas motorizadas e decoração sob medida para lares e escritórios exclusivos.</p>
+          <p>Há 30 anos transformando ambientes com excelência, alfaiataria fina de tecidos, persianas motorizadas e decoração sob medida para lares e escritórios exclusivos no ABC Paulista e Grande São Paulo.</p>
         </div>
 
-        <div class="footer-col">
+        <div class="footer-col-block">
           <h5>Navegação</h5>
-          <ul class="footer-links">
+          <ul class="footer-nav-list">
             <li><a href="index.html">Home</a></li>
-            <li><a href="sobre.html">Sobre Nós & Legado</a></li>
-            <li><a href="produtos.html">Coleções & Produtos</a></li>
+            <li><a href="sobre.html">O Legado & Família</a></li>
+            <li><a href="produtos.html">Coleções</a></li>
             <li><a href="automacao.html">Automação Residencial</a></li>
             <li><a href="arquitetos.html">Espaço Arquitetos</a></li>
             <li><a href="contato.html">Showroom & Contato</a></li>
           </ul>
         </div>
 
-        <div class="footer-col">
-          <h5>Contato Direto</h5>
-          <p>Rua Edu Chaves, 15 – Jardim Bela Vista, Santo André – SP<br>
-          Tel: (11) 4978-5551<br>
-          WhatsApp: (11) 96318-8104<br>
-          contato@celiadecor.com.br</p>
+        <div class="footer-col-block">
+          <h5>Showroom Boutique</h5>
+          <p>Rua Edu Chaves, 15<br>Jardim Bela Vista, Santo André – SP<br>Tel: (11) 4978-5551<br>WhatsApp: (11) 96318-8104</p>
         </div>
 
-        <div class="footer-col">
+        <div class="footer-col-block">
           <h5>Horários</h5>
-          <p>Segunda a Sexta: 08:30 às 17:30<br>
-          Sábados: 09:00 às 13:00</p>
+          <p>Segunda a Sexta: 08:30 às 17:30<br>Sábados: 09:00 às 13:00</p>
         </div>
       </div>
 
-      <div class="footer-bottom">
-        <div>
-          <span>© 2026 CÉLIA DECOR BOUTIQUE LTDA — CNPJ: 04.990.930/0001-90.</span>
-        </div>
-        <div>
-          <a href="#">Privacidade & Termos</a>
-        </div>
+      <div class="footer-sub-bottom">
+        <div><span>© 2026 CÉLIA DECOR BOUTIQUE LTDA — CNPJ: 04.990.930/0001-90.</span></div>
+        <div><span>Santo André, SP • Brasil</span></div>
       </div>
     </div>
   </footer>
 
   <!-- Smart WhatsApp -->
-  <div class="smart-whatsapp-container"></div>
+  <div class="smart-wa-bubble"></div>
 
   <script src="js/main.js"></script>
   <script>
-    // Atualiza status do pill de horário na página de contato
+    // Status do Showroom ao Vivo
     document.addEventListener('DOMContentLoaded', () => {
-      const pill = document.getElementById('livePill');
-      const text = document.getElementById('livePillText');
-      if (!pill || !text) return;
+      const tag = document.getElementById('contactStatusTag');
+      const label = document.getElementById('contactStatusLabel');
+      if (!tag || !label) return;
 
       const now = new Date();
       const day = now.getDay();
-      const current = now.getHours() + (now.getMinutes() / 60);
+      const cur = now.getHours() + (now.getMinutes() / 60);
 
-      let open = false;
-      if (day >= 1 && day <= 5 && current >= 8.5 && current < 17.5) {
-        open = true;
-      } else if (day === 6 && current >= 9.0 && current < 13.0) {
-        open = true;
+      let isOpen = false;
+      if (day >= 1 && day <= 5 && cur >= 8.5 && cur < 17.5) {
+        isOpen = true;
+      } else if (day === 6 && cur >= 9.0 && cur < 13.0) {
+        isOpen = true;
       }
 
-      if (open) {
-        pill.className = 'live-status-pill open';
-        text.textContent = 'Aberto agora • Atendimento presencial no showroom';
+      if (isOpen) {
+        tag.className = 'status-live-tag open';
+        label.textContent = 'Aberto agora • Atendimento presencial no showroom';
       } else {
-        pill.className = 'live-status-pill closed';
-        text.textContent = 'Fechado no momento • Responderemos no início do próximo expediente';
+        tag.className = 'status-live-tag closed';
+        label.textContent = 'Fechado no momento • Responderemos no próximo expediente';
       }
     });
 
-    function handleContactSubmit(e) {
+    function handleClientForm(e) {
       e.preventDefault();
-      const nome = document.getElementById('cliNome').value;
-      const tel = document.getElementById('cliTelefone').value;
-      const cidade = document.getElementById('cliCidade').value;
-      const interesse = document.getElementById('cliInteresse').value;
-      const msg = document.getElementById('cliMensagem').value;
+      const name = document.getElementById('cliName').value;
+      const phone = document.getElementById('cliPhone').value;
+      const city = document.getElementById('cliCity').value;
+      const type = document.getElementById('cliType').value;
+      const notes = document.getElementById('cliNotes').value;
 
-      const texto = `Olá! Meu nome é ${nome} (${tel}), moro em ${cidade}. Gostaria de informações ou agendamento para: ${interesse}. Mensagem: ${msg}`;
-      const url = `https://wa.me/5511963188104?text=${encodeURIComponent(texto)}`;
+      const text = `Olá! Meu nome é ${name} (${phone}), de ${city}. Gostaria de atendimento/agendamento sobre: ${type}. Detalhes: ${notes}`;
+      const url = `https://wa.me/5511963188104?text=${encodeURIComponent(text)}`;
       window.open(url, '_blank');
     }
   </script>

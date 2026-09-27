@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Automação Residencial & Cortinas Inteligentes — Célia Decor Santo André</title>
+  <title>Automação & Cortinas Inteligentes — Célia Decor Santo André</title>
   <meta name="description" content="Motorização silenciosa de cortinas e persianas, integração com Alexa, Apple HomeKit e Google Home. Conforto térmico e sofisticação no ABC Paulista.">
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
 
@@ -14,327 +14,262 @@
 
   <link rel="stylesheet" href="css/style.css">
   <style>
-    /* Simulador de Automação Visual */
-    .auto-interactive-showcase {
-      padding: 90px 0;
-      background: #141618;
+    .auto-hero {
+      padding: 170px 0 70px 0;
+      background: var(--c-bg);
+      text-align: center;
+    }
+    .auto-stage-wrapper {
+      padding: 80px 0 120px 0;
+      background: #0E0F11;
       color: #FFFFFF;
     }
-    .auto-box {
-      max-width: 1020px;
+    .auto-sim-box {
+      max-width: 1040px;
       margin: 0 auto;
-      background: #1D1F23;
+      background: #181A1E;
       border-radius: var(--radius-lg);
       padding: 44px;
       border: 1px solid rgba(255,255,255,0.08);
-      box-shadow: var(--shadow-elevated);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5);
     }
-    .window-stage {
+    .window-viewport {
       position: relative;
       height: 480px;
       border-radius: var(--radius-md);
       overflow: hidden;
       background: url('assets/images/hero-luxury-living.jpg') center/cover no-repeat;
-      display: flex;
     }
-    .curtain-panel {
+    .motor-curtain {
       position: absolute;
       top: 0;
       bottom: 0;
-      width: 50%;
-      background: linear-gradient(90deg, #D5CEBE 0%, #B8B0A0 25%, #E8E2D5 50%, #C9C2B3 75%, #B8B0A0 100%);
-      background-size: 40px 100%;
-      box-shadow: inset 0 0 40px rgba(0,0,0,0.3);
+      width: 50.5%;
+      background: linear-gradient(90deg, #D0C9BA 0%, #B2A997 30%, #E2DDD2 60%, #B8B0A0 100%);
+      background-size: 50px 100%;
+      box-shadow: inset 0 0 50px rgba(0,0,0,0.3);
       transition: transform 0.15s ease-out;
       z-index: 2;
     }
-    .curtain-panel.left {
+    .motor-curtain.left {
       left: 0;
-      transform-origin: left center;
     }
-    .curtain-panel.right {
+    .motor-curtain.right {
       right: 0;
-      transform-origin: right center;
     }
-    .light-overlay-stage {
+    .sunlight-beam {
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 50% 50%, rgba(255, 245, 220, 0.4) 0%, rgba(255, 230, 180, 0.1) 60%, transparent 100%);
+      background: radial-gradient(circle at 50% 50%, rgba(255, 245, 220, 0.45) 0%, transparent 80%);
       pointer-events: none;
       z-index: 1;
-      opacity: 0.2;
+      opacity: 0.1;
       transition: opacity 0.2s ease;
     }
-    .auto-controls-bar {
-      margin-top: 36px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-    .slider-header-info {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .slider-header-info h4 {
-      color: #FFFFFF;
-      font-size: 1.15rem;
-    }
-    .slider-header-info span {
-      font-family: var(--font-serif);
-      font-size: 1.5rem;
-      color: var(--color-gold);
-    }
-    .auto-range-input {
-      width: 100%;
-      height: 8px;
-      border-radius: 4px;
-      background: #33363D;
-      outline: none;
-      -webkit-appearance: none;
-      cursor: pointer;
-    }
-    .auto-range-input::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      width: 26px;
-      height: 26px;
-      border-radius: 50%;
-      background: var(--color-gold);
-      border: 3px solid #FFFFFF;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-      cursor: pointer;
-    }
-    .assistant-badges {
+    .smart-voice-tags {
       display: flex;
       gap: 16px;
       flex-wrap: wrap;
-      margin-top: 24px;
+      margin-top: 28px;
       padding-top: 24px;
       border-top: 1px solid rgba(255,255,255,0.08);
     }
-    .assistant-tag {
+    .voice-tag {
       background: rgba(255,255,255,0.06);
       border: 1px solid rgba(255,255,255,0.12);
-      padding: 8px 18px;
+      padding: 10px 20px;
       border-radius: var(--radius-full);
-      font-size: 0.82rem;
-      color: #DDD;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    
-    /* Vantagens da Automação */
-    .benefits-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-      margin: 70px 0;
-    }
-    .benefit-card {
-      background: var(--color-surface);
-      border-radius: var(--radius-md);
-      padding: 36px 28px;
-      border: 1px solid rgba(0,0,0,0.05);
-      box-shadow: var(--shadow-subtle);
-    }
-    .benefit-card h4 {
-      font-family: var(--font-serif);
-      font-size: 1.4rem;
-      margin: 14px 0 10px 0;
-    }
-    .benefit-icon {
-      font-size: 2rem;
+      font-size: 0.85rem;
+      color: #D6D8E0;
     }
     @media (max-width: 900px) {
-      .benefits-grid { grid-template-columns: 1fr; }
-      .window-stage { height: 320px; }
-      .auto-box { padding: 24px; }
+      .window-viewport { height: 320px; }
+      .auto-sim-box { padding: 24px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Barra Superior Clean -->
-  <div class="top-announcement">
-    <div class="container">
-      <div>
-        <span>📍 Rua Edu Chaves, 15 – Jardim Bela Vista, Santo André • SP</span>
-      </div>
-      <div class="top-contact-links">
-        <a href="tel:1149785551">📞 (11) 4978-5551</a>
-        <a href="https://www.instagram.com/celiadecoroficial/" target="_blank" rel="noopener">📸 @celiadecoroficial</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Header Principal -->
-  <header class="main-header">
-    <div class="container header-inner">
-      <a href="index.html" class="brand-logo" aria-label="Célia Decor Home">
-        <img src="assets/images/logo-celia-decor.png" alt="Célia Decor">
-        <span class="brand-tagline">Santo André • Desde 1995</span>
+  <!-- Header Flutuante de Luxo -->
+  <header class="luxury-header theme-light">
+    <div class="container nav-shell">
+      <a href="index.html" class="brand-wrapper" aria-label="Célia Decor Home">
+        <img src="assets/images/logo-celia-decor-dark.png" alt="Célia Decor" class="brand-logo-img">
+        <span class="brand-tag">Santo André • Desde 1995</span>
       </a>
 
       <nav>
-        <ul class="nav-menu">
-          <li><a href="index.html" class="nav-link">Home</a></li>
-          <li><a href="sobre.html" class="nav-link">Sobre Nós & O Legado</a></li>
-          <li><a href="produtos.html" class="nav-link">Coleções</a></li>
-          <li><a href="automacao.html" class="nav-link active">Automação</a></li>
-          <li><a href="arquitetos.html" class="nav-link">Espaço Arquitetos</a></li>
-          <li><a href="contato.html" class="nav-link">Showroom & Contato</a></li>
+        <ul class="nav-links">
+          <li class="nav-item"><a href="index.html">Home</a></li>
+          <li class="nav-item"><a href="sobre.html">O Legado & Família</a></li>
+          <li class="nav-item"><a href="produtos.html">Coleções</a></li>
+          <li class="nav-item"><a href="automacao.html" class="active">Automação</a></li>
+          <li class="nav-item"><a href="arquitetos.html">Arquitetos</a></li>
+          <li class="nav-item"><a href="contato.html">Showroom</a></li>
         </ul>
       </nav>
 
-      <div class="header-actions">
-        <a href="contato.html" class="btn btn-primary">Agendar Consultoria</a>
-        <button class="mobile-toggle" aria-label="Abrir Menu">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <a href="contato.html" class="nav-cta-btn">Agendar Consultoria VIP</a>
+        <button class="menu-burger" aria-label="Menu Mobile">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- Cabeçalho da Página -->
-  <div class="page-hero">
+  <!-- Cabeçalho -->
+  <section class="auto-hero">
     <div class="container">
-      <span class="subtitle-tag">Tecnologia Silenciosa</span>
+      <span class="tag-label">Tecnologia Silenciosa</span>
       <h1>Automação Residencial & Cortinas Inteligentes</h1>
-      <p>O encontro perfeito entre a alta costura têxtil e a vanguarda tecnológica. Controle luminosidade, privacidade e conforto com um simples toque ou comando de voz.</p>
+      <p style="max-width: 700px; margin: 0 auto;">Motores ultra silenciosos de padrão internacional integrados ao seu smartphone e assistentes de voz para controle absoluto de luz e temperatura.</p>
     </div>
-  </div>
+  </section>
 
-  <!-- Simulador de Automação Visual Interativo -->
-  <section class="auto-interactive-showcase">
+  <!-- Simulador de Automação ao Vivo -->
+  <section class="auto-stage-wrapper">
     <div class="container">
-      <div class="section-header-center">
-        <span class="subtitle-tag" style="color: var(--color-gold-light);">Interatividade ao Vivo</span>
-        <h2 style="color: #FFFFFF;">Simulador de Acionamento Motorizado</h2>
-        <p style="color: #A6A9B2;">Arraste o controle abaixo para simular o movimento das cortinas motorizadas e a entrada da luz natural.</p>
+      <div class="center-title-block">
+        <span class="tag-label" style="color: var(--c-gold-light);">Controle Interativo</span>
+        <h2 style="color: #FFFFFF;">Simule a Abertura Motorizada</h2>
+        <p style="color: #A9ACB4;">Arraste o controle abaixo para simular a abertura das cortinas e a entrada de luz solar.</p>
       </div>
 
-      <div class="auto-box">
-        <div class="window-stage">
-          <div class="curtain-panel left" id="autoCurtainLeft"></div>
-          <div class="curtain-panel right" id="autoCurtainRight"></div>
-          <div class="light-overlay-stage" id="autoLightOverlay"></div>
+      <div class="auto-sim-box">
+        <div class="window-viewport">
+          <div class="motor-curtain left" id="curtainLeft"></div>
+          <div class="motor-curtain right" id="curtainRight"></div>
+          <div class="sunlight-beam" id="sunBeam"></div>
         </div>
 
-        <div class="auto-controls-bar">
-          <div class="slider-header-info">
-            <h4>Posição da Cortina Motorizada</h4>
-            <span id="autoPercent">0% (Fechada)</span>
+        <div style="margin-top: 36px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+            <h4 style="color: #FFFFFF; font-size: 1.15rem;">Abertura das Cortinas</h4>
+            <span id="percentBadge" style="font-family: var(--font-serif); font-size: 1.6rem; color: var(--c-gold);">0% (Fechada)</span>
           </div>
 
-          <input type="range" min="0" max="100" value="0" class="auto-range-input" id="autoSlider" aria-label="Controle de Abertura da Cortina">
+          <input type="range" min="0" max="100" value="0" class="slider-custom" id="curtainSlider" style="height: 10px;" aria-label="Slider de Automação">
 
-          <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: #888;">
+          <div style="display: flex; justify-content: space-between; font-size: 0.82rem; color: #888; margin-top: 10px;">
             <span>0% — Total Privacidade / Blackout</span>
-            <span>50% — Meia Luz Acolhedora</span>
-            <span>100% — Vista Panorâmica & Luz Plena</span>
+            <span>50% — Luz Difusa Aconchegante</span>
+            <span>100% — Vista Panorâmica & Sol Pleno</span>
           </div>
 
-          <div class="assistant-badges">
-            <span class="assistant-tag">🗣️ “Alexa, abrir cortina da sala”</span>
-            <span class="assistant-tag">🍎 “E aí Siri, preparar modo cinema”</span>
-            <span class="assistant-tag">🌐 “Ok Google, bom dia”</span>
-            <span class="assistant-tag">📱 App no Celular ou Interruptor Touch</span>
+          <div class="smart-voice-tags">
+            <span class="voice-tag">🗣️ “Alexa, abrir cortinas da sala”</span>
+            <span class="voice-tag">🍎 “E aí Siri, preparar modo cinema”</span>
+            <span class="voice-tag">🌐 “Ok Google, bom dia”</span>
+            <span class="voice-tag">📱 App no Celular & Interruptor Touch</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Vantagens da Motorização Célia Decor -->
-  <section style="padding: 100px 0; background: var(--color-bg);">
+  <!-- Vantagens da Automação -->
+  <section style="padding: 120px 0; background: var(--c-bg);">
     <div class="container">
-      <div class="section-header-center">
-        <span class="subtitle-tag">Benefícios Exclusivos</span>
-        <h2>Por que Motorizar com a Célia Decor?</h2>
-        <p>Mais do que comodidade: eficiência energética, valorização do imóvel e preservação do mobiliário.</p>
+      <div class="center-title-block">
+        <span class="tag-label">Vantagens Reais</span>
+        <h2>Engenharia de Conforto para Sua Casa</h2>
       </div>
 
-      <div class="benefits-grid">
-        <div class="benefit-card">
-          <span class="benefit-icon">🔇</span>
-          <h4>Silêncio Ultra (<35dB)</h4>
-          <p>Motores de padrão internacional com rolamentos suíços que operam em silêncio quase absoluto, imperceptível aos ouvidos.</p>
+      <div class="collection-tri-grid">
+        <div class="showcase-card" style="padding: 40px 30px;">
+          <h3 style="margin-bottom: 12px; font-size: 1.5rem;">Silêncio Ultra (<35dB)</h3>
+          <p>Motores europeus com rolamentos de precisão que operam em silêncio absoluto, ideal para quartos de casal e bebês.</p>
         </div>
 
-        <div class="benefit-card">
-          <span class="benefit-icon">☀️</span>
-          <h4>Proteção Solar & UV</h4>
-          <p>Cenários automáticos que fecham as cortinas nos horários de maior insolação, preservando pisos de madeira, sofás e obras de arte.</p>
+        <div class="showcase-card" style="padding: 40px 30px;">
+          <h3 style="margin-bottom: 12px; font-size: 1.5rem;">Proteção UV & Solar</h3>
+          <p>Cenários automatizados que fecham as cortinas nas horas de pico de calor, protegendo pisos de madeira, sofás e obras de arte.</p>
         </div>
 
-        <div class="benefit-card">
-          <span class="benefit-icon">🌡️</span>
-          <h4>Conforto Térmico</h4>
-          <p>Redução de até 4°C no aquecimento interno das salas envidraçadas, diminuindo consideravelmente o consumo de ar-condicionado.</p>
+        <div class="showcase-card" style="padding: 40px 30px;">
+          <h3 style="margin-bottom: 12px; font-size: 1.5rem;">Eficiência Térmica</h3>
+          <p>Redução de até 4°C na temperatura interna do ambiente envidraçado, com grande economia no consumo de ar-condicionado.</p>
         </div>
       </div>
 
-      <!-- CTA Orçamento -->
-      <div style="background: var(--color-surface); border-radius: var(--radius-md); padding: 48px; text-align: center; border: 1px solid rgba(0,0,0,0.06); box-shadow: var(--shadow-medium);">
-        <h3 style="margin-bottom: 12px;">Quer planejar a automação da sua casa ou projeto?</h3>
-        <p style="max-width: 600px; margin: 0 auto 28px auto;">Nossa equipe técnica vai até o local no Grande ABC ou São Paulo para avaliar pontos de energia, cortineiros e indicar o motor perfeito.</p>
-        <a href="https://wa.me/5511963188104?text=Ol%C3%A1!%20Gostaria%20de%20uma%20avalia%C3%A7%C3%A3o%20t%C3%A9cnica%20de%20automa%C3%A7%C3%A3o%20residencial." target="_blank" class="btn btn-gold">Falar com Consultor de Automação</a>
+      <div style="text-align: center; margin-top: 60px;">
+        <a href="https://wa.me/5511963188104?text=Ol%C3%A1!%20Gostaria%20de%20um%20projeto%20de%20automa%C3%A7%C3%A3o%20de%20cortinas." target="_blank" class="nav-cta-btn" style="background: var(--c-dark); color: #FFF; padding: 16px 36px;">Agendar Avaliação Técnica no Local</a>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="site-footer">
+  <!-- Rodapé Master -->
+  <footer class="site-master-footer">
     <div class="container">
-      <div class="footer-top">
-        <div class="footer-col">
+      <div class="footer-columns-grid">
+        <div class="footer-col-block">
           <h5>Célia Decor</h5>
-          <p>Há 30 anos transformando ambientes com excelência, alfaiataria fina de tecidos, persianas motorizadas e decoração sob medida para lares e escritórios exclusivos.</p>
+          <p>Há 30 anos transformando ambientes com excelência, alfaiataria fina de tecidos, persianas motorizadas e decoração sob medida para lares e escritórios exclusivos no ABC Paulista e Grande São Paulo.</p>
         </div>
 
-        <div class="footer-col">
+        <div class="footer-col-block">
           <h5>Navegação</h5>
-          <ul class="footer-links">
+          <ul class="footer-nav-list">
             <li><a href="index.html">Home</a></li>
-            <li><a href="sobre.html">Sobre Nós & Legado</a></li>
-            <li><a href="produtos.html">Coleções & Produtos</a></li>
+            <li><a href="sobre.html">O Legado & Família</a></li>
+            <li><a href="produtos.html">Coleções</a></li>
             <li><a href="automacao.html">Automação Residencial</a></li>
             <li><a href="arquitetos.html">Espaço Arquitetos</a></li>
             <li><a href="contato.html">Showroom & Contato</a></li>
           </ul>
         </div>
 
-        <div class="footer-col">
-          <h5>Showroom Oficial</h5>
-          <p>Rua Edu Chaves, 15 – Jardim Bela Vista, Santo André – SP<br>
-          Tel: (11) 4978-5551<br>
-          WhatsApp: (11) 96318-8104<br>
-          contato@celiadecor.com.br</p>
+        <div class="footer-col-block">
+          <h5>Showroom Boutique</h5>
+          <p>Rua Edu Chaves, 15<br>Jardim Bela Vista, Santo André – SP<br>Tel: (11) 4978-5551<br>WhatsApp: (11) 96318-8104</p>
         </div>
 
-        <div class="footer-col">
+        <div class="footer-col-block">
           <h5>Horários</h5>
-          <p>Segunda a Sexta: 08:30 às 17:30<br>
-          Sábados: 09:00 às 13:00</p>
+          <p>Segunda a Sexta: 08:30 às 17:30<br>Sábados: 09:00 às 13:00</p>
         </div>
       </div>
 
-      <div class="footer-bottom">
-        <div>
-          <span>© 2026 CÉLIA DECOR BOUTIQUE LTDA — CNPJ: 04.990.930/0001-90.</span>
-        </div>
-        <div>
-          <a href="contato.html">Automação Residencial em Santo André</a>
-        </div>
+      <div class="footer-sub-bottom">
+        <div><span>© 2026 CÉLIA DECOR BOUTIQUE LTDA — CNPJ: 04.990.930/0001-90.</span></div>
+        <div><span>Santo André, SP • Brasil</span></div>
       </div>
     </div>
   </footer>
 
   <!-- Smart WhatsApp -->
-  <div class="smart-whatsapp-container"></div>
+  <div class="smart-wa-bubble"></div>
 
   <script src="js/main.js"></script>
-  <script src="js/interactive.js"></script>
+  <script>
+    // Motorização interativa
+    const curtainSlider = document.getElementById('curtainSlider');
+    const curtainLeft = document.getElementById('curtainLeft');
+    const curtainRight = document.getElementById('curtainRight');
+    const sunBeam = document.getElementById('sunBeam');
+    const percentBadge = document.getElementById('percentBadge');
+
+    if (curtainSlider) {
+      curtainSlider.addEventListener('input', (e) => {
+        const val = parseInt(e.target.value);
+        percentBadge.textContent = `${val}% ${val === 0 ? '(Fechada)' : val === 100 ? '(Totalmente Aberta)' : '(Em Movimento)'}`;
+
+        const leftX = -val * 0.48;
+        const rightX = val * 0.48;
+
+        curtainLeft.style.transform = `translateX(${leftX}%) scaleX(${1 - (val * 0.004)})`;
+        curtainRight.style.transform = `translateX(${rightX}%) scaleX(${1 - (val * 0.004)})`;
+
+        if (sunBeam) {
+          sunBeam.style.opacity = 0.1 + ((val / 100) * 0.8);
+        }
+      });
+    }
+  </script>
 </body>
 </html>
