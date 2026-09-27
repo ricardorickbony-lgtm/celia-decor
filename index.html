@@ -232,64 +232,58 @@
 
       <!-- O Palco Central de Exibição das Imagens Imersivas -->
       <div class="transform-viewport-showcase">
+        
+        <!-- Botão Navegação Anterior -->
+        <button type="button" class="transform-arrow-btn prev" id="transformPrevBtn" aria-label="Mídia anterior">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+
         <div class="transform-slides-stack" id="transformSlidesStack">
           
-          <!-- Slide 1: Cabeceiras -->
+          <!-- Mídia 1: Cabeceiras -->
           <div class="transform-slide-item active" data-index="0">
-            <img src="assets/images/transformacao-01-cabeceiras.png" alt="Cabeceiras que acolhem com elegância - Célia Decor" class="transform-slide-img" loading="eager">
-            <div class="transform-slide-editorial-overlay">
-              <span class="slide-step-badge">Etapa 01 • Dormitórios</span>
-              <h3>Cabeceiras que Acolhem com Elegância</h3>
-              <p>Tecidos em tons neutros desenvolvidos sob medida para harmonizar com a marcenaria e acolher com máximo conforto.</p>
-            </div>
+            <img src="assets/images/transformacao-01-cabeceiras.png" alt="Mídia 1: Cabeceiras que acolhem com elegância - Célia Decor" class="transform-slide-img" loading="eager">
           </div>
 
-          <!-- Slide 2: Enxoval -->
+          <!-- Mídia 2: Enxoval -->
           <div class="transform-slide-item" data-index="1">
-            <img src="assets/images/transformacao-02-enxoval.png" alt="Enxoval minimalista com toque de aconchego - Célia Decor" class="transform-slide-img" loading="lazy">
-            <div class="transform-slide-editorial-overlay">
-              <span class="slide-step-badge">Etapa 02 • Conforto</span>
-              <h3>Minimalismo com Toque de Aconchego</h3>
-              <p>Roupas de cama em tecidos nobres, toque macio e tons serenos para proporcionar um sono leve e memorável.</p>
-            </div>
+            <img src="assets/images/transformacao-02-enxoval.png" alt="Mídia 2: Enxoval minimalista com toque de aconchego - Célia Decor" class="transform-slide-img" loading="lazy">
           </div>
 
-          <!-- Slide 3: Painel Ripado -->
+          <!-- Mídia 3: Painel Ripado -->
           <div class="transform-slide-item" data-index="2">
-            <img src="assets/images/transformacao-03-painel-madeira.png" alt="Cabeceira personalizada com painel ripado e porta oculta - Célia Decor" class="transform-slide-img" loading="lazy">
-            <div class="transform-slide-editorial-overlay">
-              <span class="slide-step-badge">Etapa 03 • Marcenaria Integrada</span>
-              <h3>Cabeceira Personalizada & Painel Ripado</h3>
-              <p>Integração milimétrica da marcenaria em madeira ripada com porta oculta mimetizada para a suíte.</p>
-            </div>
+            <img src="assets/images/transformacao-03-painel-madeira.png" alt="Mídia 3: Cabeceira personalizada com painel ripado e porta oculta - Célia Decor" class="transform-slide-img" loading="lazy">
           </div>
 
-          <!-- Slide 4: Almofadas -->
+          <!-- Mídia 4: Almofadas -->
           <div class="transform-slide-item" data-index="3">
-            <img src="assets/images/transformacao-04-almofadas.png" alt="Almofadas com texturas nobres e volumetria - Célia Decor" class="transform-slide-img" loading="lazy">
-            <div class="transform-slide-editorial-overlay">
-              <span class="slide-step-badge">Etapa 04 • Texturas & Acabamentos</span>
-              <h3>Almofadas Nobres & Volumetria</h3>
-              <p>Combinações de texturas, formas e bordados exclusivos que elevam o enxoval a outro nível de sofisticação.</p>
-            </div>
+            <img src="assets/images/transformacao-04-almofadas.png" alt="Mídia 4: Almofadas nobres com volumetria e texturas - Célia Decor" class="transform-slide-img" loading="lazy">
           </div>
 
-          <!-- Slide 5: Persiana Rolô -->
+          <!-- Mídia 5: Persiana Rolô -->
           <div class="transform-slide-item" data-index="4">
-            <img src="assets/images/transformacao-05-persiana-rolo.png" alt="Persiana rolô tela solar sob medida - Célia Decor" class="transform-slide-img" loading="lazy">
-            <div class="transform-slide-editorial-overlay">
-              <span class="slide-step-badge">Etapa 05 • Controle Solar & Luz</span>
-              <h3>Persiana Rolô em Tela Solar</h3>
-              <p>Filtragem suave dos raios solares com eficiência térmica, praticidade de manutenção e caimento leve e integrado.</p>
-            </div>
+            <img src="assets/images/transformacao-05-persiana-rolo.png" alt="Mídia 5: Persiana rolô tela solar sob medida - Célia Decor" class="transform-slide-img" loading="lazy">
           </div>
 
         </div>
 
-        <!-- Indicador de Interação Flutuante -->
-        <div class="transform-bottom-cue">
-          <span class="transform-cue-text" id="transformCueLabel">▼ Role com o mouse ou deslize o dedo para avançar (1 de 5) ▼</span>
-        </div>
+        <!-- Botão Navegação Próximo -->
+        <button type="button" class="transform-arrow-btn next" id="transformNextBtn" aria-label="Próxima mídia">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+
+      </div>
+
+      <!-- Barra de Informações Dinâmica & Status das 5 Mídias -->
+      <div class="transform-active-caption-card" id="transformActiveCaption">
+        <span class="active-step-tag" id="transformActiveBadge">Mídia 01 de 05 • Dormitórios &amp; Suíte</span>
+        <h4 class="active-step-title" id="transformActiveTitle">Cabeceiras que Acolhem com Elegância</h4>
+        <p class="active-step-desc" id="transformActiveDesc">Tecidos em tons neutros desenvolvidos sob medida para harmonizar com a marcenaria e acolher com máximo conforto.</p>
+      </div>
+
+      <!-- Indicador de Interação Flutuante no Rodapé -->
+      <div class="transform-bottom-cue">
+        <span class="transform-cue-text" id="transformCueLabel">▼ Role com o mouse ou deslize o dedo para vivenciar as 5 mídias (1 de 5) ▼</span>
       </div>
 
     </div>

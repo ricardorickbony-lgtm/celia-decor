@@ -110,15 +110,43 @@ function initTransformationScroll() {
 
   if (totalSlides === 0) return;
 
-  const slideTitles = [
-    'Cabeceiras que Acolhem com Elegância',
-    'Enxoval Minimalista & Aconchegante',
-    'Cabeceira Personalizada & Painel Ripado',
-    'Almofadas Exclusivas & Texturas Nobres',
-    'Persiana Rolô em Tela Solar'
+  const slideMeta = [
+    {
+      badge: 'Mídia 01 de 05 • Dormitórios & Suíte',
+      title: 'Cabeceiras que Acolhem com Elegância',
+      desc: 'Tecidos em tons neutros desenvolvidos sob medida para harmonizar com a marcenaria e acolher com máximo conforto.'
+    },
+    {
+      badge: 'Mídia 02 de 05 • Enxoval de Luxo',
+      title: 'Minimalismo com Toque de Aconchego',
+      desc: 'Roupas de cama em tecidos nobres, toque macio e tons serenos para proporcionar um sono leve e memorável.'
+    },
+    {
+      badge: 'Mídia 03 de 05 • Marcenaria Integrada',
+      title: 'Cabeceira Personalizada & Painel Ripado',
+      desc: 'Integração milimétrica da marcenaria em madeira ripada com porta oculta mimetizada para a suíte.'
+    },
+    {
+      badge: 'Mídia 04 de 05 • Texturas & Acabamentos',
+      title: 'Almofadas Nobres & Volumetria',
+      desc: 'Combinações de texturas, formas e bordados exclusivos que elevam o enxoval a outro nível de sofisticação.'
+    },
+    {
+      badge: 'Mídia 05 de 05 • Proteção & Luz Solar',
+      title: 'Persiana Rolô em Tela Solar',
+      desc: 'Filtragem suave dos raios solares com eficiência térmica, praticidade de manutenção e caimento leve e integrado.'
+    }
   ];
 
   let currentActive = -1;
+
+  function scrollToSlide(idx) {
+    idx = Math.max(0, Math.min(totalSlides - 1, idx));
+    const sectionTop = section.offsetTop;
+    const scrollable = section.offsetHeight - window.innerHeight;
+    const targetScroll = sectionTop + (scrollable * (idx / (totalSlides - 1)));
+    window.scrollTo({ top: targetScroll + 5, behavior: 'smooth' });
+  }
 
   function setActiveSlide(targetIndex) {
     targetIndex = Math.max(0, Math.min(totalSlides - 1, targetIndex));
@@ -148,8 +176,15 @@ function initTransformationScroll() {
       progressFill.style.width = `${fillPercent}%`;
     }
 
+    const activeBadge = document.getElementById('transformActiveBadge');
+    const activeTitle = document.getElementById('transformActiveTitle');
+    const activeDesc = document.getElementById('transformActiveDesc');
+    if (activeBadge && slideMeta[targetIndex]) activeBadge.textContent = slideMeta[targetIndex].badge;
+    if (activeTitle && slideMeta[targetIndex]) activeTitle.textContent = slideMeta[targetIndex].title;
+    if (activeDesc && slideMeta[targetIndex]) activeDesc.textContent = slideMeta[targetIndex].desc;
+
     if (cueLabel) {
-      cueLabel.textContent = `▼ Role com o mouse ou deslize o dedo para avançar (${targetIndex + 1} de 5: ${slideTitles[targetIndex]}) ▼`;
+      cueLabel.textContent = `▼ Role com o mouse ou deslize o dedo para vivenciar as 5 mídias (${targetIndex + 1} de 5: ${slideMeta[targetIndex].title}) ▼`;
     }
   }
 
@@ -179,14 +214,27 @@ function initTransformationScroll() {
   pills.forEach((pill, idx) => {
     pill.addEventListener('click', (e) => {
       e.preventDefault();
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.offsetHeight;
-      const windowHeight = window.innerHeight;
-      const scrollable = sectionHeight - windowHeight;
-      const targetScroll = sectionTop + (scrollable * (idx / (totalSlides - 1)));
-      window.scrollTo({ top: targetScroll + 5, behavior: 'smooth' });
+      scrollToSlide(idx);
     });
   });
+
+  // Botões de seta anterior e próximo
+  const prevBtn = document.getElementById('transformPrevBtn');
+  const nextBtn = document.getElementById('transformNextBtn');
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      scrollToSlide(currentActive - 1);
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      scrollToSlide(currentActive + 1);
+    });
+  }
 
   // Suporte a gesto de palm/touch swipe no celular
   const stack = document.getElementById('transformSlidesStack');
@@ -208,21 +256,21 @@ function initTransformationScroll() {
 
         // Se for um deslize horizontal marcante
         if (Math.abs(deltaX) > 40 && Math.abs(deltaX) > Math.abs(deltaY)) {
-          const sectionTop = section.offsetTop;
-          const scrollable = section.offsetHeight - window.innerHeight;
-
-          if (deltaX < 0 && currentActive < totalSlides - 1) {
+          if (deltaX < 0) {
             // Swipe esquerda -> Avançar
-            const target = currentActive + 1;
-            window.scrollTo({ top: sectionTop + (scrollable * (target / (totalSlides - 1))) + 5, behavior: 'smooth' });
-          } else if (deltaX > 0 && currentActive > 0) {
+            scrollToSlide(currentActive + 1);
+          } else if (deltaX > 0) {
             // Swipe direita -> Voltar
-            const target = currentActive - 1;
-            window.scrollTo({ top: sectionTop + (scrollable * (target / (totalSlides - 1))) + 5, behavior: 'smooth' });
+            scrollToSlide(currentActive - 1);
           }
         }
       }
     }, { passive: true });
+
+    // Clique direto na imagem avança para a próxima
+    stack.addEventListener('click', () => {
+      scrollToSlide((currentActive + 1) % totalSlides);
+    });
   }
 }
 
