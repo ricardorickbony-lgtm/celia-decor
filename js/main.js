@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCurtainScrollReveal();
   initFrameExpandScroll();
   initFabricStudio();
-  initSmartWhatsApp();
+  initBusinessHoursStatus();
   initMobileMenu();
 });
 
@@ -59,32 +59,27 @@ function initCurtainScrollReveal() {
     const sectionHeight = section.offsetHeight;
     const windowHeight = window.innerHeight;
 
-    // Calcula progresso de 0 a 1 enquanto a seção estiver no viewport
     const scrolledDistance = -rect.top;
     const scrollableDistance = sectionHeight - windowHeight;
 
     if (scrollableDistance <= 0) return;
 
     let progress = scrolledDistance / scrollableDistance;
-    progress = Math.max(0, Math.min(1, progress)); // Trava entre 0 e 1
+    progress = Math.max(0, Math.min(1, progress));
 
-    // Abre as cortinas suavemente para as laterais
     const openPercent = progress * 102;
     panelLeft.style.transform = `translateX(-${openPercent}%)`;
     panelRight.style.transform = `translateX(${openPercent}%)`;
 
-    // Zoom out sutil na imagem de fundo revelada
     if (backdrop) {
       const scale = 1.15 - (progress * 0.15);
       backdrop.style.transform = `scale(${scale})`;
     }
 
-    // Desvanece o aviso inicial
     if (teaser) {
       teaser.style.opacity = Math.max(0, 1 - (progress * 5));
     }
 
-    // Revela o texto editorial no meio da abertura
     if (unveiledContent) {
       if (progress > 0.45) {
         unveiledContent.classList.add('active');
@@ -95,12 +90,12 @@ function initCurtainScrollReveal() {
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll(); // Executa estado inicial
+  onScroll();
 }
 
 /* ==========================================================================
    3. SCROLL REVEAL: MOLDURA QUE SE EXPANDE EM TELA CHEIA
-   A imagem começa contida e vai se abrindo e expandindo até ocupar a tela inteira
+   Responsividade inteligente: não comprime em telas de smartphone
    ========================================================================== */
 function initFrameExpandScroll() {
   const section = document.querySelector('.expand-frame-section');
@@ -122,12 +117,14 @@ function initFrameExpandScroll() {
     let progress = scrolledDistance / scrollableDistance;
     progress = Math.max(0, Math.min(1, progress));
 
-    // Interpolação de dimensões
-    // Largura: de 65vw a 100vw
-    // Altura: de 55vh a 100vh
-    // Border-radius: de 28px a 0px
-    const currentWidth = 65 + (progress * 35);
-    const currentHeight = 55 + (progress * 45);
+    const isMobile = window.innerWidth <= 768;
+    const baseW = isMobile ? 88 : 65;
+    const addW = isMobile ? 12 : 35;
+    const baseH = isMobile ? 38 : 55;
+    const addH = isMobile ? 22 : 45;
+
+    const currentWidth = baseW + (progress * addW);
+    const currentHeight = baseH + (progress * addH);
     const currentRadius = 28 * (1 - progress);
 
     visualBox.style.width = `${currentWidth}vw`;
@@ -141,6 +138,7 @@ function initFrameExpandScroll() {
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
   onScroll();
 }
 
@@ -237,93 +235,169 @@ function initFabricStudio() {
 }
 
 /* ==========================================================================
-   5. BOTÃO INTELIGENTE DE WHATSAPP 2.0 (REGRA OFICIAL SEVERINO & RICARDO)
-   Sincronizado em tempo real com os horários da Célia Decor em Santo André:
-   - Segunda a Sexta: 08:30 às 17:30
-   - Sábado: 09:00 às 13:00
-   - Domingo / Fora de Expediente: Status amigável para envio de recado
+   5. SINCRONIZAÇÃO EM TEMPO REAL COM HORÁRIOS DO GOOGLE
+   Segunda a Sexta: 08:30 às 17:30
+   Sábado: 09:00 às 13:00
+   Domingo / Fora de Expediente: Fechado com acolhimento para mensagens
    ========================================================================== */
-function initSmartWhatsApp() {
-  const container = document.querySelector('.smart-wa-bubble');
-  if (!container) return;
-
+function getGoogleBusinessStatus() {
   const now = new Date();
-  const day = now.getDay();
+  const day = now.getDay(); // 0 = Domingo, 1 = Segunda, ..., 6 = Sábado
   const current = now.getHours() + (now.getMinutes() / 60);
 
   let isOnline = false;
-  let statusText = "Online agora • Showroom";
+  let fullBadgeText = "Estamos Online Agora";
+  let shortBadgeText = "Online Agora";
+  let waStatusText = "Online agora • Consultoria VIP";
+  let drawerText = "🟢 Estamos Online Agora (Showroom Aberto)";
+  let tooltip = "Showroom Aberto na Rua Edu Chaves, 15";
   let greeting = "Olá! Gostaria de agendar uma consultoria exclusiva com a Célia Decor em Santo André.";
 
-  // Seg a Sex: 08:30 às 17:30
+  // Segunda a Sexta: 08:30 às 17:30
   if (day >= 1 && day <= 5) {
     if (current >= 8.5 && current < 17.5) {
       isOnline = true;
-      statusText = "Online agora • Consultoria VIP";
+      fullBadgeText = "Estamos Online Agora";
+      shortBadgeText = "Online";
+      waStatusText = "Online agora • Showroom Aberto";
+      drawerText = "🟢 Estamos Online Agora (Aberto até 17:30)";
+      tooltip = "Showroom Aberto hoje até as 17:30";
+      greeting = "Olá! Gostaria de agendar um atendimento no showroom da Célia Decor em Santo André.";
     } else {
       isOnline = false;
-      statusText = "Fora do Expediente • Deixe mensagem";
-      greeting = "Olá! Vi o site da Célia Decor fora do horário e gostaria de receber um contato no próximo expediente.";
+      fullBadgeText = "Fora de Expediente";
+      shortBadgeText = "Fechado";
+      waStatusText = "Fora de Expediente • Deixe recado";
+      drawerText = "🌙 Showroom Fechado (Reabre às 08:30)";
+      tooltip = current < 8.5 ? "Showroom abre hoje às 08:30" : "Showroom reabre amanhã às 08:30";
+      greeting = "Olá! Vi o site da Célia Decor fora do expediente e gostaria de agendar uma consultoria no próximo horário comercial.";
     }
   }
   // Sábado: 09:00 às 13:00
   else if (day === 6) {
     if (current >= 9.0 && current < 13.0) {
       isOnline = true;
-      statusText = "Showroom Aberto • Até 13h";
+      fullBadgeText = "Showroom Aberto";
+      shortBadgeText = "Aberto";
+      waStatusText = "Showroom Aberto • Até 13h";
+      drawerText = "🟢 Showroom Aberto Hoje (Até as 13h)";
+      tooltip = "Showroom Aberto hoje até as 13:00";
+      greeting = "Olá! Gostaria de falar com um especialista da Célia Decor neste sábado.";
     } else {
       isOnline = false;
-      statusText = "Showroom Fechado • Deixe recado";
-      greeting = "Olá! Gostaria de agendar uma visita na Célia Decor para o início da próxima semana.";
+      fullBadgeText = "Fora de Expediente";
+      shortBadgeText = "Fechado";
+      waStatusText = "Fechado • Reabre Segunda 08:30";
+      drawerText = "🌙 Fechado • Reabre Segunda-feira 08:30";
+      tooltip = "Showroom fechado no momento. Reabrimos segunda às 08:30";
+      greeting = "Olá! Vi o site no final de semana e gostaria de agendar uma visita para o início da próxima semana.";
     }
   }
-  // Domingo
+  // Domingo: Fechado
   else {
     isOnline = false;
-    statusText = "Fechado aos Domingos • Deixe recado";
-    greeting = "Olá! Vi o site no final de semana e gostaria de atendimento exclusivo da Célia Decor na segunda-feira.";
+    fullBadgeText = "Fechado aos Domingos";
+    shortBadgeText = "Fechado";
+    waStatusText = "Fechado • Reabre Segunda 08:30";
+    drawerText = "🌙 Fechado aos Domingos (Reabre Segunda 08:30)";
+    tooltip = "Domingo fechado. Atendimento reabre na segunda-feira às 08:30";
+    greeting = "Olá! Vi o site no domingo e gostaria de receber contato da Célia Decor na segunda-feira.";
   }
 
-  const phone = "5511963188104";
-  const link = `https://wa.me/${phone}?text=${encodeURIComponent(greeting)}`;
+  return { isOnline, fullBadgeText, shortBadgeText, waStatusText, drawerText, tooltip, greeting };
+}
 
-  container.innerHTML = `
-    <a href="${link}" target="_blank" rel="noopener noreferrer" class="wa-pill-link ${isOnline ? 'online' : 'offline'}" aria-label="WhatsApp Célia Decor">
-      <svg class="wa-icon-svg" viewBox="0 0 24 24">
-        <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.066-2.124-.528-1.503-.623-2.485-2.148-2.56-2.247-.074-.099-.607-.808-.607-1.543s.385-1.101.521-1.251c.137-.15.299-.187.399-.187.1 0 .2.001.288.006.096.004.225-.036.35.267.136.326.467 1.139.508 1.222.041.083.069.18.014.288-.056.108-.084.175-.167.272-.083.097-.175.217-.25.291-.083.082-.17.172-.073.339.097.167.433.714.928 1.155.637.568 1.175.743 1.342.826.167.083.264.069.362-.042.097-.111.417-.485.528-.652.111-.166.222-.139.375-.083.153.055.972.458 1.139.541.167.084.278.125.319.195.042.069.042.405-.102.81zM12 2C6.477 2 2 6.477 2 12c0 1.891.524 3.66 1.436 5.176L2 22l4.954-1.399C8.423 21.536 10.156 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/>
-      </svg>
-      <div class="wa-text-group">
-        <span class="wa-brand-name">Célia Decor</span>
-        <span class="wa-dynamic-status">
-          <span class="wa-pulse-dot"></span>
-          ${statusText}
-        </span>
-      </div>
-    </a>
-  `;
+function initBusinessHoursStatus() {
+  function updateAllStatuses() {
+    const status = getGoogleBusinessStatus();
+
+    // 1. Atualiza Badge no Cabeçalho
+    const headerBadges = document.querySelectorAll('.header-live-badge');
+    headerBadges.forEach(badge => {
+      badge.classList.remove('is-online', 'is-offline');
+      badge.classList.add(status.isOnline ? 'is-online' : 'is-offline');
+      badge.setAttribute('title', status.tooltip);
+
+      const fullText = badge.querySelector('.badge-full-text');
+      const shortText = badge.querySelector('.badge-short-text');
+      if (fullText) fullText.textContent = status.fullBadgeText;
+      if (shortText) shortText.textContent = status.shortBadgeText;
+    });
+
+    // 2. Atualiza Status no Drawer Mobile
+    const mobileDrawerStatus = document.getElementById('mobileDrawerStatus');
+    if (mobileDrawerStatus) {
+      mobileDrawerStatus.classList.remove('is-offline');
+      if (!status.isOnline) mobileDrawerStatus.classList.add('is-offline');
+      const textSpan = mobileDrawerStatus.querySelector('.mobile-status-text');
+      if (textSpan) textSpan.textContent = status.drawerText;
+    }
+
+    // 3. Atualiza Botão Inteligente WhatsApp 2.0 (Regra Severino & Ricardo)
+    const waContainer = document.querySelector('.smart-wa-bubble');
+    if (waContainer) {
+      const phone = "5511963188104";
+      const link = `https://wa.me/${phone}?text=${encodeURIComponent(status.greeting)}`;
+
+      waContainer.innerHTML = `
+        <a href="${link}" target="_blank" rel="noopener noreferrer" class="wa-pill-link ${status.isOnline ? 'online' : 'offline'}" aria-label="WhatsApp Célia Decor">
+          <svg class="wa-icon-svg" viewBox="0 0 24 24">
+            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.066-2.124-.528-1.503-.623-2.485-2.148-2.56-2.247-.074-.099-.607-.808-.607-1.543s.385-1.101.521-1.251c.137-.15.299-.187.399-.187.1 0 .2.001.288.006.096.004.225-.036.35.267.136.326.467 1.139.508 1.222.041.083.069.18.014.288-.056.108-.084.175-.167.272-.083.097-.175.217-.25.291-.083.082-.17.172-.073.339.097.167.433.714.928 1.155.637.568 1.175.743 1.342.826.167.083.264.069.362-.042.097-.111.417-.485.528-.652.111-.166.222-.139.375-.083.153.055.972.458 1.139.541.167.084.278.125.319.195.042.069.042.405-.102.81zM12 2C6.477 2 2 6.477 2 12c0 1.891.524 3.66 1.436 5.176L2 22l4.954-1.399C8.423 21.536 10.156 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/>
+          </svg>
+          <div class="wa-text-group">
+            <span class="wa-brand-name">Célia Decor</span>
+            <span class="wa-dynamic-status">
+              <span class="wa-pulse-dot"></span>
+              ${status.waStatusText}
+            </span>
+          </div>
+        </a>
+      `;
+    }
+
+    // 4. Atualiza Indicador de Showroom na Página (se houver)
+    const showroomStatusEls = document.querySelectorAll('.showroom-live-status');
+    showroomStatusEls.forEach(el => {
+      el.className = `showroom-live-status ${status.isOnline ? 'is-open' : 'is-closed'}`;
+      el.textContent = status.isOnline ? `🟢 Aberto Agora (${status.tooltip})` : `🌙 ${status.tooltip}`;
+    });
+  }
+
+  updateAllStatuses();
+  // Atualiza automaticamente a cada 60 segundos
+  setInterval(updateAllStatuses, 60000);
 }
 
 /* ==========================================================================
-   6. MENU MOBILE
+   6. MENU MOBILE MODERNO EM DRAWER
+   Abertura suave, bloqueio de scroll de fundo e fácil navegação
    ========================================================================== */
 function initMobileMenu() {
   const burger = document.querySelector('.menu-burger');
-  const nav = document.querySelector('.nav-links');
-  if (!burger || !nav) return;
+  const drawer = document.getElementById('mobileDrawer');
+  const overlay = document.getElementById('mobileDrawerOverlay');
+  const closeBtn = document.getElementById('mobileDrawerClose');
 
-  burger.addEventListener('click', () => {
-    const isVisible = nav.style.display === 'flex';
-    nav.style.display = isVisible ? 'none' : 'flex';
-    if (!isVisible) {
-      nav.style.position = 'fixed';
-      nav.style.top = '80px';
-      nav.style.left = '0';
-      nav.style.width = '100%';
-      nav.style.background = '#FFFFFF';
-      nav.style.flexDirection = 'column';
-      nav.style.padding = '30px';
-      nav.style.boxShadow = '0 20px 40px rgba(0,0,0,0.1)';
-      nav.style.gap = '20px';
-    }
+  if (!burger) return;
+
+  function openDrawer() {
+    if (drawer) drawer.classList.add('active');
+    if (overlay) overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDrawer() {
+    if (drawer) drawer.classList.remove('active');
+    if (overlay) overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  burger.addEventListener('click', openDrawer);
+  if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+  if (overlay) overlay.addEventListener('click', closeDrawer);
+
+  // Fecha o drawer ao clicar em links internos
+  document.querySelectorAll('.mobile-nav-link, .mobile-drawer-footer a').forEach(link => {
+    link.addEventListener('click', closeDrawer);
   });
 }
