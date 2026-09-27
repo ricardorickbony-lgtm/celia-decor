@@ -188,22 +188,107 @@
   </section>
 
   <!-- ========================================================================
-       SCROLL REVEAL 2: A MOLDURA QUE SE EXPANDE EM TELA CHEIA
-       A imagem começa em uma moldura elegante e se expande até 100% da tela
+       SCROLL REVEAL: A TRANSFORMAÇÃO DO SEU ESPAÇO (5 AMBIENTES IMERSIVOS)
+       Imersão multi-cenas acionada conforme roda o scroll do mouse ou descendo o palm do celular
        ======================================================================== -->
-  <section class="expand-frame-section">
-    <div class="expand-sticky-container">
+  <section class="transformation-journey-section" id="transformacao-espaco">
+    <div class="transformation-sticky-stage">
       
-      <div class="expand-header-intro">
-        <span class="tag-label">Dimensão & Conforto</span>
-        <h2>A Transformação do Seu Espaço</h2>
-        <p>Veja como o tecido nobre abraça a arquitetura e amplia os horizontes do ambiente.</p>
+      <!-- Cabeçalho Flutuante da Experiência -->
+      <div class="transform-stage-header">
+        <span class="tag-label">Imersão de Projeto • Suíte & Dormitórios</span>
+        <h2 class="transform-title">A Transformação do Seu Espaço</h2>
+        <p class="transform-desc">Role a página para vivenciar a transformação completa: cabeceiras sob medida, enxovais, painéis de madeira e persianas rolô.</p>
+        
+        <!-- Pílulas de Navegação / Etapas -->
+        <div class="transform-nav-pills" role="tablist">
+          <button type="button" class="transform-pill-btn active" data-step="0" aria-label="Cena 1: Cabeceiras">
+            <span class="pill-num">01</span>
+            <span class="pill-name">Cabeceiras</span>
+          </button>
+          <button type="button" class="transform-pill-btn" data-step="1" aria-label="Cena 2: Enxoval">
+            <span class="pill-num">02</span>
+            <span class="pill-name">Enxoval</span>
+          </button>
+          <button type="button" class="transform-pill-btn" data-step="2" aria-label="Cena 3: Painel Ripado">
+            <span class="pill-num">03</span>
+            <span class="pill-name">Painel Ripado</span>
+          </button>
+          <button type="button" class="transform-pill-btn" data-step="3" aria-label="Cena 4: Almofadas">
+            <span class="pill-num">04</span>
+            <span class="pill-name">Almofadas</span>
+          </button>
+          <button type="button" class="transform-pill-btn" data-step="4" aria-label="Cena 5: Persiana Rolô">
+            <span class="pill-num">05</span>
+            <span class="pill-name">Persiana Rolô</span>
+          </button>
+        </div>
+
+        <!-- Barra de Progresso de Scroll -->
+        <div class="transform-progress-track">
+          <div class="transform-progress-fill" id="transformProgressFill"></div>
+        </div>
       </div>
 
-      <div class="expand-visual-box">
-        <img src="assets/images/cortina-wave-detalhe.jpg" alt="Cortina Wave em Linho Rústico com Detalhes Impecáveis">
-        <div class="expand-floating-caption">
-          Alfaiataria Fina de Cortinas • Santo André
+      <!-- O Palco Central de Exibição das Imagens Imersivas -->
+      <div class="transform-viewport-showcase">
+        <div class="transform-slides-stack" id="transformSlidesStack">
+          
+          <!-- Slide 1: Cabeceiras -->
+          <div class="transform-slide-item active" data-index="0">
+            <img src="assets/images/transformacao-01-cabeceiras.png" alt="Cabeceiras que acolhem com elegância - Célia Decor" class="transform-slide-img" loading="eager">
+            <div class="transform-slide-editorial-overlay">
+              <span class="slide-step-badge">Etapa 01 • Dormitórios</span>
+              <h3>Cabeceiras que Acolhem com Elegância</h3>
+              <p>Tecidos em tons neutros desenvolvidos sob medida para harmonizar com a marcenaria e acolher com máximo conforto.</p>
+            </div>
+          </div>
+
+          <!-- Slide 2: Enxoval -->
+          <div class="transform-slide-item" data-index="1">
+            <img src="assets/images/transformacao-02-enxoval.png" alt="Enxoval minimalista com toque de aconchego - Célia Decor" class="transform-slide-img" loading="lazy">
+            <div class="transform-slide-editorial-overlay">
+              <span class="slide-step-badge">Etapa 02 • Conforto</span>
+              <h3>Minimalismo com Toque de Aconchego</h3>
+              <p>Roupas de cama em tecidos nobres, toque macio e tons serenos para proporcionar um sono leve e memorável.</p>
+            </div>
+          </div>
+
+          <!-- Slide 3: Painel Ripado -->
+          <div class="transform-slide-item" data-index="2">
+            <img src="assets/images/transformacao-03-painel-madeira.png" alt="Cabeceira personalizada com painel ripado e porta oculta - Célia Decor" class="transform-slide-img" loading="lazy">
+            <div class="transform-slide-editorial-overlay">
+              <span class="slide-step-badge">Etapa 03 • Marcenaria Integrada</span>
+              <h3>Cabeceira Personalizada & Painel Ripado</h3>
+              <p>Integração milimétrica da marcenaria em madeira ripada com porta oculta mimetizada para a suíte.</p>
+            </div>
+          </div>
+
+          <!-- Slide 4: Almofadas -->
+          <div class="transform-slide-item" data-index="3">
+            <img src="assets/images/transformacao-04-almofadas.png" alt="Almofadas com texturas nobres e volumetria - Célia Decor" class="transform-slide-img" loading="lazy">
+            <div class="transform-slide-editorial-overlay">
+              <span class="slide-step-badge">Etapa 04 • Texturas & Acabamentos</span>
+              <h3>Almofadas Nobres & Volumetria</h3>
+              <p>Combinações de texturas, formas e bordados exclusivos que elevam o enxoval a outro nível de sofisticação.</p>
+            </div>
+          </div>
+
+          <!-- Slide 5: Persiana Rolô -->
+          <div class="transform-slide-item" data-index="4">
+            <img src="assets/images/transformacao-05-persiana-rolo.png" alt="Persiana rolô tela solar sob medida - Célia Decor" class="transform-slide-img" loading="lazy">
+            <div class="transform-slide-editorial-overlay">
+              <span class="slide-step-badge">Etapa 05 • Controle Solar & Luz</span>
+              <h3>Persiana Rolô em Tela Solar</h3>
+              <p>Filtragem suave dos raios solares com eficiência térmica, praticidade de manutenção e caimento leve e integrado.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Indicador de Interação Flutuante -->
+        <div class="transform-bottom-cue">
+          <span class="transform-cue-text" id="transformCueLabel">▼ Role com o mouse ou deslize o dedo para avançar (1 de 5) ▼</span>
         </div>
       </div>
 

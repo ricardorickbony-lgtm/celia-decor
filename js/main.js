@@ -7,7 +7,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   initLuxuryHeader();
   initCurtainScrollReveal();
-  initFrameExpandScroll();
+  initTransformationScroll();
   initFabricStudio();
   initBusinessHoursStatus();
   initMobileMenu();
@@ -95,52 +95,135 @@ function initCurtainScrollReveal() {
 }
 
 /* ==========================================================================
-   3. SCROLL REVEAL: MOLDURA QUE SE EXPANDE EM TELA CHEIA
-   Responsividade inteligente: não comprime em telas de smartphone
+   3. SCROLL REVEAL: A TRANSFORMAÇÃO DO SEU ESPAÇO (5 AMBIENTES IMERSIVOS)
+   Imersão sincronizada ao scroll do mouse e palm/touch no celular
    ========================================================================== */
-function initFrameExpandScroll() {
-  const section = document.querySelector('.expand-frame-section');
-  const visualBox = document.querySelector('.expand-visual-box');
-  const introHeader = document.querySelector('.expand-header-intro');
+function initTransformationScroll() {
+  const section = document.querySelector('.transformation-journey-section');
+  if (!section) return;
 
-  if (!section || !visualBox) return;
+  const slides = section.querySelectorAll('.transform-slide-item');
+  const pills = section.querySelectorAll('.transform-pill-btn');
+  const progressFill = document.getElementById('transformProgressFill');
+  const cueLabel = document.getElementById('transformCueLabel');
+  const totalSlides = slides.length; // 5
+
+  if (totalSlides === 0) return;
+
+  const slideTitles = [
+    'Cabeceiras que Acolhem com Elegância',
+    'Enxoval Minimalista & Aconchegante',
+    'Cabeceira Personalizada & Painel Ripado',
+    'Almofadas Exclusivas & Texturas Nobres',
+    'Persiana Rolô em Tela Solar'
+  ];
+
+  let currentActive = -1;
+
+  function setActiveSlide(targetIndex) {
+    targetIndex = Math.max(0, Math.min(totalSlides - 1, targetIndex));
+    if (targetIndex === currentActive) return;
+    currentActive = targetIndex;
+
+    slides.forEach((slide, idx) => {
+      if (idx === targetIndex) {
+        slide.classList.add('active');
+      } else {
+        slide.classList.remove('active');
+      }
+    });
+
+    pills.forEach((pill, idx) => {
+      if (idx === targetIndex) {
+        pill.classList.add('active');
+        pill.setAttribute('aria-selected', 'true');
+      } else {
+        pill.classList.remove('active');
+        pill.setAttribute('aria-selected', 'false');
+      }
+    });
+
+    if (progressFill) {
+      const fillPercent = ((targetIndex + 1) / totalSlides) * 100;
+      progressFill.style.width = `${fillPercent}%`;
+    }
+
+    if (cueLabel) {
+      cueLabel.textContent = `▼ Role com o mouse ou deslize o dedo para avançar (${targetIndex + 1} de 5: ${slideTitles[targetIndex]}) ▼`;
+    }
+  }
 
   function onScroll() {
     const rect = section.getBoundingClientRect();
     const sectionHeight = section.offsetHeight;
     const windowHeight = window.innerHeight;
 
-    const scrolledDistance = -rect.top;
-    const scrollableDistance = sectionHeight - windowHeight;
+    const scrolled = -rect.top;
+    const scrollable = sectionHeight - windowHeight;
 
-    if (scrollableDistance <= 0) return;
+    if (scrollable <= 0) return;
 
-    let progress = scrolledDistance / scrollableDistance;
-    progress = Math.max(0, Math.min(1, progress));
+    let progress = scrolled / scrollable;
+    progress = Math.max(0, Math.min(0.9999, progress));
 
-    const isMobile = window.innerWidth <= 768;
-    const baseW = isMobile ? 88 : 65;
-    const addW = isMobile ? 12 : 35;
-    const baseH = isMobile ? 38 : 55;
-    const addH = isMobile ? 22 : 45;
-
-    const currentWidth = baseW + (progress * addW);
-    const currentHeight = baseH + (progress * addH);
-    const currentRadius = 28 * (1 - progress);
-
-    visualBox.style.width = `${currentWidth}vw`;
-    visualBox.style.height = `${currentHeight}vh`;
-    visualBox.style.borderRadius = `${currentRadius}px`;
-
-    if (introHeader) {
-      introHeader.style.opacity = Math.max(0, 1 - (progress * 2.5));
-      introHeader.style.transform = `translateY(-${progress * 40}px)`;
-    }
+    // Determina o slide ativo proporcionalmente ao progresso de rolagem
+    const stepIndex = Math.floor(progress * totalSlides);
+    setActiveSlide(stepIndex);
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll, { passive: true });
   onScroll();
+
+  // Clique direto nas pílulas para saltar com transição suave
+  pills.forEach((pill, idx) => {
+    pill.addEventListener('click', (e) => {
+      e.preventDefault();
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      const windowHeight = window.innerHeight;
+      const scrollable = sectionHeight - windowHeight;
+      const targetScroll = sectionTop + (scrollable * (idx / (totalSlides - 1)));
+      window.scrollTo({ top: targetScroll + 5, behavior: 'smooth' });
+    });
+  });
+
+  // Suporte a gesto de palm/touch swipe no celular
+  const stack = document.getElementById('transformSlidesStack');
+  if (stack) {
+    let touchStartY = 0;
+    let touchStartX = 0;
+
+    stack.addEventListener('touchstart', (e) => {
+      if (e.touches.length === 1) {
+        touchStartY = e.touches[0].clientY;
+        touchStartX = e.touches[0].clientX;
+      }
+    }, { passive: true });
+
+    stack.addEventListener('touchend', (e) => {
+      if (e.changedTouches.length === 1) {
+        const deltaY = e.changedTouches[0].clientY - touchStartY;
+        const deltaX = e.changedTouches[0].clientX - touchStartX;
+
+        // Se for um deslize horizontal marcante
+        if (Math.abs(deltaX) > 40 && Math.abs(deltaX) > Math.abs(deltaY)) {
+          const sectionTop = section.offsetTop;
+          const scrollable = section.offsetHeight - window.innerHeight;
+
+          if (deltaX < 0 && currentActive < totalSlides - 1) {
+            // Swipe esquerda -> Avançar
+            const target = currentActive + 1;
+            window.scrollTo({ top: sectionTop + (scrollable * (target / (totalSlides - 1))) + 5, behavior: 'smooth' });
+          } else if (deltaX > 0 && currentActive > 0) {
+            // Swipe direita -> Voltar
+            const target = currentActive - 1;
+            window.scrollTo({ top: sectionTop + (scrollable * (target / (totalSlides - 1))) + 5, behavior: 'smooth' });
+          }
+        }
+      }
+    }, { passive: true });
+  }
 }
 
 /* ==========================================================================
