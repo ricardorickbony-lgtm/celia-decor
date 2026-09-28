@@ -126,34 +126,6 @@ function initTransformationScroll() {
 
   if (totalSlides === 0) return;
 
-  const slideMeta = [
-    {
-      badge: 'Ângulo 01 de 05 • Visão Panorâmica da Suíte',
-      title: 'Visão Panorâmica da Suíte Master',
-      desc: 'Harmonia absoluta entre tecidos nobres em linho, cabeceiras sob medida, painel em madeira ripada e controle térmico com persiana rolô tela solar.'
-    },
-    {
-      badge: 'Ângulo 02 de 05 • Cabeceira & Ripado sob Medida',
-      title: 'Cabeceira Tailored & Marcenaria Integrada',
-      desc: 'Estrutura estofada em linho cru com alinhamento milimétrico ao painel ripado e iluminação cênica indireta em LED 2700K acolhedor.'
-    },
-    {
-      badge: 'Ângulo 03 de 05 • Porta Oculta da Suíte',
-      title: 'Porta Mimetizada Oculta no Painel',
-      desc: 'Engenharia de marcenaria com fechamento pivotante imperceptível, integrando a suíte ao banheiro master em mármore sem quebra visual.'
-    },
-    {
-      badge: 'Ângulo 04 de 05 • Macro Texturas & Bordados',
-      title: 'Bordados Botânicos & Linho Puro',
-      desc: 'Close-up táctil revelando a riqueza do ponto em relevo, linho rústico e peseira canelada confeccionados no atelier artesanal da Célia Decor.'
-    },
-    {
-      badge: 'Ângulo 05 de 05 • Persiana Rolô & Conexão Externa',
-      title: 'Persiana Rolô Solar & Integração Biofílica',
-      desc: 'Tecido tela solar 3% com acionamento motorizado silencioso: bloqueia o calor radiante e raios UV enquanto emoldura o jardim verde exterior.'
-    }
-  ];
-
   // =========================================================================
   // METADADOS COMPLETOS DOS HOTSPOTS ARQUITETÔNICOS (CONHEÇA POR DENTRO)
   // =========================================================================
