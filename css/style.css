@@ -70,6 +70,19 @@ img {
   display: block;
 }
 
+svg {
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+svg:not([width]) {
+  width: 20px;
+}
+
+svg:not([height]) {
+  height: 20px;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -498,6 +511,8 @@ p {
   max-width: 680px;
   margin: 0 auto 40px auto;
   font-weight: 300;
+}
+
 .hero-actions-group {
   display: flex;
   gap: 16px;
