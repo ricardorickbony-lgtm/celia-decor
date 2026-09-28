@@ -19,6 +19,7 @@ function initAllAppModules() {
   safeModuleInit('luxuryHeader', initLuxuryHeader);
   safeModuleInit('curtainScroll', initCurtainScrollReveal);
   safeModuleInit('virtualSuiteTour', initTransformationScroll);
+  safeModuleInit('studioVideoPlayer', initStudioVideoPlayer);
   safeModuleInit('fabricStudio', initFabricStudio);
   safeModuleInit('mobileMenu', initMobileMenu);
   safeModuleInit('cookieConsent', initCookieConsent);
@@ -697,6 +698,220 @@ function initTransformationScroll() {
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll, { passive: true });
   onScroll();
+}
+
+/* ==========================================================================
+   4.1 REPRODUTOR DE VÍDEO DO INSTAGRAM & SELETOR DE MODOS (ESTÚDIO AO VIVO)
+   ========================================================================== */
+function initStudioVideoPlayer() {
+  const video = document.getElementById('studioLiveVideo');
+  const playBigBtn = document.getElementById('studioPlayBigBtn');
+  const playPauseBtn = document.getElementById('studioPlayPauseBtn');
+  const progressTrack = document.getElementById('studioProgressTrack');
+  const progressFill = document.getElementById('studioProgressFill');
+  const timeText = document.getElementById('studioTimeText');
+  const soundBtn = document.getElementById('studioSoundBtn');
+  const fullscreenBtn = document.getElementById('studioFullscreenBtn');
+
+  const tabLiveVideo = document.getElementById('tabLiveVideo');
+  const tabFabricSim = document.getElementById('tabFabricSim');
+  const studioVideoWrap = document.getElementById('studioVideoWrap');
+  const studioSimWrap = document.getElementById('studioSimWrap');
+  const panelLiveVideo = document.getElementById('panelLiveVideo');
+  const panelFabricSim = document.getElementById('panelFabricSim');
+  const studioLiveTag = document.getElementById('studioLiveTag');
+  const studioInstaChip = document.getElementById('studioInstaChip');
+
+  if (!video) return;
+
+  function formatTime(seconds) {
+    if (isNaN(seconds) || seconds < 0) return '0:00';
+    const m = Math.floor(seconds / 60);
+    const s = Math.floor(seconds % 60);
+    return `${m}:${s < 10 ? '0' : ''}${s}`;
+  }
+
+  function updatePlayState(isPlaying) {
+    if (isPlaying) {
+      if (playBigBtn) playBigBtn.classList.add('is-hidden');
+      if (playPauseBtn) {
+        const iconPlay = playPauseBtn.querySelector('.icon-play');
+        const iconPause = playPauseBtn.querySelector('.icon-pause');
+        if (iconPlay) iconPlay.style.display = 'none';
+        if (iconPause) iconPause.style.display = 'block';
+        playPauseBtn.setAttribute('aria-label', 'Pausar vídeo');
+      }
+    } else {
+      if (playBigBtn) playBigBtn.classList.remove('is-hidden');
+      if (playPauseBtn) {
+        const iconPlay = playPauseBtn.querySelector('.icon-play');
+        const iconPause = playPauseBtn.querySelector('.icon-pause');
+        if (iconPlay) iconPlay.style.display = 'block';
+        if (iconPause) iconPause.style.display = 'none';
+        playPauseBtn.setAttribute('aria-label', 'Reproduzir vídeo');
+      }
+    }
+  }
+
+  function togglePlay() {
+    if (video.paused || video.ended) {
+      video.play().then(() => {
+        updatePlayState(true);
+      }).catch(err => {
+        console.warn('Playback error:', err);
+      });
+    } else {
+      video.pause();
+      updatePlayState(false);
+    }
+  }
+
+  // Play/Pause handlers
+  if (playBigBtn) {
+    playBigBtn.addEventListener('click', togglePlay);
+  }
+  if (playPauseBtn) {
+    playPauseBtn.addEventListener('click', togglePlay);
+  }
+  video.addEventListener('click', togglePlay);
+
+  video.addEventListener('play', () => updatePlayState(true));
+  video.addEventListener('pause', () => updatePlayState(false));
+
+  // Time & Progress update
+  video.addEventListener('timeupdate', () => {
+    if (!video.duration) return;
+    const pct = (video.currentTime / video.duration) * 100;
+    if (progressFill) {
+      progressFill.style.width = `${pct}%`;
+    }
+    if (progressTrack) {
+      progressTrack.setAttribute('aria-valuenow', Math.round(pct).toString());
+    }
+    if (timeText) {
+      timeText.textContent = `${formatTime(video.currentTime)} / ${formatTime(video.duration || 32)}`;
+    }
+  });
+
+  video.addEventListener('loadedmetadata', () => {
+    if (timeText) {
+      timeText.textContent = `0:00 / ${formatTime(video.duration || 32)}`;
+    }
+  });
+
+  // Seeking on progress track
+  if (progressTrack) {
+    function seekToEvent(e) {
+      const rect = progressTrack.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const width = rect.width;
+      if (width > 0 && video.duration) {
+        const targetPct = Math.max(0, Math.min(1, clickX / width));
+        video.currentTime = targetPct * video.duration;
+      }
+    }
+    progressTrack.addEventListener('click', seekToEvent);
+  }
+
+  // Sound Toggle
+  if (soundBtn) {
+    soundBtn.addEventListener('click', () => {
+      video.muted = !video.muted;
+      const iconOn = soundBtn.querySelector('.icon-sound-on');
+      const iconOff = soundBtn.querySelector('.icon-sound-off');
+      if (video.muted) {
+        if (iconOn) iconOn.style.display = 'none';
+        if (iconOff) iconOff.style.display = 'block';
+        soundBtn.setAttribute('aria-label', 'Ativar áudio');
+      } else {
+        if (iconOn) iconOn.style.display = 'block';
+        if (iconOff) iconOff.style.display = 'none';
+        soundBtn.setAttribute('aria-label', 'Desativar áudio');
+      }
+    });
+  }
+
+  // Fullscreen
+  if (fullscreenBtn) {
+    fullscreenBtn.addEventListener('click', () => {
+      const target = studioVideoWrap || video;
+      if (!document.fullscreenElement) {
+        if (target.requestFullscreen) {
+          target.requestFullscreen();
+        } else if (video.webkitEnterFullscreen) {
+          video.webkitEnterFullscreen();
+        }
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+    });
+  }
+
+  // Pause when off-screen to save performance
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting && !video.paused) {
+          video.pause();
+          updatePlayState(false);
+        }
+      });
+    }, { threshold: 0.25 });
+    observer.observe(video);
+  }
+
+  // Tab Switcher (Vídeo da Produção Real vs Simulador de Tecidos)
+  if (tabLiveVideo && tabFabricSim) {
+    tabLiveVideo.addEventListener('click', () => {
+      tabLiveVideo.classList.add('active');
+      tabLiveVideo.setAttribute('aria-selected', 'true');
+      tabFabricSim.classList.remove('active');
+      tabFabricSim.setAttribute('aria-selected', 'false');
+
+      if (studioVideoWrap) studioVideoWrap.style.display = 'flex';
+      if (panelLiveVideo) panelLiveVideo.style.display = 'block';
+      if (studioSimWrap) studioSimWrap.style.display = 'none';
+      if (panelFabricSim) panelFabricSim.style.display = 'none';
+
+      if (studioLiveTag) {
+        studioLiveTag.innerHTML = `
+          <span class="studio-live-dot"></span>
+          <span class="studio-live-text">Visualização ao Vivo</span>
+          <span class="studio-live-sub">• Instagram Reel</span>
+        `;
+      }
+      if (studioInstaChip) studioInstaChip.style.display = 'inline-flex';
+    });
+
+    tabFabricSim.addEventListener('click', () => {
+      // Pause video when switching away
+      if (!video.paused) {
+        video.pause();
+        updatePlayState(false);
+      }
+
+      tabFabricSim.classList.add('active');
+      tabFabricSim.setAttribute('aria-selected', 'true');
+      tabLiveVideo.classList.remove('active');
+      tabLiveVideo.setAttribute('aria-selected', 'false');
+
+      if (studioVideoWrap) studioVideoWrap.style.display = 'none';
+      if (panelLiveVideo) panelLiveVideo.style.display = 'none';
+      if (studioSimWrap) studioSimWrap.style.display = 'block';
+      if (panelFabricSim) panelFabricSim.style.display = 'block';
+
+      if (studioLiveTag) {
+        studioLiveTag.innerHTML = `
+          <span class="studio-live-dot" style="background: var(--c-gold); box-shadow: 0 0 10px var(--c-gold);"></span>
+          <span class="studio-live-text">Simulador Interativo</span>
+          <span class="studio-live-sub">• Luz Solar</span>
+        `;
+      }
+      if (studioInstaChip) studioInstaChip.style.display = 'none';
+    });
+  }
 }
 
 /* ==========================================================================

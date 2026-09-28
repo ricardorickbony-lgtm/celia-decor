@@ -534,58 +534,194 @@
   </section>
 
   <!-- ========================================================================
-       ESTÚDIO INTERATIVO DE TECIDOS & INCIDÊNCIA SOLAR
+       ESTÚDIO INTERATIVO & VISUALIZAÇÃO AO VIVO (VÍDEO DA PRODUÇÃO REAL)
        ======================================================================== -->
-  <section class="studio-section">
+  <section class="studio-section" id="estudio-interativo">
     <div class="container">
       <div class="center-title-block">
         <span class="tag-label">Experiência Imersiva</span>
-        <h2>Estúdio Interativo de Tecidos & Pregas</h2>
-        <p>Interaja com os tipos de ondulação, selecione a textura do linho e controle a incidência de luz solar em tempo real.</p>
+        <h2>Estúdio & Visualização ao Vivo</h2>
+        <p>Acompanhe nossa produção artesanal em ação com o vídeo oficial do Instagram e experimente simulações de tecidos nobres em tempo real.</p>
+      </div>
+
+      <!-- SELETOR DE MODO: VÍDEO OFICIAL / SIMULADOR DE TECIDOS -->
+      <div class="studio-tabs-nav" role="tablist">
+        <button type="button" class="studio-tab-btn active" id="tabLiveVideo" role="tab" aria-selected="true" aria-controls="panelLiveVideo">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          <span>Vídeo da Produção Real</span>
+          <span class="studio-tab-badge">Instagram Reel</span>
+        </button>
+        <button type="button" class="studio-tab-btn" id="tabFabricSim" role="tab" aria-selected="false" aria-controls="panelFabricSim">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <span>Simulador de Tecidos & Pregas</span>
+        </button>
       </div>
 
       <div class="studio-grid">
-        <div class="studio-viewport">
-          <img src="assets/images/cortina-wave-detalhe.jpg" alt="Visualizador de Caimento Célia Decor" id="studioCanvasImg" class="studio-canvas-img">
-          <div class="studio-sunlight-filter" id="studioSunFilter"></div>
-          <span class="studio-pill-tag">Visualização ao Vivo</span>
+        <!-- VIEWPORT: REPRODUTOR DE VÍDEO & CANVAS -->
+        <div class="studio-viewport" id="studioViewport">
+          <!-- BADGE VISUALIZAÇÃO AO VIVO -->
+          <div class="studio-pill-tag studio-live-pill" id="studioLiveTag">
+            <span class="studio-live-dot"></span>
+            <span class="studio-live-text">Visualização ao Vivo</span>
+            <span class="studio-live-sub">• Instagram Reel</span>
+          </div>
+
+          <!-- BOTÃO VER NO INSTAGRAM ORIGINAL -->
+          <a href="https://www.instagram.com/p/DDj4iMwRgZw/" target="_blank" rel="noopener noreferrer" class="studio-insta-chip" id="studioInstaChip" title="Ver postagem original no Instagram @celiadecor">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            <span>Ver no Instagram</span>
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          </a>
+
+          <!-- REPRODUTOR DE VÍDEO AO VIVO -->
+          <div class="studio-video-wrap" id="studioVideoWrap">
+            <!-- AMBIENTE COM BLUR DO POSTER -->
+            <div class="studio-video-ambient" id="studioVideoAmbient" style="background-image: url('assets/images/celia-video-poster.jpg');"></div>
+
+            <video id="studioLiveVideo" class="studio-live-video" playsinline preload="metadata" poster="assets/images/celia-video-poster.jpg" loop>
+              <source src="assets/videos/celia-decor-apresentacao.mp4" type="video/mp4">
+              Seu navegador não suporta a reprodução deste vídeo.
+            </video>
+
+            <!-- BOTÃO GRANDE DE PLAY CENTRAL -->
+            <button type="button" class="studio-play-big-btn" id="studioPlayBigBtn" aria-label="Reproduzir vídeo da Célia Decor">
+              <span class="studio-play-circle">
+                <svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor">
+                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+              </span>
+              <span class="studio-play-title">Assistir Apresentação</span>
+              <span class="studio-play-hint">Cortinas Wave, Tapetes Exclusivos & Almofadas</span>
+            </button>
+
+            <!-- BARRA DE CONTROLES DO VÍDEO -->
+            <div class="studio-video-controls" id="studioVideoControls">
+              <button type="button" class="studio-ctrl-btn" id="studioPlayPauseBtn" aria-label="Pausar / Reproduzir">
+                <svg class="icon-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                <svg class="icon-pause" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="display:none;"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+              </button>
+
+              <div class="studio-progress-track" id="studioProgressTrack" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0" aria-label="Linha do tempo do vídeo">
+                <div class="studio-progress-fill" id="studioProgressFill"></div>
+              </div>
+
+              <span class="studio-time-text" id="studioTimeText">0:00 / 0:32</span>
+
+              <button type="button" class="studio-ctrl-btn" id="studioSoundBtn" aria-label="Ativar ou desativar áudio">
+                <svg class="icon-sound-on" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+                <svg class="icon-sound-off" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+              </button>
+
+              <button type="button" class="studio-ctrl-btn" id="studioFullscreenBtn" aria-label="Modo tela cheia">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- WRAPPER SIMULADOR DE TECIDOS (CANVAS + FILTRO SOLAR) -->
+          <div class="studio-sim-wrap" id="studioSimWrap" style="display: none;">
+            <img src="assets/images/cortina-wave-detalhe.jpg" alt="Visualizador de Caimento Célia Decor" id="studioCanvasImg" class="studio-canvas-img">
+            <div class="studio-sunlight-filter" id="studioSunFilter"></div>
+          </div>
         </div>
 
+        <!-- PAINEL LATERAL DIREITO COM DETALHES DO PROJETO E CONTROLES -->
         <div class="studio-controls-panel">
-          <div class="control-block">
-            <h4>1. Selecione o Tipo de Prega</h4>
-            <div class="button-options-row">
-              <button class="option-btn btn-pleat-opt active" data-pleat="wave">Prega Wave</button>
-              <button class="option-btn btn-pleat-opt" data-pleat="femea">Prega Fêmea</button>
-              <button class="option-btn btn-pleat-opt" data-pleat="suico">Trilho Suíço</button>
+          <!-- ABA 1: CONTEÚDO DO VÍDEO OFICIAL DO INSTAGRAM -->
+          <div class="studio-panel-content" id="panelLiveVideo">
+            <div class="studio-video-info-card">
+              <div class="studio-info-header">
+                <span class="studio-meta-pill">Projeto Real • Instagram Reel</span>
+                <span class="studio-views-count"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg> Vídeo HD</span>
+              </div>
+              <h3 class="studio-video-title">Ambientes Únicos Começam nos Detalhes</h3>
+              <p class="studio-reel-quote">
+                "Tapetes com cortes exclusivos, cortinas perfeitas e a combinação ideal de almofadas e mantas para o seu lar. Célia Decor, onde seu estilo ganha vida!"
+              </p>
+
+              <div class="studio-features-list">
+                <div class="studio-feat-item">
+                  <div class="studio-feat-bullet">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  </div>
+                  <div class="studio-feat-text">
+                    <strong>Cortinas Sob Medida com Caimento Wave</strong>
+                    <p>Ondulação simétrica em linho nobre com barra dupla artesanal e efeito fluido.</p>
+                  </div>
+                </div>
+
+                <div class="studio-feat-item">
+                  <div class="studio-feat-bullet">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  </div>
+                  <div class="studio-feat-text">
+                    <strong>Tapetes Geométricos sob Medida</strong>
+                    <p>Cortes e paginações exclusivas desenhadas para valorizar o layout do seu espaço.</p>
+                  </div>
+                </div>
+
+                <div class="studio-feat-item">
+                  <div class="studio-feat-bullet">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  </div>
+                  <div class="studio-feat-text">
+                    <strong>Composição de Almofadas & Mantas</strong>
+                    <p>Texturas acetinadas e linhos puros selecionados pela curadoria da Célia Decor.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="studio-actions-row">
+                <a href="https://wa.me/5511963188104?text=Ol%C3%A1%20C%C3%A9lia%20Decor!%20Vi%20o%20v%C3%ADdeo%20do%20Instagram%20no%20site%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20o%20meu%20espa%C3%A7o." target="_blank" rel="noopener noreferrer" class="nav-cta-btn studio-action-main" style="background: var(--c-gold); color: #121316; justify-content: center; flex: 1;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/></svg>
+                  <span>Orçar Este Ambiente</span>
+                </a>
+                <a href="https://www.instagram.com/p/DDj4iMwRgZw/" target="_blank" rel="noopener noreferrer" class="studio-insta-outline-btn" title="Abrir vídeo oficial no Instagram @celiadecor">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                  <span>Instagram</span>
+                </a>
+              </div>
             </div>
           </div>
 
-          <div class="control-block">
-            <h4>2. Selecione o Tecido Nobre</h4>
-            <div class="button-options-row">
-              <button class="option-btn btn-fabric-opt active" data-fabric="linho">Linho Puro</button>
-              <button class="option-btn btn-fabric-opt" data-fabric="voil">Voil Suíço</button>
-              <button class="option-btn btn-fabric-opt" data-fabric="blackout">Blackout Acetinado</button>
+          <!-- ABA 2: SIMULADOR DE PREGAS & TECIDOS -->
+          <div class="studio-panel-content" id="panelFabricSim" style="display: none;">
+            <div class="control-block">
+              <h4>1. Selecione o Tipo de Prega</h4>
+              <div class="button-options-row">
+                <button class="option-btn btn-pleat-opt active" data-pleat="wave">Prega Wave</button>
+                <button class="option-btn btn-pleat-opt" data-pleat="femea">Prega Fêmea</button>
+                <button class="option-btn btn-pleat-opt" data-pleat="suico">Trilho Suíço</button>
+              </div>
             </div>
-          </div>
 
-          <div class="control-block">
-            <h4>3. Simule a Luz do Sol</h4>
-            <input type="range" min="0" max="100" value="65" class="slider-custom" id="studioLightSlider" aria-label="Controle de Luz Solar">
-            <div class="slider-ticks">
-              <span>Noite Aconchegante</span>
-              <span>Meia Luz Entardecer</span>
-              <span>Dia Ensolarado</span>
+            <div class="control-block">
+              <h4>2. Selecione o Tecido Nobre</h4>
+              <div class="button-options-row">
+                <button class="option-btn btn-fabric-opt active" data-fabric="linho">Linho Puro</button>
+                <button class="option-btn btn-fabric-opt" data-fabric="voil">Voil Suíço</button>
+                <button class="option-btn btn-fabric-opt" data-fabric="blackout">Blackout Acetinado</button>
+              </div>
             </div>
-          </div>
 
-          <div class="studio-spec-card">
-            <h5 id="studioSpecTitle">Prega Wave (Ondulação Suave Contínua) • Linho Puro Rústico</h5>
-            <p id="studioSpecDesc">Caimento fluido com ondas simétricas desenhadas milimetricamente. A preferida dos arquitetos para salas amplas e cortineiros com iluminação em fita LED.</p>
-          </div>
+            <div class="control-block">
+              <h4>3. Simule a Luz do Sol</h4>
+              <input type="range" min="0" max="100" value="65" class="slider-custom" id="studioLightSlider" aria-label="Controle de Luz Solar">
+              <div class="slider-ticks">
+                <span>Noite Aconchegante</span>
+                <span>Meia Luz Entardecer</span>
+                <span>Dia Ensolarado</span>
+              </div>
+            </div>
 
-          <a href="contato.html" class="nav-cta-btn" style="background: var(--c-gold); color: #121316; justify-content: center;">Solicitar Orçamento deste Modelo</a>
+            <div class="studio-spec-card">
+              <h5 id="studioSpecTitle">Prega Wave (Ondulação Suave Contínua) • Linho Puro Rústico</h5>
+              <p id="studioSpecDesc">Caimento fluido com ondas simétricas desenhadas milimetricamente. A preferida dos arquitetos para salas amplas e cortineiros com iluminação em fita LED.</p>
+            </div>
+
+            <a href="contato.html" class="nav-cta-btn" style="background: var(--c-gold); color: #121316; justify-content: center;">Solicitar Orçamento deste Modelo</a>
+          </div>
         </div>
       </div>
     </div>
