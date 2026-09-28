@@ -322,57 +322,190 @@ function initTransformationScroll() {
     spotDrawer.setAttribute('aria-hidden', 'false');
   }
 
-  // 3. Gestão de Navegação e Transição entre os 5 Ângulos
-  function scrollToSlide(idx) {
-    idx = Math.max(0, Math.min(totalSlides - 1, idx));
-    const sectionTop = section.offsetTop;
-    const scrollable = section.offsetHeight - window.innerHeight;
-    const targetScroll = sectionTop + (scrollable * (idx / (totalSlides - 1)));
-    window.scrollTo({ top: targetScroll + 5, behavior: 'smooth' });
-  }
+  // 3. Gestão de Navegação e Profundidade Espacial 3D
+  const slideMeta = [
+    {
+      badge: "Ângulo 01 de 05 • Visão Panorâmica",
+      title: "Visão Panorâmica da Suíte Master",
+      desc: "Harmonia absoluta entre tecidos nobres em linho, cabeceiras sob medida, painel em madeira ripada e controle térmico com persiana rolô tela solar.",
+      focal: { x: 54, y: 48 },
+      cue: "Role para caminhar em direção à cabeceira ripada e cama"
+    },
+    {
+      badge: "Ângulo 02 de 05 • Cabeceira & Painel Ripado",
+      title: "Cabeceira sob Medida & Marcenaria Ripada",
+      desc: "Estofamento de alfaiataria em linho cru D33, sanca com LED embutido 2700K e mesa de apoio suspensa flutuante.",
+      focal: { x: 38, y: 46 },
+      cue: "Role para se aproximar do painel ripado e da porta oculta"
+    },
+    {
+      badge: "Ângulo 03 de 05 • Porta Mimetizada Oculta",
+      title: "Porta Mimetizada Oculta da Suíte",
+      desc: "Engenharia de precisão com continuidade perfeita dos frisos da madeira, integrando o banheiro master sem emendas aparentes.",
+      focal: { x: 30, y: 44 },
+      cue: "Role para mergulhar nos detalhes de tecidos e bordados"
+    },
+    {
+      badge: "Ângulo 04 de 05 • Macro Texturas & Linho Artesanal",
+      title: "Macro Detalhe dos Bordados & Linho Puro",
+      desc: "Toque artesanal com bordados botânicos em alto relevo, tramas rústicas de linho com barretas e madeira natural maciça.",
+      focal: { x: 50, y: 46 },
+      cue: "Role para caminhar em direção à janela com persiana rolô"
+    },
+    {
+      badge: "Ângulo 05 de 05 • Persiana Solar & Iluminação Natural",
+      title: "Persiana Rolô Screen Solar Motorizada",
+      desc: "Controle solar inteligente com 97% de bloqueio UV, transparência para o jardim externo e motorização ultra silenciosa.",
+      focal: { x: 50, y: 40 },
+      cue: "Você explorou toda a suíte. Role para cima para retornar aos ângulos"
+    }
+  ];
 
-  function setActiveSlide(targetIndex) {
-    targetIndex = Math.max(0, Math.min(totalSlides - 1, targetIndex));
-    if (targetIndex === currentActive) return;
-    currentActive = targetIndex;
+  // Configura pontos focais arquitetônicos de cada cena para o zoom realista
+  slides.forEach((slide, idx) => {
+    const meta = slideMeta[idx] || { focal: { x: 50, y: 50 } };
+    slide.style.transformOrigin = `${meta.focal.x}% ${meta.focal.y}%`;
+  });
 
-    closeSpotDrawer();
+  // =========================================================================
+  // MOTOR 3D: CAMERA WALK-THROUGH (DOLLY ZOOM INTERATIVO POR SCROLL)
+  // Caminhe fisicamente por dentro das fotos conforme move o scroll do mouse!
+  // =========================================================================
+  let targetVirtualDepth = 0; // 0.0 a 4.0
+  let currentVirtualDepth = 0;
+  let targetMouseX = 0; // -0.5 a 0.5
+  let targetMouseY = 0;
+  let currentMouseX = 0;
+  let currentMouseY = 0;
+  let isZoomed = false;
 
+  const stack = document.getElementById('transformSlidesStack');
+  const spatialStage = document.getElementById('tourSpatialStage');
+  const activeBadge = document.getElementById('transformActiveBadge');
+  const activeTitle = document.getElementById('transformActiveTitle');
+  const activeDesc = document.getElementById('transformActiveDesc');
+
+  function render3DFrame() {
+    // 1. Interpolação suave contínua a 60fps (efeito Steadicam físico)
+    const depthDiff = targetVirtualDepth - currentVirtualDepth;
+    currentVirtualDepth += depthDiff * 0.088;
+
+    currentMouseX += (targetMouseX - currentMouseX) * 0.08;
+    currentMouseY += (targetMouseY - currentMouseY) * 0.08;
+
+    // 2. Parallax de rotação (olhar ao redor em 3D dentro do quarto)
+    const rotY = currentMouseX * 9.5; // -4.8deg a +4.8deg
+    const rotX = -currentMouseY * 7.5; // -3.7deg a +3.7deg
+    const panX = -currentMouseX * 22;
+    const panY = -currentMouseY * 16;
+    const zoomMultiplier = isZoomed ? 1.35 : 1.0;
+
+    if (stack) {
+      stack.style.transform = `perspective(1200px) rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg) translate3d(${panX.toFixed(1)}px, ${panY.toFixed(1)}px, 0)`;
+    }
+
+    // 3. Renderiza cada cena no túnel contínuo de profundidade
     slides.forEach((slide, idx) => {
-      if (idx === targetIndex) {
-        slide.classList.add('active');
+      const delta = currentVirtualDepth - idx; // distância relativa da câmera até este ângulo
+
+      if (delta > 1.05 || delta < -1.05) {
+        // Cena completamente ultrapassada ou muito adiante
+        slide.style.opacity = '0';
+        slide.style.visibility = 'hidden';
+        slide.style.pointerEvents = 'none';
+        slide.style.transform = 'translate3d(0, 0, -400px) scale(0.6)';
+        return;
+      }
+
+      slide.style.visibility = 'visible';
+
+      if (delta >= 0) {
+        // A câmera está DENTRO ou AVANÇANDO através desta foto (Dolly Zoom para frente)
+        // delta vai de 0.0 (foto normal) até 1.0 (passando por dentro dela)
+        const scale = (1.0 + (delta * 1.18)) * zoomMultiplier; // 1.0x -> 2.18x (caminhando para dentro)
+        const zPush = delta * 420; // avança 420px na direção do observador
+        const opacity = Math.max(0, 1 - Math.pow(delta, 1.55));
+        const blur = Math.max(0, (delta - 0.42) * 8);
+
+        slide.style.opacity = opacity.toFixed(3);
+        slide.style.transform = `translate3d(0, 0, ${zPush.toFixed(1)}px) scale(${scale.toFixed(3)})`;
+        slide.style.filter = blur > 0.2 ? `blur(${blur.toFixed(1)}px)` : 'none';
+        slide.style.zIndex = `${10 - Math.floor(delta * 4)}`;
+
+        // Hotspots permanecem interativos enquanto estamos situados nesta cena
+        const hotspots = slide.querySelectorAll('.tour-hotspot');
+        if (delta < 0.24 && !isZoomed) {
+          const hotOpacity = Math.max(0, 1 - delta * 3.8);
+          hotspots.forEach(h => {
+            h.style.opacity = hotOpacity.toFixed(2);
+            h.style.pointerEvents = 'auto';
+            h.style.transform = 'translate(-50%, -50%) translateZ(60px)';
+          });
+        } else {
+          hotspots.forEach(h => {
+            h.style.opacity = '0';
+            h.style.pointerEvents = 'none';
+          });
+        }
+
       } else {
-        slide.classList.remove('active');
+        // A cena está se APROXIMANDO à nossa frente (surge do fundo em direção à câmera)
+        // delta vai de -1.0 até 0.0
+        const progress = 1 + delta; // 0.0 até 1.0
+        const scale = (0.62 + (0.38 * Math.pow(progress, 0.78))) * zoomMultiplier; // 0.62x -> 1.0x
+        const zPush = delta * 320; // -320px -> 0px
+        const opacity = Math.max(0, Math.min(1, Math.pow(progress, 1.35)));
+        const blur = Math.max(0, -delta * 4.5);
+
+        slide.style.opacity = opacity.toFixed(3);
+        slide.style.transform = `translate3d(0, 0, ${zPush.toFixed(1)}px) scale(${scale.toFixed(3)})`;
+        slide.style.filter = blur > 0.2 ? `blur(${blur.toFixed(1)}px)` : 'none';
+        slide.style.zIndex = '5';
+
+        const hotspots = slide.querySelectorAll('.tour-hotspot');
+        hotspots.forEach(h => {
+          h.style.opacity = '0';
+          h.style.pointerEvents = 'none';
+        });
       }
     });
 
+    // 4. Identifica o ponto de vista dominante (mais próximo do olhar)
+    const primaryIndex = Math.max(0, Math.min(totalSlides - 1, Math.round(currentVirtualDepth)));
+
     pills.forEach((pill, idx) => {
-      if (idx === targetIndex) {
-        pill.classList.add('active');
-        pill.setAttribute('aria-selected', 'true');
-      } else {
-        pill.classList.remove('active');
-        pill.setAttribute('aria-selected', 'false');
-      }
+      const isCur = idx === primaryIndex;
+      pill.classList.toggle('active', isCur);
+      pill.setAttribute('aria-selected', isCur ? 'true' : 'false');
     });
 
     if (progressFill) {
-      const fillPercent = ((targetIndex + 1) / totalSlides) * 100;
-      progressFill.style.width = `${fillPercent}%`;
+      const fillPercent = ((currentVirtualDepth) / (totalSlides - 1)) * 100;
+      progressFill.style.width = `${Math.max(5, Math.min(100, fillPercent))}%`;
     }
 
-    const activeBadge = document.getElementById('transformActiveBadge');
-    const activeTitle = document.getElementById('transformActiveTitle');
-    const activeDesc = document.getElementById('transformActiveDesc');
-    if (activeBadge && slideMeta[targetIndex]) activeBadge.textContent = slideMeta[targetIndex].badge;
-    if (activeTitle && slideMeta[targetIndex]) activeTitle.textContent = slideMeta[targetIndex].title;
-    if (activeDesc && slideMeta[targetIndex]) activeDesc.textContent = slideMeta[targetIndex].desc;
+    if (slideMeta[primaryIndex]) {
+      const meta = slideMeta[primaryIndex];
+      if (activeBadge) activeBadge.textContent = meta.badge;
+      if (activeTitle) activeTitle.textContent = meta.title;
+      if (activeDesc) activeDesc.textContent = meta.desc;
 
-    if (cueLabel) {
-      cueLabel.textContent = `▼ Role ou toque nos pontos interativos para conhecer a suíte por dentro (${targetIndex + 1} de 5: ${slideMeta[targetIndex].title}) ▼`;
+      if (cueLabel) {
+        if (Math.abs(depthDiff) > 0.06) {
+          cueLabel.textContent = `✦ Caminhando pela Suíte: ${meta.title} (${Math.round((currentVirtualDepth / (totalSlides - 1)) * 100)}%) ✦`;
+        } else {
+          cueLabel.textContent = `▼ ${meta.cue} ▼`;
+        }
+      }
     }
+
+    requestAnimationFrame(render3DFrame);
   }
 
+  // Inicia o loop contínuo de renderização 3D
+  requestAnimationFrame(render3DFrame);
+
+  // 4. Sincronização Contínua com o Scroll da Página
   function onScroll() {
     const rect = section.getBoundingClientRect();
     const sectionHeight = section.offsetHeight;
@@ -384,13 +517,65 @@ function initTransformationScroll() {
     if (scrollable <= 0) return;
 
     let progress = scrolled / scrollable;
-    progress = Math.max(0, Math.min(0.9999, progress));
+    progress = Math.max(0, Math.min(1.0, progress));
 
-    const stepIndex = Math.floor(progress * totalSlides);
-    setActiveSlide(stepIndex);
+    targetVirtualDepth = progress * (totalSlides - 1); // 0.0 a 4.0
   }
 
-  // 4. Listeners dos Hotspots
+  // 5. Navegação Direta para Waypoints (Pílulas e Setas)
+  function scrollToWaypoint(idx) {
+    closeSpotDrawer();
+    targetVirtualDepth = Math.max(0, Math.min(totalSlides - 1, idx));
+    const rect = section.getBoundingClientRect();
+    const sectionTop = window.pageYOffset + rect.top;
+    const scrollable = section.offsetHeight - window.innerHeight;
+    const targetScrollY = sectionTop + (targetVirtualDepth / (totalSlides - 1)) * scrollable;
+    window.scrollTo({ top: targetScrollY, behavior: 'smooth' });
+  }
+
+  pills.forEach((pill, idx) => {
+    pill.addEventListener('click', (e) => {
+      e.preventDefault();
+      scrollToWaypoint(idx);
+    });
+  });
+
+  const prevBtn = document.getElementById('transformPrevBtn');
+  const nextBtn = document.getElementById('transformNextBtn');
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const prevIdx = Math.max(0, Math.round(targetVirtualDepth) - 1);
+      scrollToWaypoint(prevIdx);
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const nextIdx = Math.min(totalSlides - 1, Math.round(targetVirtualDepth) + 1);
+      scrollToWaypoint(nextIdx);
+    });
+  }
+
+  // 6. Navegação via Scroll do Mouse direto sobre o Palco
+  if (spatialStage) {
+    spatialStage.addEventListener('wheel', (e) => {
+      const delta = Math.sign(e.deltaY) * 0.32;
+      const newDepth = Math.max(0, Math.min(totalSlides - 1, targetVirtualDepth + delta));
+      if (Math.abs(newDepth - targetVirtualDepth) > 0.01) {
+        targetVirtualDepth = newDepth;
+        const rect = section.getBoundingClientRect();
+        const sectionTop = window.pageYOffset + rect.top;
+        const scrollable = section.offsetHeight - window.innerHeight;
+        const targetScrollY = sectionTop + (targetVirtualDepth / (totalSlides - 1)) * scrollable;
+        window.scrollTo({ top: targetScrollY, behavior: 'auto' });
+      }
+    }, { passive: true });
+  }
+
+  // 7. Listeners dos Hotspots
   if (spotClose) {
     spotClose.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -410,36 +595,10 @@ function initTransformationScroll() {
     });
   });
 
-  // 5. Listeners de Pílulas e Setas
-  pills.forEach((pill, idx) => {
-    pill.addEventListener('click', (e) => {
-      e.preventDefault();
-      scrollToSlide(idx);
-    });
-  });
-
-  const prevBtn = document.getElementById('transformPrevBtn');
-  const nextBtn = document.getElementById('transformNextBtn');
-
-  if (prevBtn) {
-    prevBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      scrollToSlide(currentActive - 1);
-    });
-  }
-
-  if (nextBtn) {
-    nextBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      scrollToSlide(currentActive + 1);
-    });
-  }
-
   // =========================================================================
   // SIMULADOR DE INCIDÊNCIA DE LUZ SOLAR & AMBIÊNCIA CÊNICA
   // =========================================================================
   const lightOverlay = document.getElementById('tourLightOverlay');
-  const spatialStage = document.getElementById('tourSpatialStage');
   const lightButtons = section.querySelectorAll('.btn-light-mode');
 
   lightButtons.forEach(btn => {
@@ -460,124 +619,54 @@ function initTransformationScroll() {
   });
 
   // =========================================================================
-  // VISUALIZADOR ESPACIAL 3D: LOOK-AROUND (MOUSE MOVE & TOUCH PAN)
+  // LOOK-AROUND 3D: MOUSE TRACKING & TOUCH PAN (GIRAR VISÃO NO QUARTO)
   // =========================================================================
-  const stack = document.getElementById('transformSlidesStack');
-  let isZoomed = false;
-  let targetRotX = 0;
-  let targetRotY = 0;
-  let currentRotX = 0;
-  let currentRotY = 0;
-  let targetPanX = 0;
-  let targetPanY = 0;
-  let currentPanX = 0;
-  let currentPanY = 0;
-  let animFrameId = null;
-
-  function update3DTransform() {
-    currentRotX += (targetRotX - currentRotX) * 0.12;
-    currentRotY += (targetRotY - currentRotY) * 0.12;
-    currentPanX += (targetPanX - currentPanX) * 0.12;
-    currentPanY += (targetPanY - currentPanY) * 0.12;
-
-    const scale = isZoomed ? 1.35 : 1.0;
-    if (stack) {
-      stack.style.transform = `perspective(1000px) rotateX(${currentRotX.toFixed(2)}deg) rotateY(${currentRotY.toFixed(2)}deg) translate3d(${currentPanX.toFixed(1)}px, ${currentPanY.toFixed(1)}px, 0) scale(${scale})`;
-    }
-
-    if (Math.abs(targetRotX - currentRotX) > 0.01 || Math.abs(targetRotY - currentRotY) > 0.01 || Math.abs(targetPanX - currentPanX) > 0.1 || Math.abs(targetPanY - currentPanY) > 0.1) {
-      animFrameId = requestAnimationFrame(update3DTransform);
-    } else {
-      animFrameId = null;
-    }
-  }
-
-  function request3DUpdate() {
-    if (!animFrameId) {
-      animFrameId = requestAnimationFrame(update3DTransform);
-    }
-  }
-
   if (spatialStage) {
-    // Efeito Panorâmico no Desktop via Movimento do Mouse
     spatialStage.addEventListener('mousemove', (e) => {
       const rect = spatialStage.getBoundingClientRect();
-      const normX = ((e.clientX - rect.left) / rect.width) - 0.5; // -0.5 a 0.5
-      const normY = ((e.clientY - rect.top) / rect.height) - 0.5;
-
-      targetRotY = normX * 8; // -4deg a +4deg
-      targetRotX = -normY * 6; // -3deg a +3deg
-
-      if (isZoomed) {
-        targetPanX = -normX * 90;
-        targetPanY = -normY * 60;
-      } else {
-        targetPanX = 0;
-        targetPanY = 0;
-      }
-
-      request3DUpdate();
+      targetMouseX = ((e.clientX - rect.left) / rect.width) - 0.5; // -0.5 a 0.5
+      targetMouseY = ((e.clientY - rect.top) / rect.height) - 0.5;
     });
 
     spatialStage.addEventListener('mouseleave', () => {
-      targetRotX = 0;
-      targetRotY = 0;
-      targetPanX = 0;
-      targetPanY = 0;
-      request3DUpdate();
+      targetMouseX = 0;
+      targetMouseY = 0;
     });
 
-    // Suporte a Touch Drag & Swipe no Smartphone
+    // Touch no Smartphone: arraste com o dedo para olhar em volta
     let touchStartX = 0;
     let touchStartY = 0;
-    let isDragging = false;
 
     spatialStage.addEventListener('touchstart', (e) => {
       if (e.touches.length === 1) {
-        isDragging = true;
         touchStartX = e.touches[0].clientX;
         touchStartY = e.touches[0].clientY;
       }
     }, { passive: true });
 
     spatialStage.addEventListener('touchmove', (e) => {
-      if (!isDragging || e.touches.length !== 1) return;
-      const deltaX = e.touches[0].clientX - touchStartX;
-      const deltaY = e.touches[0].clientY - touchStartY;
-
-      targetRotY = Math.max(-10, Math.min(10, deltaX * 0.08));
-      targetRotX = Math.max(-8, Math.min(8, -deltaY * 0.08));
-
-      if (isZoomed) {
-        targetPanX = Math.max(-80, Math.min(80, deltaX * 0.5));
-        targetPanY = Math.max(-60, Math.min(60, deltaY * 0.5));
+      if (e.touches.length === 1) {
+        const deltaX = e.touches[0].clientX - touchStartX;
+        const deltaY = e.touches[0].clientY - touchStartY;
+        targetMouseX = Math.max(-0.5, Math.min(0.5, (deltaX / window.innerWidth) * 1.6));
+        targetMouseY = Math.max(-0.5, Math.min(0.5, (deltaY / window.innerHeight) * 1.6));
       }
-
-      request3DUpdate();
     }, { passive: true });
 
     spatialStage.addEventListener('touchend', (e) => {
-      isDragging = false;
       if (e.changedTouches.length === 1) {
         const deltaX = e.changedTouches[0].clientX - touchStartX;
-        const deltaY = e.changedTouches[0].clientY - touchStartY;
-
-        // Deslize horizontal para alternar ângulo
-        if (Math.abs(deltaX) > 45 && Math.abs(deltaX) > Math.abs(deltaY) * 1.2) {
+        // Swipe horizontal rápido no celular para avançar / recuar ângulo
+        if (Math.abs(deltaX) > 55) {
           if (deltaX < 0) {
-            scrollToSlide(currentActive + 1);
+            scrollToWaypoint(Math.min(totalSlides - 1, Math.round(targetVirtualDepth) + 1));
           } else {
-            scrollToSlide(currentActive - 1);
+            scrollToWaypoint(Math.max(0, Math.round(targetVirtualDepth) - 1));
           }
         }
       }
-
-      // Restaura o alinhamento
-      targetRotX = 0;
-      targetRotY = 0;
-      targetPanX = 0;
-      targetPanY = 0;
-      request3DUpdate();
+      targetMouseX = 0;
+      targetMouseY = 0;
     }, { passive: true });
   }
 
@@ -593,12 +682,7 @@ function initTransformationScroll() {
       isZoomed = !isZoomed;
       zoomBtn.classList.toggle('active', isZoomed);
       const span = zoomBtn.querySelector('span');
-      if (span) span.textContent = isZoomed ? '1.0x' : 'Zoom';
-      if (!isZoomed) {
-        targetPanX = 0;
-        targetPanY = 0;
-      }
-      request3DUpdate();
+      if (span) span.textContent = isZoomed ? '1.0x Normal' : 'Zoom 1.35x';
     });
   }
 

@@ -860,29 +860,41 @@ p {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: clamp(8px, 2vw, 20px);
+  gap: clamp(8px, 1.8vw, 18px);
   width: 100%;
-  max-width: 1100px;
+  max-width: 1240px;
   flex: 1;
   min-height: 0;
   position: relative;
-  margin: 4px 0;
+  margin: 3px 0;
 }
 
 .tour-spatial-stage {
   position: relative;
-  width: min(92vw, 860px);
+  width: min(94vw, 1140px);
   height: 100%;
-  max-height: 54vh;
+  max-height: 58vh;
   aspect-ratio: 16 / 9;
-  border-radius: 18px;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.8), 0 0 50px rgba(197, 168, 128, 0.22);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.9), 0 0 60px rgba(197, 168, 128, 0.28);
   border: 1.5px solid rgba(197, 168, 128, 0.45);
-  background: #111216;
+  background: #08090C;
   perspective: 1200px;
   transform-style: preserve-3d;
   user-select: none;
+}
+
+/* Vinheta Óptica de Cinema & Reflexo de Lente */
+.tour-spatial-stage::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 8;
+  box-shadow: inset 0 0 70px rgba(0, 0, 0, 0.65), inset 0 0 25px rgba(197, 168, 128, 0.12);
+  transition: box-shadow 0.4s ease;
 }
 
 /* Filtro de Luz Cênica */
@@ -906,14 +918,16 @@ p {
   background: radial-gradient(ellipse at 50% 12%, rgba(255, 179, 71, 0.34) 0%, rgba(8, 10, 15, 0.46) 80%);
 }
 
-/* Stack de Imagens 8K */
+/* Stack 3D de Imagens em Túnel de Profundidade */
 .transform-slides-stack {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   transform-origin: center center;
-  transition: transform 0.15s ease-out;
+  perspective: 1200px;
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 
 .transform-slide-item {
@@ -921,19 +935,10 @@ p {
   inset: 0;
   width: 100%;
   height: 100%;
-  opacity: 0;
-  visibility: hidden;
+  transform-style: preserve-3d;
+  will-change: transform, opacity, filter;
   pointer-events: none;
-  transform: scale(0.97);
-  transition: opacity 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.55s cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0.5s;
-}
-
-.transform-slide-item.active {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-  transform: scale(1);
-  z-index: 2;
+  transition: opacity 0.08s linear;
 }
 
 .transform-slide-img {
@@ -941,6 +946,8 @@ p {
   height: 100%;
   object-fit: cover;
   display: block;
+  transform-origin: inherit;
+  will-change: transform, filter;
   transition: filter 0.6s ease;
 }
 
@@ -953,10 +960,11 @@ p {
   filter: brightness(0.88) contrast(1.12) sepia(16%);
 }
 
-/* Hotspots Interativos (Radar Pulsante Dourado) */
+/* Hotspots Interativos com Profundidade 3D (Radar Pulsante Dourado) */
 .tour-hotspot {
   position: absolute;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) translateZ(60px);
+  transform-style: preserve-3d;
   z-index: 12;
   cursor: pointer;
   border: none;
@@ -1328,7 +1336,7 @@ p {
 /* Responsividade Mobile & Tablet */
 @media (max-width: 768px) {
   .transformation-journey-section.virtual-suite-tour {
-    height: 420vh;
+    height: 520vh;
   }
 
   .transformation-sticky-stage {
@@ -1375,10 +1383,10 @@ p {
   }
 
   .tour-spatial-stage {
-    width: min(94vw, 420px);
-    max-height: 48vh;
+    width: min(94vw, 440px);
+    max-height: 50vh;
     aspect-ratio: 16 / 10;
-    border-radius: 14px;
+    border-radius: 16px;
   }
 
   .hud-indicator {
@@ -2084,13 +2092,97 @@ p {
 }
 
 .footer-sub-bottom {
-  padding-top: 32px;
+  padding-top: 28px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
   font-size: 0.85rem;
   color: #7D808A;
+}
+
+/* Marketing & Tecnologia Oficial da Agência Impacto Digital */
+.footer-agency-col {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(197, 168, 128, 0.28);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.footer-agency-col:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(197, 168, 128, 0.7);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45), 0 0 18px rgba(197, 168, 128, 0.25);
+  transform: translateY(-2px);
+}
+
+.agency-credit-label {
+  font-size: 0.72rem;
+  color: #A3A096;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+}
+
+.impacto-digital-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  color: #FFFFFF;
+  transition: all 0.25s ease;
+}
+
+.agency-icon-sparkle {
+  font-size: 0.88rem;
+  color: #FFD700;
+  display: inline-block;
+  animation: agencyPulse 2s infinite ease-in-out;
+}
+
+@keyframes agencyPulse {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 2px #FFD700); }
+  50% { transform: scale(1.22); filter: drop-shadow(0 0 8px #FFD700); }
+}
+
+.agency-name {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #FFFFFF;
+  transition: color 0.2s ease;
+}
+
+.impacto-digital-badge:hover .agency-name {
+  color: var(--c-gold-light);
+}
+
+.agency-wa-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(37, 211, 102, 0.16);
+  border: 1px solid rgba(37, 211, 102, 0.5);
+  color: #25D366;
+  padding: 3px 9px;
+  border-radius: 99px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  transition: all 0.25s ease;
+}
+
+.impacto-digital-badge:hover .agency-wa-chip {
+  background: #25D366;
+  color: #FFFFFF;
+  box-shadow: 0 0 16px rgba(37, 211, 102, 0.65);
 }
 
 /* ==========================================================================
