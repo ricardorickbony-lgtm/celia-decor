@@ -498,6 +498,17 @@ p {
   max-width: 680px;
   margin: 0 auto 40px auto;
   font-weight: 300;
+.hero-actions-group {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.hero-google-wrapper {
+  margin-top: 22px;
+  display: flex;
+  justify-content: center;
 }
 
 /* Indicador de Scroll Interativo */
@@ -1594,6 +1605,103 @@ p {
   font-size: 0.85rem;
   color: var(--c-text-muted);
   margin: 0;
+}
+
+/* ==========================================================================
+   SEÇÃO ORIGEM & DONA CÉLIA (SOBRE NÓS / O LEGADO)
+   ========================================================================== */
+.story-hero-section {
+  padding: clamp(70px, 9vw, 130px) 0;
+  background-color: var(--c-surface);
+}
+
+.story-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: clamp(40px, 5vw, 70px);
+  align-items: center;
+}
+
+.story-text-col h1 {
+  margin-top: 18px;
+  line-height: 1.25;
+}
+
+/* Moldura Nobre de Dona Célia */
+.origin-photo-frame {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: #141619;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.14);
+  border: 1px solid rgba(212, 175, 55, 0.28);
+}
+
+.origin-photo-inner {
+  position: relative;
+  width: 100%;
+  background: #0f1013;
+  overflow: hidden;
+}
+
+.origin-photo-frame img.origin-photo-img,
+.origin-photo-frame img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain; /* NUNCA corta as margens nem a legenda da foto original */
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.origin-photo-frame:hover img {
+  transform: scale(1.02);
+}
+
+.origin-photo-caption-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 16px 22px;
+  background: linear-gradient(180deg, #181A1E 0%, #101215 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.origin-caption-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.origin-caption-name {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: #FFFFFF;
+  letter-spacing: 0.02em;
+  font-weight: 600;
+}
+
+.origin-caption-role {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  color: var(--c-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: 600;
+}
+
+.origin-caption-tag {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  color: var(--c-gold-light);
+  font-weight: 600;
+  white-space: nowrap;
 }
 
 /* ==========================================================================
@@ -2812,6 +2920,7 @@ p {
     gap: 12px;
   }
   .staircase-monument-grid,
+  .story-grid,
   .studio-grid,
   .showroom-double-col {
     grid-template-columns: 1fr;
@@ -2982,11 +3091,44 @@ p {
     height: 320px;
   }
 
+  /* Origem & Dona Célia: Sem cortes, 100% visível em celulares */
+  .story-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .origin-photo-frame {
+    max-width: 100%;
+    margin: 0 auto;
+    border-radius: var(--radius-sm);
+  }
+
+  .origin-photo-frame img.origin-photo-img,
   .origin-photo-frame img {
+    width: 100%;
     height: auto;
-    aspect-ratio: 4 / 3;
-    max-height: 320px;
-    object-fit: cover;
+    max-height: none;
+    aspect-ratio: auto;
+    object-fit: contain; /* NUNCA corta a foto nem a legenda original da Dona Célia */
+    display: block;
+  }
+
+  .origin-photo-caption-bar {
+    padding: 12px 16px;
+    gap: 10px;
+  }
+
+  .origin-caption-name {
+    font-size: 1.05rem;
+  }
+
+  .origin-caption-role {
+    font-size: 0.72rem;
+  }
+
+  .origin-caption-tag {
+    font-size: 0.68rem;
+    padding: 4px 10px;
   }
 
   .curtain-revealed-backdrop {
@@ -2995,8 +3137,105 @@ p {
     object-fit: cover;
   }
 
+  /* ========================================================================
+     Hero Mobile: Solução definitiva para espaçamento arejado e zero sobreposição
+     ======================================================================== */
   .hero-stage {
-    min-height: 560px;
+    min-height: 100svh;
+    min-height: 640px;
+    height: auto;
+    padding-top: calc(var(--header-height, 80px) + 24px);
+    padding-bottom: 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+  }
+
+  .hero-editorial-box {
+    width: 100%;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-badge-pill {
+    font-size: 0.72rem;
+    padding: 7px 16px;
+    letter-spacing: 0.18em;
+    margin-bottom: 18px;
+  }
+
+  .hero-headline {
+    font-size: clamp(1.95rem, 7.8vw, 2.5rem);
+    line-height: 1.2;
+    margin-bottom: 14px;
+  }
+
+  .hero-subtext {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    margin-bottom: 22px;
+    max-width: 95%;
+  }
+
+  .hero-actions-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .hero-actions-group .nav-cta-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 13px 20px;
+  }
+
+  .hero-google-wrapper {
+    margin-top: 18px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero-google-rating-pill {
+    padding: 8px 14px;
+    font-size: 0.74rem;
+    gap: 6px;
+    max-width: 96%;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  }
+
+  /* O indicador de scroll agora fica em fluxo relativo, com espaçamento perfeito */
+  .hero-scroll-cue {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    margin-top: 34px;
+    margin-bottom: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+    z-index: 5;
+  }
+
+  .hero-scroll-cue span {
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    opacity: 0.85;
+  }
+
+  .scroll-line-anim {
+    height: 36px;
   }
 
   .collection-tri-grid,
