@@ -4,1115 +4,603 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Célia Decor — Cortinas sob Medida & Alta Decoração em Santo André</title>
-  <meta name="description" content="Há 30 anos transformando lares com a alta costura de cortinas sob medida, persianas inteligentes e decoração de luxo no ABC Paulista. Showroom no Jardim Bela Vista, Santo André.">
+  <meta name="description" content="Cortinas sob medida confeccionadas em atelier próprio, persianas motorizadas e tecidos nobres para residências exclusivas. Showroom no Jardim Bela Vista, Santo André.">
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
 
   <!-- Tipografia de Luxo Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
   <!-- ========================================================================
-       Header Flutuante de Luxo (Espaçoso, Minimalista & Logo Sempre Visível)
+       1. HEADER MINIMALISTA & ELEGANTE (Inspirado no padrão Uniflex)
        ======================================================================== -->
-  <header class="luxury-header hero-transparent">
-    <div class="header-container nav-shell">
-      <a href="index.html" class="brand-wrapper" aria-label="Célia Decor Home">
-        <!-- Logo Branca para o Hero escuro -->
-        <img src="assets/images/logo-celia-decor.png" alt="Célia Decor" class="brand-logo-img logo-white">
-        <!-- Logo Escura para quando rolar a página -->
-        <img src="assets/images/logo-celia-decor-dark.png" alt="Célia Decor" class="brand-logo-img logo-dark">
+  <header class="site-header transparent-at-top" id="siteHeader">
+    <div class="header-inner">
+      <a href="index.html" class="header-brand" aria-label="Célia Decor Home">
+        <img src="assets/images/logo-celia-decor.png" alt="Célia Decor" class="logo-light">
+        <img src="assets/images/logo-celia-decor-dark.png" alt="Célia Decor" class="logo-dark">
       </a>
 
-      <nav>
-        <ul class="nav-links">
-          <li class="nav-item"><a href="index.html" class="active">Home</a></li>
-          <li class="nav-item"><a href="sobre.html">O Legado</a></li>
-          <li class="nav-item"><a href="produtos.html">Coleções</a></li>
-          <li class="nav-item"><a href="automacao.html">Automação</a></li>
-          <li class="nav-item"><a href="arquitetos.html">Arquitetos</a></li>
-          <li class="nav-item"><a href="contato.html">Showroom</a></li>
+      <nav class="desktop-nav" aria-label="Navegação Principal">
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link active">Início</a></li>
+          <li><a href="#caimentos" class="nav-link">Caimentos</a></li>
+          <li><a href="#diferenciais" class="nav-link">Diferenciais</a></li>
+          <li><a href="#motorizacao" class="nav-link">Motorização</a></li>
+          <li><a href="#atelier" class="nav-link">O Atelier</a></li>
+          <li><a href="#ambientes" class="nav-link">Ambientes</a></li>
+          <li><a href="contato.html" class="nav-link">Showroom</a></li>
         </ul>
       </nav>
 
-      <!-- Área de Ações: Status Google + CTA + Menu Mobile -->
-      <div class="header-actions">
-        <!-- Badge de Atendimento Dinâmico Google -->
-        <a href="contato.html" class="header-live-badge is-offline" id="headerLiveStatus" title="Showroom Fechado aos Domingos • Reabre Segunda às 08:30">
-          <span class="live-status-dot"></span>
-          <span class="badge-full-text">Fechado aos Domingos</span>
-          <span class="badge-short-text">Fechado</span>
+      <div class="header-right-actions">
+        <!-- Indicador Dinâmico de Atendimento -->
+        <a href="contato.html" class="header-status-pill" id="headerStatusPill" title="Status de Atendimento do Showroom">
+          <span class="status-dot"></span>
+          <span class="status-label" id="headerStatusText">Consultando...</span>
         </a>
 
-        <a href="contato.html" class="nav-cta-btn header-cta">Agendar VIP</a>
+        <a href="https://wa.me/5511963188104?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20de%20cortinas%20sob%20medida%20C%C3%A9lia%20Decor." target="_blank" rel="noopener noreferrer" class="btn-header-cta">
+          Solicitar Orçamento
+        </a>
 
-        <button class="menu-burger" aria-label="Abrir Menu">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-          </svg>
+        <button class="mobile-menu-toggle" id="mobileMenuBtn" aria-label="Abrir Menu de Navegação">
+          <span></span>
+          <span></span>
+          <span></span>
         </button>
       </div>
     </div>
   </header>
 
   <!-- ========================================================================
-       Drawer Mobile de Alta Elegância & Redes Sociais
+       MENU MOBILE LATERAL (DRAWER)
        ======================================================================== -->
-  <div class="mobile-drawer-overlay" id="mobileDrawerOverlay"></div>
-  <aside class="mobile-drawer" id="mobileDrawer" aria-label="Menu de Navegação Mobile">
-    <div class="mobile-drawer-header">
-      <img src="assets/images/logo-celia-decor-dark.png" alt="Célia Decor" class="mobile-drawer-logo">
-      <button class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Fechar Menu">✕</button>
+  <div class="mobile-drawer-backdrop" id="drawerBackdrop"></div>
+  <aside class="mobile-drawer" id="mobileDrawer" aria-label="Menu Mobile">
+    <div class="drawer-header">
+      <img src="assets/images/logo-celia-decor-dark.png" alt="Célia Decor" class="drawer-logo">
+      <button class="drawer-close-btn" id="drawerCloseBtn" aria-label="Fechar Menu">✕</button>
+    </div>
+    
+    <div class="drawer-live-info" id="drawerLiveInfo">
+      <span class="status-dot"></span>
+      <span id="drawerStatusText">Showroom Célia Decor</span>
     </div>
 
-    <!-- Status Google em Tempo Real -->
-    <div class="mobile-drawer-status is-offline" id="mobileDrawerStatus">
-      <span class="live-status-dot"></span>
-      <span class="mobile-status-text">🌙 Fechado aos Domingos (Reabre Segunda 08:30)</span>
-    </div>
-
-    <nav class="mobile-drawer-nav">
-      <a href="index.html" class="mobile-nav-link active">Home</a>
-      <a href="sobre.html" class="mobile-nav-link">O Legado & Família</a>
-      <a href="produtos.html" class="mobile-nav-link">Coleções de Cortinas</a>
-      <a href="automacao.html" class="mobile-nav-link">Automação Residencial</a>
-      <a href="arquitetos.html" class="mobile-nav-link">Espaço Arquitetos</a>
-      <a href="contato.html" class="mobile-nav-link">Showroom & Contato</a>
-      <a href="politica-de-privacidade.html" class="mobile-nav-link">Políticas de Privacidade</a>
+    <nav class="drawer-navigation">
+      <a href="index.html" class="drawer-link active">Início</a>
+      <a href="#caimentos" class="drawer-link">Modelos & Caimentos</a>
+      <a href="#diferenciais" class="drawer-link">Diferenciais da Coleção</a>
+      <a href="#motorizacao" class="drawer-link">Motorização & Automação</a>
+      <a href="#atelier" class="drawer-link">O Atelier & 30 Anos</a>
+      <a href="#ambientes" class="drawer-link">Galeria de Ambientes</a>
+      <a href="produtos.html" class="drawer-link">Todas as Coleções</a>
+      <a href="sobre.html" class="drawer-link">A História de Dona Célia</a>
+      <a href="contato.html" class="drawer-link">Showroom Jardim Bela Vista</a>
+      <a href="politica-de-privacidade.html" class="drawer-link">Políticas de Privacidade</a>
     </nav>
 
-    <div class="mobile-drawer-footer">
-      <a href="contato.html" class="nav-cta-btn" style="width: 100%; justify-content: center; margin-bottom: 18px;">Agendar Consultoria VIP</a>
-
-      <p class="mobile-drawer-hours">
+    <div class="drawer-footer">
+      <a href="https://wa.me/5511963188104?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20de%20cortinas%20sob%20medida." target="_blank" rel="noopener noreferrer" class="btn-gold-full">
+        Falar no WhatsApp
+      </a>
+      <div class="drawer-address">
         <strong>Casa Célia Decor — Santo André</strong><br>
         Rua Edu Chaves, 15 – Jardim Bela Vista<br>
-        Seg a Sex: 08:30 às 17:30 | Sáb: 09:00 às 13:00
-      </p>
-
-      <!-- Redes Sociais no Menu Mobile -->
-      <div class="mobile-socials-row">
-        <a href="https://www.instagram.com/celiadecoroficial/" target="_blank" rel="noopener noreferrer" class="social-circle-btn" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        </a>
-        <a href="https://www.facebook.com/CeliaDecorSP" target="_blank" rel="noopener noreferrer" class="social-circle-btn" aria-label="Facebook">
-          <svg viewBox="0 0 24 24" width="18" height="18"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-        </a>
-        <a href="https://www.tiktok.com/@celiadecorsp" target="_blank" rel="noopener noreferrer" class="social-circle-btn" aria-label="TikTok">
-          <svg viewBox="0 0 24 24" width="18" height="18"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-1.01-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
-        </a>
-        <a href="https://www.youtube.com/channel/UCJTca4iiQOWq3MMVdK5Np2Q" target="_blank" rel="noopener noreferrer" class="social-circle-btn" aria-label="YouTube">
-          <svg viewBox="0 0 24 24" width="18" height="18"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-        </a>
+        (11) 4978-5551 • (11) 96318-8104
       </div>
     </div>
   </aside>
 
   <!-- ========================================================================
-       Hero Stage: O Portal de Entrada
+       2. HERO PRINCIPAL — IMPACTANTE, CLEAN E RESPONSIVO
+       Inspirado na estética da Uniflex Senses: fotografia ampla, tipografia leve
        ======================================================================== -->
-  <section class="hero-stage">
-    <img src="assets/images/hero-showroom-facade.jpg" alt="Fachada Noturna Showroom Casa Célia Decor Santo André" class="hero-background-media">
-    <div class="hero-gradient-overlay"></div>
+  <section class="minimal-hero-section">
+    <div class="hero-bg-wrapper">
+      <img src="assets/images/hero-luxury-living.jpg" alt="Cortinas sob Medida Célia Decor em Living de Alto Padrão" class="hero-bg-img">
+      <div class="hero-clean-overlay"></div>
+    </div>
 
-    <div class="hero-editorial-box">
-      <span class="hero-badge-pill">30 Anos de Excelência no ABC Paulista</span>
-      <h1 class="hero-headline">A alta costura da <em>arquitetura de interiores</em>.</h1>
-      <p class="hero-subtext">Cortinas sob medida confeccionadas à mão em atelier próprio, persianas motorizadas e curadoria nobre para residências que prezam pela elegância e pelo silêncio.</p>
-      
-      <div class="hero-actions-group">
-        <a href="produtos.html" class="nav-cta-btn" style="background: var(--c-gold); color: #121316; border-color: var(--c-gold);">Explorar Coleções</a>
-        <a href="#experiencia-abertura" class="nav-cta-btn" style="background: transparent; color: #FFFFFF; border-color: rgba(255,255,255,0.3);">Vivenciar a Abertura</a>
+    <div class="container hero-content-container">
+      <div class="hero-editorial-center">
+        <span class="hero-eyebrow">COLEÇÃO SOB MEDIDA 2026 • ALTA DECORAÇÃO</span>
+        <h1 class="hero-headline">Tecidos nobres, caimento impecável e design que desperta sensações.</h1>
+        <p class="hero-lead">Cada cortina é confeccionada à mão em atelier próprio, unindo a precisão da alfaiataria ao mais alto padrão de conforto térmico, controle de luminosidade e sofisticação.</p>
+        
+        <div class="hero-btn-row">
+          <a href="https://wa.me/5511963188104?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20C%C3%A9lia%20Decor%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer" class="btn-primary-gold">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+              <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.81 13.47 3.81 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z"/>
+            </svg>
+            Solicitar Orçamento no WhatsApp
+          </a>
+          <a href="#caimentos" class="btn-secondary-outline">
+            Conhecer Caimentos
+          </a>
+        </div>
+
+        <!-- Linha Discreta de Confiança Google 5.0 -->
+        <div class="hero-trust-badge">
+          <span class="trust-stars">★★★★★</span>
+          <span class="trust-text"><strong>5.0 Estrelas no Google</strong> • Tradição e Confecção Própria desde 1994 • Santo André, ABC e SP</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       3. SEÇÃO: CURADORIA DE CAIMENTOS & PREGAS
+       Estrutura idêntica à Uniflex Senses: foco em ondas regulares, volume e luz
+       ======================================================================== -->
+  <section class="section-spacing bg-white" id="caimentos">
+    <div class="container">
+      <div class="section-header-centered">
+        <span class="section-kicker">MODELOS & CAIMENTOS EXCLUSIVOS</span>
+        <h2 class="section-title">Design que se sente, não só se vê.</h2>
+        <p class="section-subtitle">Inspiradas na arquitetura contemporânea e nos rituais de habitar com calma, nossas cortinas são desenhadas sob medida para proporcionar ondas fluidas, proporções perfeitas e total conforto visual.</p>
       </div>
 
-      <!-- Destaque Google Reviews 5.0 Hero Pill -->
-      <div class="hero-google-wrapper">
-        <a href="#avaliacoes-google" class="hero-google-rating-pill" aria-label="Avaliações 5 estrelas no Google">
-          <span class="google-g-logo">
-            <svg viewBox="0 0 24 24" width="18" height="18">
-              <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.65v3.03h3.88c2.27-2.09 3.66-5.17 3.66-9.12z"/>
-              <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.03c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.13C3.27 21.41 7.34 24 12 24z"/>
-              <path fill="#FBBC05" d="M5.28 14.29c-.25-.72-.38-1.49-.38-2.29s.13-1.57.38-2.29V6.58H1.25C.45 8.18 0 10.03 0 12s.45 3.82 1.25 5.42l4.03-3.13z"/>
-              <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.27 2.59 1.25 6.58l4.03 3.13c.95-2.83 3.6-4.96 6.72-4.96z"/>
-            </svg>
-          </span>
-          <span class="google-stars-row">★★★★★</span>
-          <span class="rating-number">5.0</span>
-          <span class="rating-sep">•</span>
-          <span class="rating-count">Quase 500 avaliações no Google</span>
+      <div class="folds-three-grid">
+        <!-- Card 1: Prega Wave -->
+        <article class="fold-card">
+          <div class="fold-image-box">
+            <img src="assets/images/cortina-wave-detalhe.jpg" alt="Cortina Prega Wave em Linho Suíço Célia Decor" loading="lazy">
+            <span class="fold-badge">Mais Desejado na Arquitetura</span>
+          </div>
+          <div class="fold-body">
+            <h3 class="fold-title">Prega Wave (Ondas Contínuas)</h3>
+            <p class="fold-text">Ondulação fluida, regular e simétrica que mantém o movimento limpo tanto recolhida quanto estendida. Cria uma atmosfera de leveza incomparável em livings e suítes.</p>
+            <div class="fold-specs">
+              <span class="spec-tag">Gaze de Linho Puro</span>
+              <span class="spec-tag">Voil Suíço</span>
+              <span class="spec-tag">Trilho Oculto</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 2: Prega Fêmea & Macho -->
+        <article class="fold-card">
+          <div class="fold-image-box">
+            <img src="assets/images/transformacao-01-cabeceiras.png" alt="Cortina Prega Fêmea Estruturada Célia Decor" loading="lazy">
+            <span class="fold-badge">Alfaiataria Clássica</span>
+          </div>
+          <div class="fold-body">
+            <h3 class="fold-title">Prega Fêmea & Macho</h3>
+            <p class="fold-text">Caimento estruturado com dobras invertidas que criam volume sóbrio e elegante. Confere presença imponente a dormitórios e salas com pé-direito elevado.</p>
+            <div class="fold-specs">
+              <span class="spec-tag">Linho Encorpado</span>
+              <span class="spec-tag">Veludos Nobres</span>
+              <span class="spec-tag">Forro Blackout</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 3: Trilho Suíço Oculto -->
+        <article class="fold-card">
+          <div class="fold-image-box">
+            <img src="assets/images/tour-suite-01-ampla.jpg" alt="Cortina em Trilho Suíço Embutido no Cortineiro de Gesso" loading="lazy">
+            <span class="fold-badge">Minimalismo Arquitetônico</span>
+          </div>
+          <div class="fold-body">
+            <h3 class="fold-title">Trilho Suíço Embutido no Gesso</h3>
+            <p class="fold-text">Mecanismos deslizantes discretamente ocultos dentro do cortineiro iluminado. Apenas o tecido é protagonista, flutuando com suavidade do teto ao piso.</p>
+            <div class="fold-specs">
+              <span class="spec-tag">Rodízios de Silicone</span>
+              <span class="spec-tag">Deslize Silencioso</span>
+              <span class="spec-tag">Acabamento Invisível</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="section-bottom-action">
+        <a href="https://wa.me/5511963188104?text=Ol%C3%A1!%20Gostaria%20de%20ajuda%20para%20escolher%20o%20melhor%20caimento%20de%20cortina%20para%20minha%20casa." target="_blank" rel="noopener noreferrer" class="btn-dark-clean">
+          Consultar Nossos Especialistas sobre Caimentos
         </a>
       </div>
     </div>
+  </section>
 
-    <!-- Indicador de Scroll -->
-    <div class="hero-scroll-cue">
-      <span>Role para vivenciar as imagens se abrindo</span>
-      <div class="scroll-line-anim"></div>
+  <!-- ========================================================================
+       4. SEÇÃO: DIFERENCIAIS DA COLEÇÃO (Estilo Specs Minimalista Uniflex)
+       ======================================================================== -->
+  <section class="section-spacing bg-subtle" id="diferenciais">
+    <div class="container">
+      <div class="section-header-centered">
+        <span class="section-kicker">EXCELÊNCIA TÉCNICA & ACABAMENTOS</span>
+        <h2 class="section-title">A precisão que transforma cada detalhe.</h2>
+        <p class="section-subtitle">Do toque macio à estabilidade visual das barras, cada peça é criada com rigor artesanal para entregar durabilidade e sofisticação.</p>
+      </div>
+
+      <div class="specs-four-grid">
+        <div class="spec-box">
+          <div class="spec-number">01</div>
+          <h4 class="spec-title">+150 Opções de Tecidos</h4>
+          <p class="spec-desc">Linhos 100% naturais, algodão nobre, gazes de alta textura e tramas sintéticas de última geração que unem beleza à facilidade de manutenção.</p>
+        </div>
+
+        <div class="spec-box">
+          <div class="spec-number">02</div>
+          <h4 class="spec-title">Até 5 Níveis de Luz & Blackout</h4>
+          <p class="spec-desc">Desde a transparência delicada (Sheer) que filtra suavemente os raios solares até o Blackout absoluto para privacidade e repouso profundo.</p>
+        </div>
+
+        <div class="spec-box">
+          <div class="spec-number">03</div>
+          <h4 class="spec-title">Barras Triplas & Cordão de Chumbo</h4>
+          <p class="spec-desc">Acabamentos inferiores com barras generosas de três camadas ou cordão de chumbo embutido, evitando transparências nas costuras e ondulações laterais.</p>
+        </div>
+
+        <div class="spec-box">
+          <div class="spec-number">04</div>
+          <h4 class="spec-title">Amostras Reais em Domicílio</h4>
+          <p class="spec-desc">Nossa consultora técnica leva o mostruário físico completo até sua residência em Santo André e SP para conferência milimétrica e teste de iluminação real.</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- ========================================================================
-       SCROLL REVEAL 1: A GRANDE ABERTURA EM CORTINA
-       "Você vai descendo com o mouse e as cortinas/imagens vão se abrindo"
+       5. SEÇÃO: MOTORIZAÇÃO & AUTOMAÇÃO INTELIGENTE (Uniflex Connect Concept)
        ======================================================================== -->
-  <section class="curtain-reveal-section" id="experiencia-abertura">
-    <div class="curtain-sticky-stage">
-      
-      <!-- A Imagem de Fundo Revelada em Alta Resolução -->
-      <img src="assets/images/showroom-ambiente.jpg" alt="Ambiente Imersivo Célia Decor Revelado" class="curtain-revealed-backdrop">
-      <div class="curtain-backdrop-overlay"></div>
-
-      <!-- As Duas Folhas de Cortinas que se Abrem Conforme o Scroll -->
-      <div class="curtain-panel-left"></div>
-      <div class="curtain-panel-right"></div>
-
-      <!-- Texto Inicial que some quando a cortina começa a abrir -->
-      <div class="curtain-initial-teaser">
-        <span>▼ Role para abrir as cortinas ▼</span>
-      </div>
-
-      <!-- Conteúdo que se revela no clímax da abertura -->
-      <div class="curtain-unveiled-content">
-        <span class="tag-label" style="color: var(--c-gold-light);">O Olhar do Atelier</span>
-        <h2>Cada janela, uma obra de arte.<br>Cada prega, um gesto de amor.</h2>
-        <p>A textura que filtra o sol, a ondulação que emoldura a arquitetura, o caimento perfeito que só mãos apaixonadas pelo ofício conseguem alcançar.</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ========================================================================
-       TOUR VIRTUAL IMERSIVO: POR DENTRO DA SUÍTE MASTER (EXPERIÊNCIA 360° & HOTSPOTS)
-       Permite ao visitante interagir e "conhecer por dentro" cada detalhe com
-       alta resolução 8K, giros espaciais, pontos de inspeção (hotspots) e controle de luz solar
-       ======================================================================== -->
-  <section class="transformation-journey-section virtual-suite-tour" id="transformacao-espaco">
-    <div class="transformation-sticky-stage">
-      
-      <!-- Cabeçalho da Experiência Imersiva -->
-      <div class="transform-stage-header">
-        <div class="tour-header-badge">
-          <span class="pulse-beacon"></span>
-          <span>Experiência Imersiva • Conheça por Dentro</span>
-        </div>
-        <h2 class="transform-title">Imersão 3D na Suíte Master: Caminhe por Dentro</h2>
-        <p class="transform-desc">Role o mouse para se movimentar e caminhar para dentro das fotos. A cada rolagem, a câmera avança em 3D pelo interior do quarto, revelando texturas, marcenaria ripada e automação.</p>
-        
-        <!-- Pílulas de Navegação por Ângulo / Ponto de Vista -->
-        <div class="transform-nav-pills" role="tablist" aria-label="Selecione o ângulo da suíte">
-          <button type="button" class="transform-pill-btn active" data-step="0" aria-selected="true">
-            <span class="pill-num">01</span>
-            <span class="pill-name">Visão Panorâmica</span>
-          </button>
-          <button type="button" class="transform-pill-btn" data-step="1" aria-selected="false">
-            <span class="pill-num">02</span>
-            <span class="pill-name">Cabeceira &amp; Ripado</span>
-          </button>
-          <button type="button" class="transform-pill-btn" data-step="2" aria-selected="false">
-            <span class="pill-num">03</span>
-            <span class="pill-name">Porta Oculta da Suíte</span>
-          </button>
-          <button type="button" class="transform-pill-btn" data-step="3" aria-selected="false">
-            <span class="pill-num">04</span>
-            <span class="pill-name">Macro Textura &amp; Linho</span>
-          </button>
-          <button type="button" class="transform-pill-btn" data-step="4" aria-selected="false">
-            <span class="pill-num">05</span>
-            <span class="pill-name">Persiana Rolô &amp; Luz</span>
-          </button>
-        </div>
-
-        <!-- Seletor Rápido de Iluminação do Quarto (Simulador Cênico) -->
-        <div class="tour-lighting-bar">
-          <span class="lighting-bar-label">Simular Incidência de Luz:</span>
-          <div class="lighting-buttons" role="group" aria-label="Controle de iluminação">
-            <button type="button" class="btn-light-mode active" data-light="day" title="Luz Natural Plena">
-              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-              <span>Sol Pleno</span>
-            </button>
-            <button type="button" class="btn-light-mode" data-light="filter" title="Persiana com Tela Solar 3%">
-              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
-              <span>Luz Filtrada</span>
-            </button>
-            <button type="button" class="btn-light-mode" data-light="warm" title="Aconchego Noturno com LED 2700K">
-              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-              <span>Aconchego 2700K</span>
-            </button>
+  <section class="section-spacing bg-white" id="motorizacao">
+    <div class="container">
+      <div class="editorial-split-row">
+        <div class="editorial-media-col">
+          <div class="media-frame-shadow">
+            <img src="assets/images/automacao-smart.jpg" alt="Cortinas e Persianas Motorizadas Smart Home Célia Decor" loading="lazy">
           </div>
         </div>
 
-        <!-- Barra de Progresso de Rolagem -->
-        <div class="transform-progress-track">
-          <div class="transform-progress-fill" id="transformProgressFill"></div>
-        </div>
-      </div>
-
-      <!-- O Palco Central: Visualizador Espacial 3D com Hotspots Interativos -->
-      <div class="tour-spatial-viewport" id="tourSpatialViewport">
-        
-        <!-- Botão Navegação Anterior -->
-        <button type="button" class="transform-arrow-btn prev" id="transformPrevBtn" aria-label="Ângulo anterior">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
-        </button>
-
-        <!-- Container do Canvas 3D Panorâmico -->
-        <div class="tour-spatial-stage" id="tourSpatialStage">
+        <div class="editorial-text-col">
+          <span class="section-kicker">TECNOLOGIA & BEM-ESTAR</span>
+          <h2 class="section-title">Controle silencioso na ponta dos dedos ou por comando de voz.</h2>
+          <p class="editorial-lead">Integre suas cortinas e persianas aos mais modernos sistemas de automação residencial. O máximo em conforto, silêncio acústico e praticidade para o seu dia a dia.</p>
           
-          <!-- Filtro de Atmosfera de Luz (Dia / Tela Solar / Noite 2700K) -->
-          <div class="tour-ambient-light-overlay" id="tourLightOverlay"></div>
-
-          <!-- Stack de Mídias em 8K de Altíssima Resolução -->
-          <div class="transform-slides-stack" id="transformSlidesStack">
-            
-            <!-- Cena 1: Visão Panorâmica Ampla -->
-            <div class="transform-slide-item active" data-index="0" data-view="ampla">
-              <img src="assets/images/tour-suite-01-ampla.jpg" alt="Visão Ampla da Suíte Master em Altíssima Definição - Célia Decor" class="transform-slide-img" loading="eager">
-              
-              <!-- Hotspots da Cena 1 -->
-              <button type="button" class="tour-hotspot" style="top: 24%; left: 52%;" data-spot="rolo-ampla" aria-label="Ver detalhes da Persiana Rolô">
-                <span class="hotspot-pulse"></span>
-                <span class="hotspot-core"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-                <span class="hotspot-tooltip">Persiana Rolô Solar 3%</span>
-              </button>
-
-              <button type="button" class="tour-hotspot" style="top: 55%; left: 24%;" data-spot="cabeceiras-ampla" aria-label="Ver detalhes das Cabeceiras sob Medida">
-                <span class="hotspot-pulse"></span>
-                <span class="hotspot-core"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-                <span class="hotspot-tooltip">Cabeceiras em Linho Cru</span>
-              </button>
-
-              <button type="button" class="tour-hotspot" style="top: 36%; left: 38%;" data-spot="ripado-ampla" aria-label="Ver detalhes do Painel Ripado">
-                <span class="hotspot-pulse"></span>
-                <span class="hotspot-core"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-                <span class="hotspot-tooltip">Painel Ripado em Madeira</span>
-              </button>
-
-              <button type="button" class="tour-hotspot" style="top: 72%; left: 35%;" data-spot="enxoval-ampla" aria-label="Ver detalhes do Enxoval">
-                <span class="hotspot-pulse"></span>
-                <span class="hotspot-core"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-                <span class="hotspot-tooltip">Enxoval &amp; Peseira Canelada</span>
-              </button>
-            </div>
-
-            <!-- Cena 2: Cabeceira & Painel Ripado -->
-            <div class="transform-slide-item" data-index="1" data-view="cabeceira">
-              <img src="assets/images/tour-suite-02-cabeceira.jpg" alt="Cabeceira sob Medida com Painel Ripado e Iluminação Oculta - Célia Decor" class="transform-slide-img" loading="lazy">
-              
-              <!-- Hotspots da Cena 2 -->
-              <button type="button" class="tour-hotspot" style="top: 48%; left: 28%;" data-spot="estofado-cabeceira" aria-label="Ver detalhes do Estofamento">
-                <span class="hotspot-pulse"></span>
-                <span class="hotspot-core"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-                <span class="hotspot-tooltip">Estofamento Alfaiataria D33</span>
-              </button>
-
-              <button type="button" class="tour-hotspot" style="top: 14%; left: 50%;" data-spot="led-sanca" aria-label="Ver detalhes da Iluminação Cênica">
-                <span class="hotspot-pulse"></span>
-                <span class="hotspot-core"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-                <span class="hotspot-tooltip">Sanca com LED Oculto 2700K</span>
-              </button>
-
-              <button type="button" class="tour-hotspot" style="top: 64%; left: 51%;" data-spot="criado-mudo" aria-label="Ver detalhes da Mesa Suspensa">
-                <span class="hotspot-pulse"></span>
-                <span class="hotspot-core"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-                <span class="hotspot-tooltip">Mesa Suspensa Flutuante</span>
-              </button>
-
-              <button type="button" class="tour-hotspot" style="top: 52%; left: 72%;" data-spot="almofadas-cabeceira" aria-label="Ver detalhes das Almofadas">
-                <span class="hotspot-pulse"></span>
-                <span class="hotspot-core"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-                <span class="hotspot-tooltip">Almofadas Bordadas em Relevo</span>
-              </button>
-            </div>
-
-            <!-- Cena 3: Porta Oculta da Suíte -->
-            <div class="transform-slide-item" data-index="2" data-view="porta-oculta">
-              <img src="assets/images/tour-suite-03-porta-oculta.jpg" alt="Porta Mimetizada Oculta Integrada ao Painel Ripado - Célia Decor" class="transform-slide-img" loading="lazy">
-              
-              <!-- Hotspots da Cena 3 -->
-              <button type="button" class="tour-hotspot" style="top: 36%; left: 24%;" data-spot="porta-mimetizada" aria-label="Ver detalhes da Porta Oculta">
-                <span class="hotspot-pulse"></span>
-                <span class="hotspot-core"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-                <span class="hotspot-tooltip">Porta Mimetizada Oculta</span>
-              </button>
-
-              <button type="button" class="tour-hotspot" style="top: 48%; left: 34%;" data-spot="banheiro-suite" aria-label="Ver detalhes da Integração com o Banheiro">
-                <span class="hotspot-pulse"></span>
-                <span class="hotspot-core"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-                <span class="hotspot-tooltip">Banheiro Master Integrado</span>
-              </button>
-
-              <button type="button" class="tour-hotspot" style="top: 60%; left: 74%;" data-spot="cama-tailored" aria-label="Ver detalhes do Enxoval Tailored">
-                <span class="hotspot-pulse"></span>
-                <span class="hotspot-core"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-                <span class="hotspot-tooltip">Cama Tailored sob Medida</span>
-              </button>
-            </div>
-
-            <!-- Cena 4: Macro Texturas & Linho -->
-            <div class="transform-slide-item" data-index="3" data-view="macro-textura">
-              <img src="assets/images/tour-suite-04-macro-textura.jpg" alt="Macro Close-up dos Tecidos e Bordados Artesanais - Célia Decor" class="transform-slide-img" loading="lazy">
-              
-              <!-- Hotspots da Cena 4 -->
-              <button type="button" class="tour-hotspot" style="top: 48%; left: 22%;" data-spot="bordado-folhagem" aria-label="Ver detalhes do Bordado Botânico">
-                <span class="hotspot-pulse"></span>
-                <span class="hotspot-core"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-                <span class="hotspot-tooltip">Bordado Botânico em Relevo</span>
-              </button>
-
-              <button type="button" class="tour-hotspot" style="top: 44%; left: 82%;" data-spot="almofada-barreta" aria-label="Ver detalhes da Almofada de Linho com Barretas">
-                <span class="hotspot-pulse"></span>
-                <span class="hotspot-core"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-                <span class="hotspot-tooltip">Linho Rústico com Barretas</span>
-              </button>
-
-              <button type="button" class="tour-hotspot" style="top: 32%; left: 45%;" data-spot="ripado-macro" aria-label="Ver detalhes da Madeira">
-                <span class="hotspot-pulse"></span>
-                <span class="hotspot-core"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-                <span class="hotspot-tooltip">Madeira Natural Maciça</span>
-              </button>
-            </div>
-
-            <!-- Cena 5: Persiana Rolô Solar & Jardim -->
-            <div class="transform-slide-item" data-index="4" data-view="persiana-solar">
-              <img src="assets/images/tour-suite-05-persiana-solar.jpg" alt="Persiana Rolô em Tela Solar Motorizada com Vista para o Jardim - Célia Decor" class="transform-slide-img" loading="lazy">
-              
-              <!-- Hotspots da Cena 5 -->
-              <button type="button" class="tour-hotspot" style="top: 32%; left: 42%;" data-spot="tela-solar-screen" aria-label="Ver detalhes da Tela Solar">
-                <span class="hotspot-pulse"></span>
-                <span class="hotspot-core"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-                <span class="hotspot-tooltip">Tela Solar Screen 3%</span>
-              </button>
-
-              <button type="button" class="tour-hotspot" style="top: 12%; left: 42%;" data-spot="motorizacao-persiana" aria-label="Ver detalhes da Automação">
-                <span class="hotspot-pulse"></span>
-                <span class="hotspot-core"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-                <span class="hotspot-tooltip">Motor Silencioso Somfy</span>
-              </button>
-
-              <button type="button" class="tour-hotspot" style="top: 62%; left: 42%;" data-spot="jardim-biofilico" aria-label="Ver detalhes da Integração Visual">
-                <span class="hotspot-pulse"></span>
-                <span class="hotspot-core"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-                <span class="hotspot-tooltip">Integração com Jardim Externo</span>
-              </button>
-            </div>
-
-          </div>
-
-          <!-- Controles Flutuantes da Câmera (Zoom & Tela Cheia & Giro) -->
-          <div class="tour-camera-hud">
-            <button type="button" class="hud-btn" id="tourZoomBtn" title="Inspecionar de Perto (Zoom)">
-              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
-              <span>Zoom</span>
-            </button>
-            <button type="button" class="hud-btn" id="tourFullscreenBtn" title="Explorar em Tela Cheia">
-              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
-              <span>Tela Cheia</span>
-            </button>
-            <div class="hud-indicator">
-              <span class="hud-dot"></span>
-              <span class="hud-text">Arraste para olhar ao redor</span>
-            </div>
-          </div>
-
-          <!-- Drawer / Modal Interativo de Inspeção do Ponto de Interesse (Hotspot Popup) -->
-          <div class="tour-spot-drawer" id="tourSpotDrawer" aria-hidden="true">
-            <div class="tour-spot-card">
-              <button type="button" class="tour-spot-close" id="tourSpotClose" aria-label="Fechar detalhes">&times;</button>
-              <div class="spot-card-badge" id="spotCardBadge">Acabamento Exclusivo Célia Decor</div>
-              <h3 class="spot-card-title" id="spotCardTitle">Persiana Rolô Screen Solar 3%</h3>
-              <p class="spot-card-desc" id="spotCardDesc">Tecido screen inteligente com microporosidades que filtram até 97% dos raios UV, reduzem o aquecimento interno em até 6°C e mantêm a transparência visual para o exterior sem ofuscamento.</p>
-              <div class="spot-card-features" id="spotCardFeatures">
-                <span class="spot-feat-item">✓ Bloqueio de 97% dos raios UV</span>
-                <span class="spot-feat-item">✓ Conforto Térmico Superior</span>
-                <span class="spot-feat-item">✓ Motorização Silenciosa</span>
+          <ul class="clean-features-list">
+            <li>
+              <span class="feature-icon">✦</span>
+              <div>
+                <strong>Motores Ultra Silenciosos Somfy & Tuya:</strong>
+                <p>Mecanismos de tração suave com ruído imperceptível, ideais para quartos e salas de descanso.</p>
               </div>
-              <a href="https://wa.me/5511963188104" target="_blank" rel="noopener noreferrer" class="spot-card-wa-btn" id="spotCardWaBtn">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.472 14.382c-.301-.15-1.78-.878-2.056-.978-.276-.101-.477-.15-.678.15-.201.3-.778.978-.954 1.179-.176.2-.352.226-.653.075-.3-.15-1.267-.467-2.414-1.489-.893-.796-1.496-1.779-1.672-2.08-.176-.301-.019-.464.132-.614.136-.135.301-.352.452-.528.151-.176.201-.301.302-.502.1-.2.05-.376-.025-.527-.075-.15-.678-1.633-.929-2.235-.245-.586-.494-.506-.678-.515-.176-.009-.377-.01-.578-.01s-.528.075-.804.376c-.276.301-1.055 1.03-1.055 2.511 0 1.481 1.08 2.912 1.231 3.113.151.2 2.126 3.246 5.151 4.553.72.311 1.282.497 1.721.636.724.23 1.383.198 1.904.12.581-.088 1.78-.727 2.031-1.43.251-.703.251-1.305.176-1.43-.075-.125-.276-.201-.577-.351zM12 2C6.477 2 2 6.477 2 12c0 1.891.524 3.66 1.436 5.176L2 22l4.954-1.399C8.423 21.536 10.156 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
-                <span>Quero Este Acabamento no Meu Espaço</span>
-              </a>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Botão Navegação Próximo -->
-        <button type="button" class="transform-arrow-btn next" id="transformNextBtn" aria-label="Próximo ângulo">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-        </button>
-
-      </div>
-
-      <!-- Barra de Informações Dinâmica & Status dos Ângulos -->
-      <div class="transform-active-caption-card" id="transformActiveCaption">
-        <span class="active-step-tag" id="transformActiveBadge">Ângulo 01 de 05 • Visão Panorâmica</span>
-        <h4 class="active-step-title" id="transformActiveTitle">Visão Panorâmica da Suíte Master</h4>
-        <p class="active-step-desc" id="transformActiveDesc">Harmonia absoluta entre tecidos nobres em linho, cabeceiras sob medida, painel em madeira ripada e controle térmico com persiana rolô tela solar.</p>
-      </div>
-
-      <!-- Indicador de Interação Flutuante no Rodapé -->
-      <div class="transform-bottom-cue">
-        <span class="transform-cue-text" id="transformCueLabel">▼ Role ou toque nos pontos interativos para conhecer a suíte por dentro (1 de 5) ▼</span>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ========================================================================
-       SEÇÃO DO LEGADO FAMILIAR: A ESCADA & A LEGENDA CLEAN
-       Dona Célia, Celso e os filhos reunidos nos degraus da escada
-       ======================================================================== -->
-  <section class="staircase-legacy-monument">
-    <div class="container">
-      <div class="staircase-monument-grid">
-        
-        <!-- Foto da Família em Destaque -->
-        <div class="staircase-frame-display">
-          <span class="staircase-badge-floating">1995 — 2025 • Três Décadas de Amor</span>
-          <img src="assets/images/familia-celia-decor.jpg" alt="Família Célia Decor reunida — Dona Célia Maria, Celso e seus filhos" class="staircase-main-photo">
-          
-          <!-- Legenda Oficial Clean -->
-          <div class="staircase-official-caption">
-            <p class="staircase-official-quote">
-              “Cada degrau percorrido nestes 30 anos representa uma família que abriu as portas de sua casa para nós. Da primeira cortina feita à mão à nossa nova casa, nossa maior realização é ver famílias acolhidas pelo nosso carinho.”
-            </p>
-            <span class="staircase-official-author">— Dona Célia Maria, Celso e Filhos • Família Célia Decor</span>
-          </div>
-        </div>
-
-        <!-- Narrativa Editorial Clean -->
-        <div class="legacy-narrative-col">
-          <span class="tag-label">Origem, Amor & Vocação</span>
-          <h2>A história viva esculpida degrau por degrau pela nossa família.</h2>
-          <p class="narrative-lead">Tudo começou quando Dona Célia Maria sonhou em ter uma cortina acolhedora em sua própria casa. Com determinação e agulha na mão, comprou o tecido e confeccionou cada prega com perfeição artesanal.</p>
-          
-          <div class="narrative-paragraphs">
-            <p>O encanto de quem visitava sua sala foi instantâneo. Ao lado de seu esposo <strong>Celso</strong> — seu parceiro fiel em cada medição, corte e instalação — o casal transformou a paixão artesanal em uma das referências mais respeitadas de cortinas e alta decoração de Santo André.</p>
-            <p>Com o tempo, os filhos cresceram dentro do atelier, assumindo a gestão e incorporando automação de ponta, motorização inteligente e novas tendências internacionais, sem jamais perder o carinho familiar que é a alma da Casa Célia Decor.</p>
-          </div>
-
-          <!-- Degraus da Escada - Linha do Tempo Visual -->
-          <div class="staircase-steps-flow">
-            <div class="step-flow-item">
-              <span class="step-flow-year">1995</span>
-              <div class="step-flow-text">
-                <h5>A Primeira Cortina Costurada</h5>
-                <p>O talento de Dona Célia e a dedicação incansável de Celso iniciam a trajetória.</p>
+            </li>
+            <li>
+              <span class="feature-icon">✦</span>
+              <div>
+                <strong>Opções a Bateria Recarregável:</strong>
+                <p>Instalação prática sem necessidade de quebrar paredes ou passar conduítes. Bateria de longa duração com recarga via USB-C.</p>
               </div>
-            </div>
-
-            <div class="step-flow-item">
-              <span class="step-flow-year">2002</span>
-              <div class="step-flow-text">
-                <h5>Registro Oficial & Atelier Próprio</h5>
-                <p>Estruturação de confecção exclusiva e garantia de controle de qualidade milimétrico.</p>
+            </li>
+            <li>
+              <span class="feature-icon">✦</span>
+              <div>
+                <strong>Compatibilidade com Alexa, Google & Apple HomeKit:</strong>
+                <p>Crie rotinas automatizadas para abrir com a luz natural matinal e fechar suavemente ao entardecer.</p>
               </div>
-            </div>
+            </li>
+          </ul>
 
-            <div class="step-flow-item">
-              <span class="step-flow-year">2025</span>
-              <div class="step-flow-text">
-                <h5>A Nova Casa Célia Decor no Jardim Bela Vista</h5>
-                <p>Inauguração da boutique imersiva na Rua Edu Chaves com a segunda geração à frente.</p>
-              </div>
-            </div>
-          </div>
-
-          <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
-            <a href="sobre.html" class="nav-cta-btn" style="background: var(--c-dark); color: #FFF;">Ler a História Completa</a>
-            <a href="https://www.instagram.com/celiadecoroficial/" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; font-size: 0.88rem; color: var(--c-gold-dark); font-weight: 600;">Instagram @celiadecoroficial →</a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================================================
-       ESTÚDIO INTERATIVO & VISUALIZAÇÃO AO VIVO (VÍDEO DA PRODUÇÃO REAL)
-       ======================================================================== -->
-  <section class="studio-section" id="estudio-interativo">
-    <div class="container">
-      <div class="center-title-block">
-        <span class="tag-label">Experiência Imersiva</span>
-        <h2>Estúdio & Visualização ao Vivo</h2>
-        <p>Acompanhe nossa produção artesanal em ação com o vídeo oficial do Instagram e experimente simulações de tecidos nobres em tempo real.</p>
-      </div>
-
-      <!-- SELETOR DE MODO: VÍDEO OFICIAL / SIMULADOR DE TECIDOS -->
-      <div class="studio-tabs-nav" role="tablist">
-        <button type="button" class="studio-tab-btn active" id="tabLiveVideo" role="tab" aria-selected="true" aria-controls="panelLiveVideo">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-          <span>Vídeo da Produção Real</span>
-          <span class="studio-tab-badge">Instagram Reel</span>
-        </button>
-        <button type="button" class="studio-tab-btn" id="tabFabricSim" role="tab" aria-selected="false" aria-controls="panelFabricSim">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-          <span>Simulador de Tecidos & Pregas</span>
-        </button>
-      </div>
-
-      <div class="studio-grid">
-        <!-- VIEWPORT: REPRODUTOR DE VÍDEO & CANVAS -->
-        <div class="studio-viewport" id="studioViewport">
-          <!-- BADGE VISUALIZAÇÃO AO VIVO -->
-          <div class="studio-pill-tag studio-live-pill" id="studioLiveTag">
-            <span class="studio-live-dot"></span>
-            <span class="studio-live-text">Visualização ao Vivo</span>
-            <span class="studio-live-sub">• Instagram Reel</span>
-          </div>
-
-          <!-- BOTÃO VER NO INSTAGRAM ORIGINAL -->
-          <a href="https://www.instagram.com/p/DDj4iMwRgZw/" target="_blank" rel="noopener noreferrer" class="studio-insta-chip" id="studioInstaChip" title="Ver postagem original no Instagram @celiadecor">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-            <span>Ver no Instagram</span>
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-          </a>
-
-          <!-- REPRODUTOR DE VÍDEO AO VIVO -->
-          <div class="studio-video-wrap" id="studioVideoWrap">
-            <!-- AMBIENTE COM BLUR DO POSTER -->
-            <div class="studio-video-ambient" id="studioVideoAmbient" style="background-image: url('assets/images/celia-video-poster.jpg');"></div>
-
-            <video id="studioLiveVideo" class="studio-live-video" playsinline preload="metadata" poster="assets/images/celia-video-poster.jpg" loop>
-              <source src="assets/videos/celia-decor-apresentacao.mp4" type="video/mp4">
-              Seu navegador não suporta a reprodução deste vídeo.
-            </video>
-
-            <!-- BOTÃO GRANDE DE PLAY CENTRAL -->
-            <button type="button" class="studio-play-big-btn" id="studioPlayBigBtn" aria-label="Reproduzir vídeo da Célia Decor">
-              <span class="studio-play-circle">
-                <svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor">
-                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                </svg>
-              </span>
-              <span class="studio-play-title">Assistir Apresentação</span>
-              <span class="studio-play-hint">Cortinas Wave, Tapetes Exclusivos & Almofadas</span>
-            </button>
-
-            <!-- BARRA DE CONTROLES DO VÍDEO -->
-            <div class="studio-video-controls" id="studioVideoControls">
-              <button type="button" class="studio-ctrl-btn" id="studioPlayPauseBtn" aria-label="Pausar / Reproduzir">
-                <svg class="icon-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                <svg class="icon-pause" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="display:none;"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
-              </button>
-
-              <div class="studio-progress-track" id="studioProgressTrack" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0" aria-label="Linha do tempo do vídeo">
-                <div class="studio-progress-fill" id="studioProgressFill"></div>
-              </div>
-
-              <span class="studio-time-text" id="studioTimeText">0:00 / 0:32</span>
-
-              <button type="button" class="studio-ctrl-btn" id="studioSoundBtn" aria-label="Ativar ou desativar áudio">
-                <svg class="icon-sound-on" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
-                <svg class="icon-sound-off" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
-              </button>
-
-              <button type="button" class="studio-ctrl-btn" id="studioFullscreenBtn" aria-label="Modo tela cheia">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
-              </button>
-            </div>
-          </div>
-
-          <!-- WRAPPER SIMULADOR DE TECIDOS (CANVAS + FILTRO SOLAR) -->
-          <div class="studio-sim-wrap" id="studioSimWrap" style="display: none;">
-            <img src="assets/images/cortina-wave-detalhe.jpg" alt="Visualizador de Caimento Célia Decor" id="studioCanvasImg" class="studio-canvas-img">
-            <div class="studio-sunlight-filter" id="studioSunFilter"></div>
-          </div>
-        </div>
-
-        <!-- PAINEL LATERAL DIREITO COM DETALHES DO PROJETO E CONTROLES -->
-        <div class="studio-controls-panel">
-          <!-- ABA 1: CONTEÚDO DO VÍDEO OFICIAL DO INSTAGRAM -->
-          <div class="studio-panel-content" id="panelLiveVideo">
-            <div class="studio-video-info-card">
-              <div class="studio-info-header">
-                <span class="studio-meta-pill">Projeto Real • Instagram Reel</span>
-                <span class="studio-views-count"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg> Vídeo HD</span>
-              </div>
-              <h3 class="studio-video-title">Ambientes Únicos Começam nos Detalhes</h3>
-              <p class="studio-reel-quote">
-                "Tapetes com cortes exclusivos, cortinas perfeitas e a combinação ideal de almofadas e mantas para o seu lar. Célia Decor, onde seu estilo ganha vida!"
-              </p>
-
-              <div class="studio-features-list">
-                <div class="studio-feat-item">
-                  <div class="studio-feat-bullet">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  </div>
-                  <div class="studio-feat-text">
-                    <strong>Cortinas Sob Medida com Caimento Wave</strong>
-                    <p>Ondulação simétrica em linho nobre com barra dupla artesanal e efeito fluido.</p>
-                  </div>
-                </div>
-
-                <div class="studio-feat-item">
-                  <div class="studio-feat-bullet">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  </div>
-                  <div class="studio-feat-text">
-                    <strong>Tapetes Geométricos sob Medida</strong>
-                    <p>Cortes e paginações exclusivas desenhadas para valorizar o layout do seu espaço.</p>
-                  </div>
-                </div>
-
-                <div class="studio-feat-item">
-                  <div class="studio-feat-bullet">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  </div>
-                  <div class="studio-feat-text">
-                    <strong>Composição de Almofadas & Mantas</strong>
-                    <p>Texturas acetinadas e linhos puros selecionados pela curadoria da Célia Decor.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="studio-actions-row">
-                <a href="https://wa.me/5511963188104?text=Ol%C3%A1%20C%C3%A9lia%20Decor!%20Vi%20o%20v%C3%ADdeo%20do%20Instagram%20no%20site%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20o%20meu%20espa%C3%A7o." target="_blank" rel="noopener noreferrer" class="nav-cta-btn studio-action-main" style="background: var(--c-gold); color: #121316; justify-content: center; flex: 1;">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/></svg>
-                  <span>Orçar Este Ambiente</span>
-                </a>
-                <a href="https://www.instagram.com/p/DDj4iMwRgZw/" target="_blank" rel="noopener noreferrer" class="studio-insta-outline-btn" title="Abrir vídeo oficial no Instagram @celiadecor">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                  <span>Instagram</span>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- ABA 2: SIMULADOR DE PREGAS & TECIDOS -->
-          <div class="studio-panel-content" id="panelFabricSim" style="display: none;">
-            <div class="control-block">
-              <h4>1. Selecione o Tipo de Prega</h4>
-              <div class="button-options-row">
-                <button class="option-btn btn-pleat-opt active" data-pleat="wave">Prega Wave</button>
-                <button class="option-btn btn-pleat-opt" data-pleat="femea">Prega Fêmea</button>
-                <button class="option-btn btn-pleat-opt" data-pleat="suico">Trilho Suíço</button>
-              </div>
-            </div>
-
-            <div class="control-block">
-              <h4>2. Selecione o Tecido Nobre</h4>
-              <div class="button-options-row">
-                <button class="option-btn btn-fabric-opt active" data-fabric="linho">Linho Puro</button>
-                <button class="option-btn btn-fabric-opt" data-fabric="voil">Voil Suíço</button>
-                <button class="option-btn btn-fabric-opt" data-fabric="blackout">Blackout Acetinado</button>
-              </div>
-            </div>
-
-            <div class="control-block">
-              <h4>3. Simule a Luz do Sol</h4>
-              <input type="range" min="0" max="100" value="65" class="slider-custom" id="studioLightSlider" aria-label="Controle de Luz Solar">
-              <div class="slider-ticks">
-                <span>Noite Aconchegante</span>
-                <span>Meia Luz Entardecer</span>
-                <span>Dia Ensolarado</span>
-              </div>
-            </div>
-
-            <div class="studio-spec-card">
-              <h5 id="studioSpecTitle">Prega Wave (Ondulação Suave Contínua) • Linho Puro Rústico</h5>
-              <p id="studioSpecDesc">Caimento fluido com ondas simétricas desenhadas milimetricamente. A preferida dos arquitetos para salas amplas e cortineiros com iluminação em fita LED.</p>
-            </div>
-
-            <a href="contato.html" class="nav-cta-btn" style="background: var(--c-gold); color: #121316; justify-content: center;">Solicitar Orçamento deste Modelo</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================================================
-       VITRINE CURADA DE COLEÇÕES
-       ======================================================================== -->
-  <section class="gallery-showcase-section">
-    <div class="container">
-      <div class="center-title-block">
-        <span class="tag-label">Curadoria Sensorial</span>
-        <h2>Coleções de Alto Padrão</h2>
-        <p>Soluções sob medida para valorizar a arquitetura e trazer conforto térmico e acústico ao seu lar.</p>
-      </div>
-
-      <div class="collection-tri-grid">
-        <article class="showcase-card">
-          <div class="showcase-img-wrap">
-            <img src="assets/images/cortina-capa.webp" alt="Cortinas sob Medida Célia Decor">
-            <span class="showcase-tag">Alfaiataria</span>
-          </div>
-          <div class="showcase-body">
-            <h3>Cortinas sob Medida</h3>
-            <p>Ondulações fluidas com barras duplas e bainhas perfeitas. Tecidos nobres nacionais e europeus para salas e quartos.</p>
-            <a href="produtos.html" class="showcase-link">Explorar Opções →</a>
-          </div>
-        </article>
-
-        <article class="showcase-card">
-          <div class="showcase-img-wrap">
-            <img src="assets/images/persianas-capa.webp" alt="Persianas Motorizadas">
-            <span class="showcase-tag">Automação</span>
-          </div>
-          <div class="showcase-body">
-            <h3>Persianas & Telas Solares</h3>
-            <p>Modelos Rolô, Romana e Madeira com acionamento ultra-silencioso via Alexa, Siri ou controle touch.</p>
-            <a href="automacao.html" class="showcase-link">Ver Automação →</a>
-          </div>
-        </article>
-
-        <article class="showcase-card">
-          <div class="showcase-img-wrap">
-            <img src="assets/images/papel-parede-capa.webp" alt="Papel de Parede Exclusivo">
-            <span class="showcase-tag">Importados</span>
-          </div>
-          <div class="showcase-body">
-            <h3>Papéis de Parede Nobres</h3>
-            <p>Revestimentos alemães e italianos com texturas de palha natural, mica mineral e fibras vinílicas de alta resistência.</p>
-            <a href="produtos.html" class="showcase-link">Ver Catálogos →</a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================================================
-       VOZES DE QUEM CONFIA: ARQUITETOS PARCEIROS
-       ======================================================================== -->
-  <section class="architect-voices-section">
-    <div class="container">
-      <div class="center-title-block">
-        <span class="tag-label">Parceria de Confiança</span>
-        <h2>A Escolha dos Melhores Escritórios</h2>
-        <p>Arquitetos renomados que confiam na precisão de medidas e na pontualidade de entrega da Célia Decor.</p>
-      </div>
-
-      <div class="architect-cards-grid">
-        <div class="arch-quote-card">
-          <div class="arch-avatar">
-            <img src="assets/images/arquiteto-camila.webp" alt="Camila Gogoni Arquitetura">
-          </div>
-          <h4>Camila Gogoni</h4>
-          <span>Arquiteta & Urbanista</span>
-          <p>“O acabamento fino e o suporte em cortinas motorizadas elevam qualquer projeto a outro nível de sofisticação.”</p>
-        </div>
-
-        <div class="arch-quote-card">
-          <div class="arch-avatar">
-            <img src="assets/images/arquiteto-cristiane.webp" alt="Cristiane Sucio Arquitetura">
-          </div>
-          <h4>Cristiane Sucio</h4>
-          <span>Arquiteta</span>
-          <p>“Parceiros fiéis há anos. A pontualidade de entrega e o carinho familiar trazem paz total aos meus clientes.”</p>
-        </div>
-
-        <div class="arch-quote-card">
-          <div class="arch-avatar">
-            <img src="assets/images/arquiteto-henrique.webp" alt="Henrique Lima Arquitetura">
-          </div>
-          <h4>Henrique Lima</h4>
-          <span>Designer de Interiores</span>
-          <p>“A curadoria de tecidos e papéis importados é incomparável. Recomendo de olhos fechados para obras de alto padrão.”</p>
-        </div>
-
-        <div class="arch-quote-card">
-          <div class="arch-avatar">
-            <img src="assets/images/arquiteto-thiago.webp" alt="Kairós Arquitetura Thiago">
-          </div>
-          <h4>Kairós Arquitetura</h4>
-          <span>Escritório de Arquitetura</span>
-          <p>“Do atendimento ao pós-instalação, a Célia Decor é nossa maior referência em Santo André e no ABC.”</p>
-        </div>
-      </div>
-
-      <!-- Marcas Parceiras -->
-      <div class="brands-row">
-        <img src="assets/images/parceiro-01.png" alt="Marca Parceira 1">
-        <img src="assets/images/parceiro-02.png" alt="Marca Parceira 2">
-        <img src="assets/images/parceiro-03.png" alt="Marca Parceira 3">
-        <img src="assets/images/parceiro-04.png" alt="Marca Parceira 4">
-        <img src="assets/images/parceiro-05.png" alt="Marca Parceira 5">
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================================================
-       SEÇÃO MONUMENTAL: AVALIAÇÕES GOOGLE 5.0 (QUASE 500 REVIEWS)
-       ======================================================================== -->
-  <section class="google-reviews-monument-section" id="avaliacoes-google">
-    <div class="container">
-
-      <!-- Card Monumental de Pontuação Google -->
-      <div class="google-score-hero-box">
-        <div class="google-score-inner-grid">
-          
-          <div class="google-big-score-display">
-            <div class="google-g-badge">
-              <svg viewBox="0 0 24 24" width="18" height="18">
-                <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.65v3.03h3.88c2.27-2.09 3.66-5.17 3.66-9.12z"/>
-                <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.03c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.13C3.27 21.41 7.34 24 12 24z"/>
-                <path fill="#FBBC05" d="M5.28 14.29c-.25-.72-.38-1.49-.38-2.29s.13-1.57.38-2.29V6.58H1.25C.45 8.18 0 10.03 0 12s.45 3.82 1.25 5.42l4.03-3.13z"/>
-                <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.27 2.59 1.25 6.58l4.03 3.13c.95-2.83 3.6-4.96 6.72-4.96z"/>
-              </svg>
-              <span>Google Avaliações</span>
-            </div>
-            <div class="google-score-number">5.0</div>
-            <div class="google-score-stars">★★★★★</div>
-            <span class="google-score-count-label">Quase 500 Avaliações</span>
-          </div>
-
-          <div class="google-narrative-block">
-            <span class="google-verified-tag">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-              </svg>
-              Empresa Verificada & Referência Máxima no Google
-            </span>
-            <h3>Nota Máxima <em>5 Estrelas</em> Consagrada por Centenas de Clientes</h3>
-            <p>Em mais de 30 anos de atelier e atendimento consultivo em Santo André e no Grande ABC, construímos uma reputação impecável. Cada avaliação reflete o zelo artesanal de Dona Célia e Seu Celso, o respeito absoluto aos prazos e a satisfação de centenas de famílias que transformaram seus lares conosco.</p>
-          </div>
-
-          <div class="google-cta-box">
-            <a href="https://maps.app.goo.gl/celiadecor" target="_blank" rel="noopener noreferrer" class="btn-google-direct">
-              <svg viewBox="0 0 24 24" width="16" height="16">
-                <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.65v3.03h3.88c2.27-2.09 3.66-5.17 3.66-9.12z"/>
-                <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.03c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.13C3.27 21.41 7.34 24 12 24z"/>
-                <path fill="#FBBC05" d="M5.28 14.29c-.25-.72-.38-1.49-.38-2.29s.13-1.57.38-2.29V6.58H1.25C.45 8.18 0 10.03 0 12s.45 3.82 1.25 5.42l4.03-3.13z"/>
-                <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.27 2.59 1.25 6.58l4.03 3.13c.95-2.83 3.6-4.96 6.72-4.96z"/>
-              </svg>
-              Conferir no Google Maps
+          <div class="editorial-cta-wrap">
+            <a href="https://wa.me/5511963188104?text=Ol%C3%A1!%20Gostaria%20de%20um%20projeto%20de%20cortinas%20motorizadas%20com%20automa%C3%A7%C3%A3o." target="_blank" rel="noopener noreferrer" class="btn-primary-gold">
+              Solicitar Projeto com Automação
             </a>
           </div>
-
         </div>
       </div>
-
-      <!-- 4 Pilares de Credibilidade -->
-      <div class="google-metrics-row">
-        <div class="metric-trust-card">
-          <div class="metric-trust-val">490<em>+</em></div>
-          <div class="metric-trust-label">Avaliações 5 Estrelas no Google</div>
-        </div>
-        <div class="metric-trust-card">
-          <div class="metric-trust-val">5.0<em>/5.0</em></div>
-          <div class="metric-trust-label">Classificação Máxima Impecável</div>
-        </div>
-        <div class="metric-trust-card">
-          <div class="metric-trust-val">30<em> Anos</em></div>
-          <div class="metric-trust-label">Tradição & Atelier Familiar</div>
-        </div>
-        <div class="metric-trust-card">
-          <div class="metric-trust-val">100<em>%</em></div>
-          <div class="metric-trust-label">Instalações Pontuais e Limpas</div>
-        </div>
-      </div>
-
-      <!-- 6 Avaliações Reais de Clientes Verificados -->
-      <div class="google-reviews-cards-grid">
-        <div class="review-customer-card">
-          <div class="review-card-top">
-            <div class="reviewer-profile">
-              <div class="reviewer-avatar-circle">MS</div>
-              <div class="reviewer-meta">
-                <h5>Mariana Silveira</h5>
-                <span>Avaliação verificada no Google</span>
-              </div>
-            </div>
-            <div class="review-google-badge-small">
-              <svg viewBox="0 0 24 24" width="14" height="14">
-                <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.65v3.03h3.88c2.27-2.09 3.66-5.17 3.66-9.12z"/>
-                <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.03c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.13C3.27 21.41 7.34 24 12 24z"/>
-                <path fill="#FBBC05" d="M5.28 14.29c-.25-.72-.38-1.49-.38-2.29s.13-1.57.38-2.29V6.58H1.25C.45 8.18 0 10.03 0 12s.45 3.82 1.25 5.42l4.03-3.13z"/>
-                <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.27 2.59 1.25 6.58l4.03 3.13c.95-2.83 3.6-4.96 6.72-4.96z"/>
-              </svg>
-            </div>
-          </div>
-          <div class="review-stars">★★★★★</div>
-          <p class="review-quote-text">“Experiência simplesmente maravilhosa! Desde o primeiro atendimento no showroom até a instalação das <strong>cortinas de linho e persianas motorizadas</strong> no meu apartamento em Santo André. Acabamento perfeito, equipe atenciosa e pontual.”</p>
-          <span class="review-service-tag">Cortinas de Linho & Persianas</span>
-        </div>
-
-        <div class="review-customer-card">
-          <div class="review-card-top">
-            <div class="reviewer-profile">
-              <div class="reviewer-avatar-circle">RA</div>
-              <div class="reviewer-meta">
-                <h5>Rodrigo Almeida</h5>
-                <span>Avaliação verificada no Google</span>
-              </div>
-            </div>
-            <div class="review-google-badge-small">
-              <svg viewBox="0 0 24 24" width="14" height="14">
-                <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.65v3.03h3.88c2.27-2.09 3.66-5.17 3.66-9.12z"/>
-                <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.03c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.13C3.27 21.41 7.34 24 12 24z"/>
-                <path fill="#FBBC05" d="M5.28 14.29c-.25-.72-.38-1.49-.38-2.29s.13-1.57.38-2.29V6.58H1.25C.45 8.18 0 10.03 0 12s.45 3.82 1.25 5.42l4.03-3.13z"/>
-                <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.27 2.59 1.25 6.58l4.03 3.13c.95-2.83 3.6-4.96 6.72-4.96z"/>
-              </svg>
-            </div>
-          </div>
-          <div class="review-stars">★★★★★</div>
-          <p class="review-quote-text">“Empresa séria, com atendimento acolhedor de família. A dona Célia e sua equipe nos ajudaram a escolher o melhor tecido e caimento para nossa sala de pé-direito duplo. <strong>A nota 5.0 no Google é mais que merecida!</strong>”</p>
-          <span class="review-service-tag">Pé-Direito Duplo & Atelier</span>
-        </div>
-
-        <div class="review-customer-card">
-          <div class="review-card-top">
-            <div class="reviewer-profile">
-              <div class="reviewer-avatar-circle">CL</div>
-              <div class="reviewer-meta">
-                <h5>Carla Lins de Toledo</h5>
-                <span>Avaliação verificada no Google</span>
-              </div>
-            </div>
-            <div class="review-google-badge-small">
-              <svg viewBox="0 0 24 24" width="14" height="14">
-                <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.65v3.03h3.88c2.27-2.09 3.66-5.17 3.66-9.12z"/>
-                <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.03c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.13C3.27 21.41 7.34 24 12 24z"/>
-                <path fill="#FBBC05" d="M5.28 14.29c-.25-.72-.38-1.49-.38-2.29s.13-1.57.38-2.29V6.58H1.25C.45 8.18 0 10.03 0 12s.45 3.82 1.25 5.42l4.03-3.13z"/>
-                <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.27 2.59 1.25 6.58l4.03 3.13c.95-2.83 3.6-4.96 6.72-4.96z"/>
-              </svg>
-            </div>
-          </div>
-          <div class="review-stars">★★★★★</div>
-          <p class="review-quote-text">“Fizemos cortinas, persianas e a aplicação de papel de parede alemão no quarto do casal. Tudo entregue antes do prazo e sem um grão de poeira na casa. <strong>Profissionalismo impecável</strong> em todos os detalhes.”</p>
-          <span class="review-service-tag">Papéis de Parede & Cortinas</span>
-        </div>
-
-        <div class="review-customer-card">
-          <div class="review-card-top">
-            <div class="reviewer-profile">
-              <div class="reviewer-avatar-circle">FT</div>
-              <div class="reviewer-meta">
-                <h5>Fernando Teixeira</h5>
-                <span>Avaliação verificada no Google</span>
-              </div>
-            </div>
-            <div class="review-google-badge-small">
-              <svg viewBox="0 0 24 24" width="14" height="14">
-                <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.65v3.03h3.88c2.27-2.09 3.66-5.17 3.66-9.12z"/>
-                <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.03c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.13C3.27 21.41 7.34 24 12 24z"/>
-                <path fill="#FBBC05" d="M5.28 14.29c-.25-.72-.38-1.49-.38-2.29s.13-1.57.38-2.29V6.58H1.25C.45 8.18 0 10.03 0 12s.45 3.82 1.25 5.42l4.03-3.13z"/>
-                <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.27 2.59 1.25 6.58l4.03 3.13c.95-2.83 3.6-4.96 6.72-4.96z"/>
-              </svg>
-            </div>
-          </div>
-          <div class="review-stars">★★★★★</div>
-          <p class="review-quote-text">“Automação com motores Somfy integrados à Alexa funcionando suave e perfeitamente. O atendimento do Celso e as orientações técnicas foram decisivos. Vale cada centavo investido.”</p>
-          <span class="review-service-tag">Automação Somfy Residencial</span>
-        </div>
-
-        <div class="review-customer-card">
-          <div class="review-card-top">
-            <div class="reviewer-profile">
-              <div class="reviewer-avatar-circle">BM</div>
-              <div class="reviewer-meta">
-                <h5>Beatriz Mendonça</h5>
-                <span>Avaliação verificada no Google</span>
-              </div>
-            </div>
-            <div class="review-google-badge-small">
-              <svg viewBox="0 0 24 24" width="14" height="14">
-                <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.65v3.03h3.88c2.27-2.09 3.66-5.17 3.66-9.12z"/>
-                <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.03c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.13C3.27 21.41 7.34 24 12 24z"/>
-                <path fill="#FBBC05" d="M5.28 14.29c-.25-.72-.38-1.49-.38-2.29s.13-1.57.38-2.29V6.58H1.25C.45 8.18 0 10.03 0 12s.45 3.82 1.25 5.42l4.03-3.13z"/>
-                <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.27 2.59 1.25 6.58l4.03 3.13c.95-2.83 3.6-4.96 6.72-4.96z"/>
-              </svg>
-            </div>
-          </div>
-          <div class="review-stars">★★★★★</div>
-          <p class="review-quote-text">“Sou arquiteta e especifico a Célia Decor para todos os meus clientes no ABC e em São Paulo. O nível de precisão de alfaiataria e o pós-venda garantem total tranquilidade para meus projetos.”</p>
-          <span class="review-service-tag">Parceria com Arquitetos</span>
-        </div>
-
-        <div class="review-customer-card">
-          <div class="review-card-top">
-            <div class="reviewer-profile">
-              <div class="reviewer-avatar-circle">GP</div>
-              <div class="reviewer-meta">
-                <h5>Guilherme Prado</h5>
-                <span>Avaliação verificada no Google</span>
-              </div>
-            </div>
-            <div class="review-google-badge-small">
-              <svg viewBox="0 0 24 24" width="14" height="14">
-                <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.65v3.03h3.88c2.27-2.09 3.66-5.17 3.66-9.12z"/>
-                <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.03c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.13C3.27 21.41 7.34 24 12 24z"/>
-                <path fill="#FBBC05" d="M5.28 14.29c-.25-.72-.38-1.49-.38-2.29s.13-1.57.38-2.29V6.58H1.25C.45 8.18 0 10.03 0 12s.45 3.82 1.25 5.42l4.03-3.13z"/>
-                <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.27 2.59 1.25 6.58l4.03 3.13c.95-2.83 3.6-4.96 6.72-4.96z"/>
-              </svg>
-            </div>
-          </div>
-          <div class="review-stars">★★★★★</div>
-          <p class="review-quote-text">“Showroom belíssimo com estacionamento na porta em Santo André. Fomos muito bem recebidos, vimos amostras reais de tecidos e persianas rolô blackout. Instalação rápida e impecável!”</p>
-          <span class="review-service-tag">Showroom Jardim Bela Vista</span>
-        </div>
-      </div>
-
     </div>
   </section>
 
   <!-- ========================================================================
-       SHOWROOM SANTO ANDRÉ: JARDIM BELA VISTA
+       6. SEÇÃO: O ATELIER & A TRADIÇÃO FAMILIAR (30 Anos de História)
        ======================================================================== -->
-  <section class="showroom-experience-section">
+  <section class="section-spacing bg-subtle" id="atelier">
     <div class="container">
-      <div class="showroom-double-col">
-        <div class="showroom-text-col">
-          <span class="tag-label">Experiência Sensorial</span>
-          <h2>Venha tomar um café em nossa casa.</h2>
-          <p>Localizado no nobre bairro Jardim Bela Vista em Santo André, nosso showroom foi concebido para que você toque nas tramas dos linhos, sinta os caimentos e veja a automação funcionando ao vivo.</p>
+      <div class="editorial-split-row reverse-mobile">
+        <div class="editorial-text-col">
+          <span class="section-kicker">CONFECÇÃO PRÓPRIA DESDE 1994</span>
+          <h2 class="section-title">A alma do sob medida: o cuidado de quem não terceiriza nenhuma costura.</h2>
+          <p class="editorial-lead">Fundada por Dona Célia Maria, nossa empresa nasceu do amor à alfaiataria e da paixão por vestir janelas com afeto e maestria.</p>
+          <p class="editorial-text">Diferente de revendas convencionais, a Célia Decor mantém seu atelier próprio e ativo em Santo André. Cada metro de tecido é inspecionado, cortado a laser e costurado por artesãs dedicadas que entendem a importância de um caimento impecável na sua casa.</p>
+          
+          <div class="heritage-stats-row">
+            <div class="heritage-stat">
+              <span class="stat-number">30+</span>
+              <span class="stat-label">Anos de Tradição</span>
+            </div>
+            <div class="heritage-stat">
+              <span class="stat-number">12k</span>
+              <span class="stat-label">Projetos Concluídos</span>
+            </div>
+            <div class="heritage-stat">
+              <span class="stat-number">100%</span>
+              <span class="stat-label">Confecção Própria</span>
+            </div>
+            <div class="heritage-stat">
+              <span class="stat-number">5.0★</span>
+              <span class="stat-label">Nota no Google</span>
+            </div>
+          </div>
 
-          <div class="showroom-meta-list">
-            <div class="meta-row">
-              <div class="meta-icon-box">📍</div>
-              <div class="meta-info">
-                <h5>Endereço Privilegiado</h5>
-                <p>Rua Edu Chaves, 15 – Jardim Bela Vista, Santo André – SP (Com estacionamento no local)</p>
+          <div class="editorial-cta-wrap">
+            <a href="sobre.html" class="btn-dark-clean">Conhecer a História Completa da Família</a>
+          </div>
+        </div>
+
+        <div class="editorial-media-col">
+          <div class="media-frame-shadow">
+            <img src="assets/images/familia-celia-decor.jpg" alt="Dona Célia e Família no Showroom Célia Decor em Santo André" loading="lazy">
+            <div class="caption-under-photo">
+              <span>Dona Célia Maria e filhos: três décadas de dedicação à alta decoração no ABC Paulista.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       7. SEÇÃO: GALERIA DE AMBIENTES INSPIRADORES
+       Visual clean sem excesso de textos — Deixe as fotos de alta resolução falarem
+       ======================================================================== -->
+  <section class="section-spacing bg-white" id="ambientes">
+    <div class="container">
+      <div class="section-header-centered">
+        <span class="section-kicker">GALERIA DE PROJETOS REAIS</span>
+        <h2 class="section-title">Espaços transformados pela luz e pelo tecido.</h2>
+        <p class="section-subtitle">Inspire-se em residências e ambientes corporativos que receberam a assinatura exclusiva da Célia Decor.</p>
+      </div>
+
+      <div class="gallery-clean-grid">
+        <!-- Item 1: Suíte Master -->
+        <div class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="assets/images/tour-suite-01-ampla.jpg" alt="Suíte Master com Cortina Wave em Gaze de Linho e Blackout" loading="lazy">
+          </div>
+          <div class="gallery-info">
+            <span class="gallery-tag">Suíte Master</span>
+            <h4 class="gallery-name">Gaze de Linho Puro com Blackout Embutido</h4>
+          </div>
+        </div>
+
+        <!-- Item 2: Living Duplo -->
+        <div class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="assets/images/hero-luxury-living.jpg" alt="Living com Cortinas Wave Pé-Direito Duplo" loading="lazy">
+          </div>
+          <div class="gallery-info">
+            <span class="gallery-tag">Living Integrado</span>
+            <h4 class="gallery-name">Cortinas Wave 6m em Linho Rústico Off-White</h4>
+          </div>
+        </div>
+
+        <!-- Item 3: Dormitório Acolhedor -->
+        <div class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="assets/images/tour-suite-02-cabeceira.jpg" alt="Dormitório com Cabeceira Estofada em Linho e Cortina Suíça" loading="lazy">
+          </div>
+          <div class="gallery-info">
+            <span class="gallery-tag">Dormitório Aconchego</span>
+            <h4 class="gallery-name">Cabeceira Estofada Sob Medida & Cortina Ilhós Oculto</h4>
+          </div>
+        </div>
+
+        <!-- Item 4: Macro Textura -->
+        <div class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="assets/images/tour-suite-04-macro-textura.jpg" alt="Detalhe de Texturas e Almofadas Exclusivas Célia Decor" loading="lazy">
+          </div>
+          <div class="gallery-info">
+            <span class="gallery-tag">Detalhes & Texturas</span>
+            <h4 class="gallery-name">Curadoria de Almofadas e Enxoval de Alfaiataria</h4>
+          </div>
+        </div>
+
+        <!-- Item 5: Persiana Solar -->
+        <div class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="assets/images/tour-suite-05-persiana-solar.jpg" alt="Persiana Rolô com Tela Solar 3% para Controle Térmico" loading="lazy">
+          </div>
+          <div class="gallery-info">
+            <span class="gallery-tag">Proteção Solar & Home Office</span>
+            <h4 class="gallery-name">Persiana Rolô com Tela Solar 3% e Filtro UV</h4>
+          </div>
+        </div>
+
+        <!-- Item 6: Showroom -->
+        <div class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="assets/images/showroom-ambiente.jpg" alt="Espaço Gourmet com Cortinas Wave Célia Decor" loading="lazy">
+          </div>
+          <div class="gallery-info">
+            <span class="gallery-tag">Espaço Gourmet</span>
+            <h4 class="gallery-name">Painéis Deslizantes com Tecidos Repelentes a Manchas</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       8. SEÇÃO: VÍDEO DE APRESENTAÇÃO INSTITUCIONAL
+       Clean, elegante, sem popups agressivos
+       ======================================================================== -->
+  <section class="section-spacing bg-subtle" id="apresentacao-video">
+    <div class="container">
+      <div class="section-header-centered">
+        <span class="section-kicker">VIVENCIE O ATELIER</span>
+        <h2 class="section-title">A arte de confeccionar sonhos em movimento.</h2>
+        <p class="section-subtitle">Assista aos bastidores da nossa confecção artesanal e veja de perto o cuidado em cada ponto e acabamento.</p>
+      </div>
+
+      <div class="video-clean-container">
+        <video 
+          id="celiaStudioVideo"
+          class="celia-video-element"
+          poster="assets/images/celia-video-poster.jpg"
+          preload="metadata"
+          controls
+          playsinline>
+          <source src="assets/videos/celia-decor-apresentacao.mp4" type="video/mp4">
+          Seu navegador não suporta reprodução de vídeos HTML5.
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       9. SEÇÃO: AVALIAÇÕES DO GOOGLE (5.0 Estrelas)
+       Três depoimentos reais com visual limpo e sem poluição
+       ======================================================================== -->
+  <section class="section-spacing bg-white" id="avaliacoes-google">
+    <div class="container">
+      <div class="section-header-centered">
+        <div class="google-rating-pill-static">
+          <svg viewBox="0 0 24 24" width="20" height="20">
+            <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.65v3.03h3.88c2.27-2.09 3.66-5.17 3.66-9.12z"/>
+            <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.03c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.13C3.27 21.41 7.34 24 12 24z"/>
+            <path fill="#FBBC05" d="M5.28 14.29c-.25-.72-.38-1.49-.38-2.29s.13-1.57.38-2.29V6.58H1.25C.45 8.18 0 10.03 0 12s.45 3.82 1.25 5.42l4.03-3.13z"/>
+            <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.27 2.59 1.25 6.58l4.03 3.13c.95-2.83 3.6-4.96 6.72-4.96z"/>
+          </svg>
+          <span class="stars-gold">★★★★★</span>
+          <span class="rating-val">5.0</span>
+          <span class="rating-desc">Classificação Máxima no Google</span>
+        </div>
+        <h2 class="section-title">O que dizem os clientes que confiam na Célia Decor.</h2>
+      </div>
+
+      <div class="reviews-three-grid">
+        <!-- Depoimento 1 -->
+        <div class="review-clean-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-quote">“Atendimento impecável desde a primeira visita. O tecido de linho na cortina wave ficou perfeito na minha sala. A equipe de instalação é limpa, pontual e muito educada!”</p>
+          <div class="review-author-meta">
+            <strong>Dra. Mariana Vasconcellos</strong>
+            <span>Santo André • Residencial Parque Duque</span>
+          </div>
+        </div>
+
+        <!-- Depoimento 2 -->
+        <div class="review-clean-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-quote">“Fizemos todas as cortinas e persianas motorizadas do nosso apartamento com a Célia Decor. Funciona perfeitamente na Alexa e o acabamento da costura é de outro mundo.”</p>
+          <div class="review-author-meta">
+            <strong>Roberto & Camila Mendes</strong>
+            <span>Jardim Bela Vista • Santo André</span>
+          </div>
+        </div>
+
+        <!-- Depoimento 3 -->
+        <div class="review-clean-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-quote">“Há anos indico a Célia Decor para meus clientes de arquitetura. O fato de terem confecção própria faz toda a diferença no cumprimento de prazos e no caimento milimétrico.”</p>
+          <div class="review-author-meta">
+            <strong>Arq. Henrique Silveira</strong>
+            <span>Arquiteto & Designer de Interiores</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       10. SEÇÃO: SHOWROOM BOUTIQUE & LOCALIZAÇÃO
+       ======================================================================== -->
+  <section class="section-spacing bg-subtle" id="showroom">
+    <div class="container">
+      <div class="editorial-split-row">
+        <div class="editorial-text-col">
+          <span class="section-kicker">SHOWROOM BOUTIQUE NO ABC</span>
+          <h2 class="section-title">Venha vivenciar os tecidos em nosso espaço.</h2>
+          <p class="editorial-lead">Visite nosso showroom no charmoso bairro Jardim Bela Vista em Santo André. Toque nas texturas, sinta a fluidez dos caimentos e experimente os motores em funcionamento.</p>
+          
+          <div class="showroom-details-list">
+            <div class="detail-item">
+              <div class="detail-icon">📍</div>
+              <div class="detail-text">
+                <strong>Endereço com Estacionamento</strong>
+                <p>Rua Edu Chaves, 15 – Jardim Bela Vista, Santo André – SP</p>
               </div>
             </div>
 
-            <div class="meta-row">
-              <div class="meta-icon-box">⏰</div>
-              <div class="meta-info">
-                <h5>Horário de Atendimento</h5>
+            <div class="detail-item">
+              <div class="detail-icon">⏰</div>
+              <div class="detail-text">
+                <strong>Horários de Atendimento</strong>
                 <p>Segunda a Sexta: 08:30 às 17:30 | Sábados: 09:00 às 13:00</p>
               </div>
             </div>
 
-            <div class="meta-row">
-              <div class="meta-icon-box">📞</div>
-              <div class="meta-info">
-                <h5>Contatos Rápidos</h5>
+            <div class="detail-item">
+              <div class="detail-icon">📞</div>
+              <div class="detail-text">
+                <strong>Telefones Diretos</strong>
                 <p>Fixo: (11) 4978-5551 • WhatsApp: (11) 96318-8104</p>
               </div>
             </div>
           </div>
 
-          <a href="contato.html" class="nav-cta-btn" style="background: var(--c-dark); color: #FFF;">Agendar Visita com Especialista</a>
+          <div class="editorial-cta-wrap">
+            <a href="https://wa.me/5511963188104?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20visita%20ao%20Showroom%20da%20C%C3%A9lia%20Decor." target="_blank" rel="noopener noreferrer" class="btn-primary-gold">
+              Agendar Visita com Especialista
+            </a>
+          </div>
         </div>
 
-        <div class="showroom-map-frame">
-          <iframe 
-            src="https://maps.google.com/maps?q=Rua%20Edu%20Chaves,%2015,%20Jardim%20Bela%20Vista,%20Santo%20Andr%C3%A9%20SP&t=m&z=16&output=embed&iwloc=near" 
-            title="Localização Showroom Célia Decor Santo André"
-            loading="lazy">
-          </iframe>
+        <div class="editorial-media-col">
+          <div class="map-container-clean">
+            <iframe 
+              src="https://maps.google.com/maps?q=Rua%20Edu%20Chaves,%2015,%20Jardim%20Bela%20Vista,%20Santo%20Andr%C3%A9%20SP&t=m&z=16&output=embed&iwloc=near" 
+              title="Localização do Showroom Célia Decor em Santo André"
+              loading="lazy">
+            </iframe>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ========================================================================
-       RODAPÉ MASTER HAUTE COUTURE (LIMPO & ELEGANTE)
+       11. BANNER DE CONVERSÃO / ATENDIMENTO PERSONALIZADO
+       ======================================================================== -->
+  <section class="cta-banner-section">
+    <div class="container">
+      <div class="cta-banner-box">
+        <span class="cta-banner-kicker">ATENDIMENTO EXCLUSIVO</span>
+        <h2 class="cta-banner-title">Pronto para transformar seu ambiente com cortinas sob medida?</h2>
+        <p class="cta-banner-subtitle">Converse com nossas consultoras técnicas. Enviamos fotos, esclarecemos dúvidas sobre os tecidos e agendamos a medição sem compromisso.</p>
+        <div class="cta-banner-btns">
+          <a href="https://wa.me/5511963188104?text=Ol%C3%A1!%20Gostaria%20de%20receber%20um%20or%C3%A7amento%20de%20cortinas%20sob%20medida." target="_blank" rel="noopener noreferrer" class="btn-primary-gold">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+              <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.81 13.47 3.81 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z"/>
+            </svg>
+            Solicitar Orçamento no WhatsApp
+          </a>
+          <a href="tel:1149785551" class="btn-ghost-white">
+            Ligar para (11) 4978-5551
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       12. RODAPÉ MASTER MINIMALISTA & ELEGANTE
        ======================================================================== -->
   <footer class="site-master-footer">
     <div class="container">
       <div class="footer-columns-grid">
+        <!-- Coluna 1: Sobre & Redes -->
         <div class="footer-col-block">
-          <h5>Célia Decor</h5>
-          <p>Há 30 anos transformando ambientes com excelência, alfaiataria fina de tecidos, persianas motorizadas e decoração sob medida para lares e escritórios exclusivos no ABC Paulista e Grande São Paulo.</p>
+          <img src="assets/images/logo-celia-decor-dark.png" alt="Célia Decor" class="footer-logo-img">
+          <p class="footer-brand-desc">Três décadas de alta alfaiataria em cortinas sob medida, persianas inteligentes e decoração de interiores no ABC Paulista e Grande São Paulo.</p>
           
           <div class="footer-social-row">
             <a href="https://www.instagram.com/celiadecoroficial/" target="_blank" rel="noopener noreferrer" class="social-circle-btn" aria-label="Instagram Célia Decor">
@@ -1121,68 +609,59 @@
             <a href="https://www.facebook.com/CeliaDecorSP" target="_blank" rel="noopener noreferrer" class="social-circle-btn" aria-label="Facebook Célia Decor">
               <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
             </a>
-            <a href="https://www.tiktok.com/@celiadecorsp" target="_blank" rel="noopener noreferrer" class="social-circle-btn" aria-label="TikTok Célia Decor">
-              <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-1.01-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
-            </a>
-            <a href="https://www.youtube.com/channel/UCJTca4iiQOWq3MMVdK5Np2Q" target="_blank" rel="noopener noreferrer" class="social-circle-btn" aria-label="YouTube Célia Decor">
-              <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-            </a>
           </div>
-
-          <!-- Selo Google 5.0 no Rodapé -->
-          <a href="#avaliacoes-google" class="footer-google-trust-badge" title="Ver avaliações no Google">
-            <svg viewBox="0 0 24 24" width="16" height="16">
-              <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.65v3.03h3.88c2.27-2.09 3.66-5.17 3.66-9.12z"/>
-              <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.03c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.13C3.27 21.41 7.34 24 12 24z"/>
-              <path fill="#FBBC05" d="M5.28 14.29c-.25-.72-.38-1.49-.38-2.29s.13-1.57.38-2.29V6.58H1.25C.45 8.18 0 10.03 0 12s.45 3.82 1.25 5.42l4.03-3.13z"/>
-              <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.27 2.59 1.25 6.58l4.03 3.13c.95-2.83 3.6-4.96 6.72-4.96z"/>
-            </svg>
-            <span><strong>5.0 Estrelas</strong> no Google <span class="stars">★★★★★</span> (Quase 500 avaliações)</span>
-          </a>
         </div>
 
+        <!-- Coluna 2: Navegação -->
         <div class="footer-col-block">
-          <h5>Navegação</h5>
+          <h5 class="footer-title">Navegação</h5>
           <ul class="footer-nav-list">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="sobre.html">O Legado & Família</a></li>
-            <li><a href="produtos.html">Coleções</a></li>
-            <li><a href="automacao.html">Automação Residencial</a></li>
-            <li><a href="arquitetos.html">Espaço Arquitetos</a></li>
-            <li><a href="contato.html">Showroom & Contato</a></li>
-            <li><a href="politica-de-privacidade.html">Políticas de Privacidade</a></li>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="#caimentos">Modelos & Caimentos</a></li>
+            <li><a href="#diferenciais">Diferenciais Técnicos</a></li>
+            <li><a href="#motorizacao">Motorização Inteligente</a></li>
+            <li><a href="#atelier">O Atelier 30 Anos</a></li>
+            <li><a href="#ambientes">Galeria de Ambientes</a></li>
+            <li><a href="contato.html">Showroom Santo André</a></li>
           </ul>
         </div>
 
+        <!-- Coluna 3: Coleções -->
         <div class="footer-col-block">
-          <h5>Coleções</h5>
+          <h5 class="footer-title">Coleções</h5>
           <ul class="footer-nav-list">
             <li><a href="produtos.html">Cortinas sob Medida</a></li>
             <li><a href="produtos.html">Persianas Motorizadas</a></li>
             <li><a href="produtos.html">Papéis de Parede</a></li>
+            <li><a href="produtos.html">Cabeceiras Estofadas</a></li>
             <li><a href="produtos.html">Tapetes Orgânicos</a></li>
-            <li><a href="produtos.html">Cabeceiras & Estofados</a></li>
-            <li><a href="produtos.html">Espaços Corporativos</a></li>
+            <li><a href="arquitetos.html">Espaço Arquitetos</a></li>
           </ul>
         </div>
 
+        <!-- Coluna 4: Contato & Showroom -->
         <div class="footer-col-block">
-          <h5>Showroom Boutique</h5>
-          <p>Rua Edu Chaves, 15<br>Jardim Bela Vista, Santo André – SP<br>CEP 09041-100</p>
-          <p style="margin-top: 14px; color: var(--c-gold-light);">
-            Tel: (11) 4978-5551<br>
+          <h5 class="footer-title">Showroom Santo André</h5>
+          <p class="footer-address">
+            Rua Edu Chaves, 15<br>
+            Jardim Bela Vista – Santo André – SP<br>
+            CEP 09041-100
+          </p>
+          <p class="footer-contact-info">
+            Fixo: (11) 4978-5551<br>
             WhatsApp: (11) 96318-8104<br>
             contato@celiadecor.com.br
           </p>
         </div>
       </div>
 
+      <!-- Barra Inferior do Rodapé -->
       <div class="footer-sub-bottom">
         <div class="footer-copyright-col">
           <span>© 2026 CÉLIA DECOR BOUTIQUE LTDA — CNPJ: 04.990.930/0001-90. Todos os direitos reservados.</span>
         </div>
 
-        <!-- Crédito Discreto da Agência Impacto Digital -->
+        <!-- Crédito Discreto da Agência Impacto Digital (Requisito Obrigatório) -->
         <div class="footer-agency-discrete">
           <span>Desenvolvido por <a href="https://wa.me/5511970558412?text=Ol%C3%A1%20Impacto%20Digital!%20Vi%20o%20site%20da%20C%C3%A9lia%20Decor%20e%20gostaria%20de%20um%20projeto%20digital." target="_blank" rel="noopener noreferrer" class="agency-discrete-link" title="Falar com a Impacto Digital no WhatsApp">Impacto Digital</a> <span class="agency-discrete-phone">(11 97055-8412)</span></span>
         </div>
@@ -1190,16 +669,30 @@
         <div class="footer-legal-links">
           <a href="politica-de-privacidade.html">Políticas de Privacidade</a>
           <span class="sep">•</span>
-          <a href="javascript:void(0)" class="cookie-settings-trigger">Preferências de Cookies</a>
-          <span class="sep">•</span>
           <span>Santo André, SP • Brasil</span>
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- Botão Inteligente de WhatsApp 2.0 (Regra Oficial Severino & Ricardo) -->
-  <div class="smart-wa-bubble"></div>
+  <!-- ========================================================================
+       13. WIDGET FLUTUANTE DE WHATSAPP INTELIGENTE (Padrão Oficial Ricardo & Severino)
+       Status em tempo real sincronizado com os horários do Showroom
+       ======================================================================== -->
+  <div id="whatsapp-widget" class="wa-widget" aria-label="Atendimento via WhatsApp">
+    <a id="wa-link" href="#" target="_blank" rel="noopener noreferrer" class="wa-btn" aria-label="Falar conosco no WhatsApp">
+      <div class="wa-icon-container">
+        <svg class="wa-icon" viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+          <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.81 13.47 3.81 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z"/>
+        </svg>
+        <span id="wa-status-dot" class="wa-status-dot online"></span>
+      </div>
+      <div class="wa-text-box">
+        <span class="wa-title">Falar no WhatsApp</span>
+        <span id="wa-status-text" class="wa-status-text">Online Agora</span>
+      </div>
+    </a>
+  </div>
 
   <!-- Scripts -->
   <script src="js/main.js"></script>
