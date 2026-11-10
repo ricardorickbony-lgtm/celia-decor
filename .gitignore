@@ -7,3 +7,4 @@ desktop.ini
 dist/
 node_modules/
 server.ps1
+serve.js
